@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "FNumber.h"
+#import "GameLogic.h"
 
 static NSString* const kGameSceneblackBoxName = @"blackBox";
 
@@ -31,14 +32,13 @@ static const CGFloat kGameSceneSmallGearPointY = 700;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    FNumber *fNumber = [[FNumber alloc] initWithNumber:10];
+    FNumber *fNumber = [GameLogic getNumberFromLogic];
     
-    fNumber.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    fNumber.position = CGPointMake(70,710);
     
     [self addChild:fNumber];
     
-    SKAction *liftoff = [SKAction moveByX:0 y:-CGRectGetMidY(self.frame) duration: 2];
+    SKAction *liftoff = [SKAction moveByX:0 y:-2*CGRectGetMidY(self.frame) duration: 10];
     SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
     
     [fNumber runAction:rep completion:^{

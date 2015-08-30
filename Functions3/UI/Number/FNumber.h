@@ -6,7 +6,16 @@
 //  Copyright (c) 2015 ekanik. All rights reserved.
 //
 
+
+typedef NS_ENUM(NSUInteger, FNumberType) {
+    FNumberTypeNormal,
+    FNumberTypeChageAble,
+    FNumberTypeInvisible
+};
+
 @interface FNumber : SKSpriteNode
 
 - (instancetype)initWithNumber:(CGFloat)number;
+- (instancetype)initWithNumberArray:(NSArray*)arr;
+- (instancetype)initInvisibleNumber:(CGFloat)number;
 @end

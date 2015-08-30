@@ -12,5 +12,6 @@
 
 + (UIColor*)fNumberColor;
 + (UIColor*)fNumberTextColor;
++ (NSArray*)fNumberColorArray;
 
 @end

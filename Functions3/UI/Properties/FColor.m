@@ -20,4 +20,8 @@
     return _RGBA(99, 91, 82, 1.0);
 }
 
++ (NSArray*)fNumberColorArray
+{
+    return [NSArray arrayWithObjects:[UIColor yellowColor],[UIColor redColor],[UIColor greenColor],[UIColor purpleColor],[UIColor whiteColor],[UIColor cyanColor],[UIColor magentaColor],nil];
+}
 @end
