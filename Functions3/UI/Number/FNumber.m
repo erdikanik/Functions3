@@ -10,7 +10,7 @@
 #import "FColor.h"
 #import "Producer.h"
 
-static const CGFloat kFNumberSize = 70;
+static const CGFloat kFNumberSize = 30;
 static const CGFloat kFNumberFontSizeFactor = 0.4;
 static const CGFloat kFNumberWaitForDuration = 1;
 
@@ -34,7 +34,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
         self.number = number;
         [self updateInnerLabelProperties];
         [self addChild:self.innerLabel];
-        [self setZPosition:-1];
         self.fType = FNumberTypeNormal;
     }
     return self;
@@ -49,7 +48,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
         self.number = [[arr objectAtIndex:0] floatValue];
         [self updateInnerLabelProperties];
         [self addChild:self.innerLabel];
-        [self setZPosition:-1];
         self.fType = FNumberTypeChageAble;
         
         // call function timer sequences
@@ -71,7 +69,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
         self.number = number;
         [self updateInnerLabelProperties];
         [self addChild:self.innerLabel];
-        [self setZPosition:-1];
         self.fType = FNumberTypeInvisible;
         
         // call function timer sequences

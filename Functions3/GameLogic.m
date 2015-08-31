@@ -47,28 +47,7 @@
 
 + (CGFloat)getRandomNumber
 {
-    CGFloat num = [FMath getRandomGeneratorGivenRange:0 withSecond:1000];
-    
-    if (num < 200)
-    {
-        return [FMath getRandomGeneratorGivenRange:-1 withSecond:1];
-    }
-    else if (num < 500)
-    {
-        return [FMath getRandomGeneratorGivenRange:0 withSecond:10];
-    }
-    else if (num < 900)
-    {
-        return [FMath getRandomGeneratorGivenRange:-100 withSecond:100];
-    }
-    else if (num < 990)
-    {
-        return [FMath getRandomGeneratorGivenRange:-1000 withSecond:100];
-    }
-    else
-    {
-        return [FMath getRandomGeneratorGivenRange:-1000 withSecond:1000];
-    }
+    return [FMath getRandomGeneratorGivenRange:-10 withSecond:10];
 }
 
 @end
