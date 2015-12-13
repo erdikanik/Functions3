@@ -7,7 +7,7 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
+#import "ResultViewController.h"
 
 @implementation SKScene (Unarchive)
 
@@ -44,7 +44,7 @@
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    
+    scene.sdelegate = self;
     // Present the scene.
     [skView presentScene:scene];
 }
@@ -71,6 +71,15 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - GameSceneDelegate
+
+- (void)gameSceneOvered:(NSNumber *)totalPoint
+{
+    ResultViewController *resultViewController = [ResultViewController new];
+    resultViewController.totalPoint = totalPoint;
+    [self.navigationController presentViewController:resultViewController animated:YES completion:nil];
 }
 
 @end

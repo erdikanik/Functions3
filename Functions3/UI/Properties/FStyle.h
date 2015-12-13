@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FColor : NSObject
+@interface FStyle : NSObject
 
 + (UIColor*)fNumberColor;
 + (UIColor*)fNumberTextColor;
++ (UIColor*)fFunctionsHolderColor;
 + (NSArray*)fNumberColorArray;
++ (UIColor*)getRandomColor;
++ (UIColor*)fMainColor;
++ (UIColor*)fBoardColor;
 
+
++ (NSString*)fMainFont;
 @end

@@ -8,6 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene
+@protocol GameSceneDelegate;
+
+@interface GameScene : SKScene <UIGestureRecognizerDelegate>
+
+@property (weak, nonatomic) id <GameSceneDelegate> sdelegate;
+
+@end
+
+
+@protocol GameSceneDelegate <NSObject>
+
+- (void)gameSceneOvered:(NSNumber*)totalPoint;
 
 @end

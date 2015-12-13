@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Polynomal.h"
 
 @interface Functions : NSObject
-
++ (NSArray*)getFunctions;
++ (Polynomal*)getRandomFunction;
 @end

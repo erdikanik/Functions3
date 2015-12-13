@@ -7,7 +7,7 @@
 //
 
 #import "FNumber.h"
-#import "FColor.h"
+#import "FStyle.h"
 #import "Producer.h"
 
 static const CGFloat kFNumberSize = 30;
@@ -16,7 +16,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
 
 @interface FNumber()
 
-@property (assign, nonatomic) CGFloat number;
 @property (strong, nonatomic) SKLabelNode* innerLabel;
 @property (strong, nonatomic) NSArray *numberArray;
 @property (assign, nonatomic) FNumberType fType;
@@ -29,7 +28,7 @@ static const CGFloat kFNumberWaitForDuration = 1;
 
 - (instancetype)initWithNumber:(CGFloat)number
 {
-    if (self = [super initWithColor:[FColor fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
+    if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
     {
         self.number = number;
         [self updateInnerLabelProperties];
@@ -60,11 +59,9 @@ static const CGFloat kFNumberWaitForDuration = 1;
     return self;
 }
 
-
-
 - (instancetype)initInvisibleNumber:(CGFloat)number
 {
-    if (self = [super initWithColor:[FColor fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
+    if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
     {
         self.number = number;
         [self updateInnerLabelProperties];
@@ -97,7 +94,7 @@ static const CGFloat kFNumberWaitForDuration = 1;
         }
         
         self.number = [self.numberArray[self.counter] floatValue];
-        [self setColor:[[FColor fNumberColorArray] objectAtIndex:self.counter ]];
+        [self setColor:[[FStyle fNumberColorArray] objectAtIndex:self.counter ]];
         self.innerLabel.text = _FF(self.number);
     }
     else
@@ -105,25 +102,32 @@ static const CGFloat kFNumberWaitForDuration = 1;
         if (self.isInvisible)
         {
             self.invisible = NO;
-            self.color = [FColor fNumberColor];
+            self.color = [FStyle fNumberColor];
         }
         else
         {
             self.invisible = YES;
-            self.color = [FColor fNumberTextColor];
+            self.color = [FStyle fNumberTextColor];
         }
     }
 }
 
 - (void)updateInnerLabelProperties
 {
-    self.innerLabel = [SKLabelNode labelNodeWithFontNamed:ARIAL_BOLD];
+    self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     self.innerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    
     self.innerLabel.fontSize = self.size.height * kFNumberFontSizeFactor;
-    self.innerLabel.fontColor = [FColor fNumberTextColor];
+    self.innerLabel.fontColor = [FStyle fNumberTextColor];
     self.innerLabel.text = _FF(self.number);
-    self.innerLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                           CGRectGetMidY(self.frame));
+    [self.innerLabel setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeCenter];
+    self.innerLabel.position = CGPointMake(self.size.width / 2 - self.innerLabel.frame.size.width / 2, self.size.height / 2 - self.innerLabel.frame.size.height / 2);
+}
+
+- (void)setSize:(CGSize)size
+{
+    [super setSize:size];
+    [self updateInnerLabelProperties];
 }
 
 + (FNumber*)numberGivenFunction:(NSString*)func
@@ -131,6 +135,24 @@ static const CGFloat kFNumberWaitForDuration = 1;
     Producer *producer = [[Producer alloc] initWithProduceName:func];
     CGFloat num = [producer parseFunctionFromName];
     return [[FNumber alloc] initWithNumber:num];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [self.delegate fNumberPressed:self];
+}
+
+#pragma mark - Setters
+- (void)setNumber:(CGFloat)number
+{
+    _number = number;
+    self.innerLabel.text = [@(number) description];
+}
+
+- (void)setEdge:(CGFloat)edge
+{
+    [self setSize:CGSizeMake(edge, edge)];
 }
 
 @end

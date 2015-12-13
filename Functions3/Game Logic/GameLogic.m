@@ -47,7 +47,7 @@
 
 + (CGFloat)getRandomNumber
 {
-    return [FMath getRandomGeneratorGivenRange:-10 withSecond:10];
+    return [FMath getRandomGeneratorGivenRange:-10 withSecond:9];
 }
 
 @end

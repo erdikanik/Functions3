@@ -21,5 +21,9 @@
     return 0;
 }
 
+- (CGFloat)resultValue:(CGFloat)numberValue
+{
+    return 0;
+}
 
 @end

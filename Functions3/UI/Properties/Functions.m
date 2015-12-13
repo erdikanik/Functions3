@@ -7,7 +7,7 @@
 //
 
 #import "Functions.h"
-
+#import "FMath.h"
 
 
 @implementation Functions
@@ -16,17 +16,26 @@
 {
     NSArray *functionsArray = [[NSArray alloc] initWithObjects:
     @"x",
+    @"-x",
     @"x-2",
     @"x+1",
     @"x^2-x-21",
     @"x^2-5x+2",
     @"x^2-51",
     @"-x^2+x+20",
-    @"x3-400",
-    @"x3-500",
-    @"x3-600",nil];
+    @"x^3-400",
+    @"x^3-500",
+    @"x^3-600",nil];
 
     return functionsArray;
+}
+
++ (Polynomal*)getRandomFunction
+{
+    NSArray *functionArray = [self getFunctions];
+    NSInteger num = [FMath getRandomGeneratorGivenRange:0 withSecond:functionArray.count];
+    Polynomal *polynomal = [[Polynomal alloc] initWithPolynomalString:[functionArray objectAtIndex:num]];
+    return polynomal;
 }
 
 @end

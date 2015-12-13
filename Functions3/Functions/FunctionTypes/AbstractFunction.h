@@ -14,11 +14,14 @@ typedef NS_ENUM(NSUInteger, FunctionType)
     FunctionTypeRandom,
     FunctionTypeBinary,
     FunctionTypeFractional,
-    FunctionTypePolynomal
+    FunctionTypePolynomal,
+    FunctionTypeAbs
 };
 
 @interface AbstractFunction : NSObject
 
 @property (assign, nonatomic) FunctionType ftype;
 - (NSArray*) getValue:(NSArray*) valueArray;
+- (CGFloat)resultValue:(CGFloat)numberValue;
+
 @end

@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18079A731BF77F4900EB8662 /* FSpriteNodeBase.m */; };
+		18169EBF1BEF7AE800B65F83 /* FunctionBoxHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18169EBE1BEF7AE800B65F83 /* FunctionBoxHolder.m */; };
+		18281C371B9C491300A8A52F /* BlackBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18281C361B9C491300A8A52F /* BlackBox.m */; };
 		18522B161B9341E500705469 /* FMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B151B9341E500705469 /* FMath.m */; };
 		18522B1D1B93420C00705469 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B1A1B93420C00705469 /* Fraction.m */; };
 		18522B1E1B93420C00705469 /* Irrational.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B1C1B93420C00705469 /* Irrational.m */; };
 		18522B271B934BA200705469 /* AbstractFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B221B934BA200705469 /* AbstractFunction.m */; };
 		18522B281B934BA200705469 /* Polynomal.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B241B934BA200705469 /* Polynomal.m */; };
 		18522B291B934BA200705469 /* Producer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B261B934BA200705469 /* Producer.m */; };
-		18522B301B9366B600705469 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B2F1B9366B600705469 /* GameLogic.m */; };
 		18522B331B94D21D00705469 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B321B94D21D00705469 /* Functions.m */; };
 		18522B3C1B94DA8600705469 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 18522B371B94DA8600705469 /* gear.png */; };
 		18522B3D1B94DA8600705469 /* scull_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 18522B381B94DA8600705469 /* scull_g.png */; };
@@ -25,16 +27,22 @@
 		18799C0D1B91DE2700FB85C1 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C0C1B91DE2700FB85C1 /* GameScene.m */; };
 		18799C0F1B91DE2700FB85C1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18799C0E1B91DE2700FB85C1 /* GameScene.sks */; };
 		18799C121B91DE2700FB85C1 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C111B91DE2700FB85C1 /* GameViewController.m */; };
-		18799C151B91DE2700FB85C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18799C131B91DE2700FB85C1 /* Main.storyboard */; };
 		18799C171B91DE2700FB85C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18799C161B91DE2700FB85C1 /* Images.xcassets */; };
 		18799C1A1B91DE2700FB85C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18799C181B91DE2700FB85C1 /* LaunchScreen.xib */; };
 		18799C261B91DE2700FB85C1 /* Functions3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C251B91DE2700FB85C1 /* Functions3Tests.m */; };
 		18799C721B92000E00FB85C1 /* FNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C711B92000E00FB85C1 /* FNumber.m */; };
-		18799C771B92049700FB85C1 /* FColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C761B92049700FB85C1 /* FColor.m */; };
+		18799C771B92049700FB85C1 /* FStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 18799C761B92049700FB85C1 /* FStyle.m */; };
 		18799C7C1B92071D00FB85C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7B1B92071D00FB85C1 /* UIKit.framework */; };
 		18799C7E1B92072D00FB85C1 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7D1B92072D00FB85C1 /* SpriteKit.framework */; };
 		18799C801B92073E00FB85C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7F1B92073E00FB85C1 /* Foundation.framework */; };
 		18799C821B9207CC00FB85C1 /* Predefines.h in Sources */ = {isa = PBXBuildFile; fileRef = 18799C811B9207CC00FB85C1 /* Predefines.h */; };
+		189BBFDA1B9B42010021D880 /* FunctionSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BBFD91B9B42010021D880 /* FunctionSquare.m */; };
+		18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FC71BF7729A00F5A101 /* FBoard.m */; };
+		18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FCC1BF7778400F5A101 /* GameLogic.m */; };
+		18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FCF1BF778A200F5A101 /* FBoardLogic.m */; };
+		18F035A51C1C72EC00792FC9 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A31C1C72EC00792FC9 /* ResultViewController.m */; };
+		18F035A91C1D8AFA00792FC9 /* AbsoluteValueFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */; };
+		18F697581C1E178E006F254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F697561C1E178E006F254D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18079A721BF77F4900EB8662 /* FSpriteNodeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSpriteNodeBase.h; sourceTree = "<group>"; };
+		18079A731BF77F4900EB8662 /* FSpriteNodeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSpriteNodeBase.m; sourceTree = "<group>"; };
+		18169EBD1BEF7AE800B65F83 /* FunctionBoxHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoxHolder.h; sourceTree = "<group>"; };
+		18169EBE1BEF7AE800B65F83 /* FunctionBoxHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoxHolder.m; sourceTree = "<group>"; };
+		18281C351B9C491300A8A52F /* BlackBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackBox.h; sourceTree = "<group>"; };
+		18281C361B9C491300A8A52F /* BlackBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackBox.m; sourceTree = "<group>"; };
 		18522B141B9341E500705469 /* FMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMath.h; sourceTree = "<group>"; };
 		18522B151B9341E500705469 /* FMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMath.m; sourceTree = "<group>"; };
 		18522B191B93420C00705469 /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
@@ -61,8 +75,6 @@
 		18522B251B934BA200705469 /* Producer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Producer.h; sourceTree = "<group>"; };
 		18522B261B934BA200705469 /* Producer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Producer.m; sourceTree = "<group>"; };
 		18522B2A1B93577000705469 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		18522B2E1B9366B600705469 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
-		18522B2F1B9366B600705469 /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
 		18522B311B94D21D00705469 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		18522B321B94D21D00705469 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
 		18522B371B94DA8600705469 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
@@ -80,7 +92,6 @@
 		18799C0E1B91DE2700FB85C1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		18799C101B91DE2700FB85C1 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		18799C111B91DE2700FB85C1 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		18799C141B91DE2700FB85C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18799C161B91DE2700FB85C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18799C191B91DE2700FB85C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		18799C1F1B91DE2700FB85C1 /* Functions3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Functions3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,12 +100,25 @@
 		18799C701B92000E00FB85C1 /* FNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNumber.h; sourceTree = "<group>"; };
 		18799C711B92000E00FB85C1 /* FNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNumber.m; sourceTree = "<group>"; };
 		18799C741B9203CA00FB85C1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		18799C751B92049700FB85C1 /* FColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FColor.h; sourceTree = "<group>"; };
-		18799C761B92049700FB85C1 /* FColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FColor.m; sourceTree = "<group>"; };
+		18799C751B92049700FB85C1 /* FStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FStyle.h; sourceTree = "<group>"; };
+		18799C761B92049700FB85C1 /* FStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FStyle.m; sourceTree = "<group>"; };
 		18799C7B1B92071D00FB85C1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18799C7D1B92072D00FB85C1 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		18799C7F1B92073E00FB85C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18799C811B9207CC00FB85C1 /* Predefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predefines.h; sourceTree = "<group>"; };
+		189BBFD81B9B42010021D880 /* FunctionSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionSquare.h; sourceTree = "<group>"; };
+		189BBFD91B9B42010021D880 /* FunctionSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionSquare.m; sourceTree = "<group>"; };
+		18A76FC61BF7729A00F5A101 /* FBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoard.h; sourceTree = "<group>"; };
+		18A76FC71BF7729A00F5A101 /* FBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoard.m; sourceTree = "<group>"; };
+		18A76FCB1BF7778400F5A101 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
+		18A76FCC1BF7778400F5A101 /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
+		18A76FCE1BF778A200F5A101 /* FBoardLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoardLogic.h; sourceTree = "<group>"; };
+		18A76FCF1BF778A200F5A101 /* FBoardLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoardLogic.m; sourceTree = "<group>"; };
+		18F035A21C1C72EC00792FC9 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		18F035A31C1C72EC00792FC9 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbsoluteValueFunction.h; sourceTree = "<group>"; };
+		18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbsoluteValueFunction.m; sourceTree = "<group>"; };
+		18F697571C1E178E006F254D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +142,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18281C341B9C491300A8A52F /* BlackBox */ = {
+			isa = PBXGroup;
+			children = (
+				18281C351B9C491300A8A52F /* BlackBox.h */,
+				18281C361B9C491300A8A52F /* BlackBox.m */,
+			);
+			path = BlackBox;
+			sourceTree = "<group>";
+		};
 		18522B131B9341E500705469 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +163,7 @@
 		18522B171B9341ED00705469 /* NS */ = {
 			isa = PBXGroup;
 			children = (
-				18522B2D1B9366A700705469 /* GameLogic */,
+				18A76FCA1BF7778400F5A101 /* Game Logic */,
 				18522B1F1B934BA200705469 /* Functions */,
 				18522B181B93420C00705469 /* SpecialNumbers */,
 				18522B131B9341E500705469 /* Math */,
@@ -166,24 +199,10 @@
 				18522B221B934BA200705469 /* AbstractFunction.m */,
 				18522B231B934BA200705469 /* Polynomal.h */,
 				18522B241B934BA200705469 /* Polynomal.m */,
+				18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */,
+				18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */,
 			);
 			path = FunctionTypes;
-			sourceTree = "<group>";
-		};
-		18522B2C1B935B2400705469 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
-		18522B2D1B9366A700705469 /* GameLogic */ = {
-			isa = PBXGroup;
-			children = (
-				18522B2E1B9366B600705469 /* GameLogic.h */,
-				18522B2F1B9366B600705469 /* GameLogic.m */,
-			);
-			name = GameLogic;
 			sourceTree = "<group>";
 		};
 		18522B361B94DA8600705469 /* images */ = {
@@ -222,7 +241,6 @@
 		18799C031B91DE2700FB85C1 /* Functions3 */ = {
 			isa = PBXGroup;
 			children = (
-				18522B2C1B935B2400705469 /* Settings */,
 				18522B171B9341ED00705469 /* NS */,
 				18799C6E1B92000E00FB85C1 /* UI */,
 				18799C081B91DE2700FB85C1 /* AppDelegate.h */,
@@ -232,11 +250,13 @@
 				18799C0E1B91DE2700FB85C1 /* GameScene.sks */,
 				18799C101B91DE2700FB85C1 /* GameViewController.h */,
 				18799C111B91DE2700FB85C1 /* GameViewController.m */,
+				18F697561C1E178E006F254D /* Main.storyboard */,
 				18522B361B94DA8600705469 /* images */,
-				18799C131B91DE2700FB85C1 /* Main.storyboard */,
 				18799C161B91DE2700FB85C1 /* Images.xcassets */,
 				18799C181B91DE2700FB85C1 /* LaunchScreen.xib */,
 				18799C041B91DE2700FB85C1 /* Supporting Files */,
+				18F035A21C1C72EC00792FC9 /* ResultViewController.h */,
+				18F035A31C1C72EC00792FC9 /* ResultViewController.m */,
 			);
 			path = Functions3;
 			sourceTree = "<group>";
@@ -270,8 +290,15 @@
 		18799C6E1B92000E00FB85C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				18A76FC91BF772A100F5A101 /* FBoard */,
+				18281C341B9C491300A8A52F /* BlackBox */,
+				189BBFD71B9B42010021D880 /* FunctionSquare */,
 				18799C731B92002000FB85C1 /* Properties */,
 				18799C6F1B92000E00FB85C1 /* Number */,
+				18169EBD1BEF7AE800B65F83 /* FunctionBoxHolder.h */,
+				18169EBE1BEF7AE800B65F83 /* FunctionBoxHolder.m */,
+				18079A721BF77F4900EB8662 /* FSpriteNodeBase.h */,
+				18079A731BF77F4900EB8662 /* FSpriteNodeBase.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -288,8 +315,8 @@
 		18799C731B92002000FB85C1 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
-				18799C751B92049700FB85C1 /* FColor.h */,
-				18799C761B92049700FB85C1 /* FColor.m */,
+				18799C751B92049700FB85C1 /* FStyle.h */,
+				18799C761B92049700FB85C1 /* FStyle.m */,
 				18522B311B94D21D00705469 /* Functions.h */,
 				18522B321B94D21D00705469 /* Functions.m */,
 			);
@@ -305,6 +332,35 @@
 				18799C7B1B92071D00FB85C1 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		189BBFD71B9B42010021D880 /* FunctionSquare */ = {
+			isa = PBXGroup;
+			children = (
+				189BBFD81B9B42010021D880 /* FunctionSquare.h */,
+				189BBFD91B9B42010021D880 /* FunctionSquare.m */,
+			);
+			path = FunctionSquare;
+			sourceTree = "<group>";
+		};
+		18A76FC91BF772A100F5A101 /* FBoard */ = {
+			isa = PBXGroup;
+			children = (
+				18A76FC61BF7729A00F5A101 /* FBoard.h */,
+				18A76FC71BF7729A00F5A101 /* FBoard.m */,
+			);
+			name = FBoard;
+			sourceTree = "<group>";
+		};
+		18A76FCA1BF7778400F5A101 /* Game Logic */ = {
+			isa = PBXGroup;
+			children = (
+				18A76FCB1BF7778400F5A101 /* GameLogic.h */,
+				18A76FCC1BF7778400F5A101 /* GameLogic.m */,
+				18A76FCE1BF778A200F5A101 /* FBoardLogic.h */,
+				18A76FCF1BF778A200F5A101 /* FBoardLogic.m */,
+			);
+			path = "Game Logic";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,8 +449,8 @@
 				18522B3C1B94DA8600705469 /* gear.png in Resources */,
 				18522B401B94DA8600705469 /* scull_y.png in Resources */,
 				18799C171B91DE2700FB85C1 /* Images.xcassets in Resources */,
+				18F697581C1E178E006F254D /* Main.storyboard in Resources */,
 				18799C0F1B91DE2700FB85C1 /* GameScene.sks in Resources */,
-				18799C151B91DE2700FB85C1 /* Main.storyboard in Resources */,
 				18522B3E1B94DA8600705469 /* scull_m.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,19 +470,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				18799C121B91DE2700FB85C1 /* GameViewController.m in Sources */,
+				18F035A91C1D8AFA00792FC9 /* AbsoluteValueFunction.m in Sources */,
 				18799C721B92000E00FB85C1 /* FNumber.m in Sources */,
+				189BBFDA1B9B42010021D880 /* FunctionSquare.m in Sources */,
+				18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */,
+				18281C371B9C491300A8A52F /* BlackBox.m in Sources */,
 				18522B1D1B93420C00705469 /* Fraction.m in Sources */,
 				18522B161B9341E500705469 /* FMath.m in Sources */,
 				18522B1E1B93420C00705469 /* Irrational.m in Sources */,
 				18522B281B934BA200705469 /* Polynomal.m in Sources */,
-				18522B301B9366B600705469 /* GameLogic.m in Sources */,
-				18799C771B92049700FB85C1 /* FColor.m in Sources */,
+				18169EBF1BEF7AE800B65F83 /* FunctionBoxHolder.m in Sources */,
+				18799C771B92049700FB85C1 /* FStyle.m in Sources */,
 				18799C0A1B91DE2700FB85C1 /* AppDelegate.m in Sources */,
 				18522B271B934BA200705469 /* AbstractFunction.m in Sources */,
 				18799C0D1B91DE2700FB85C1 /* GameScene.m in Sources */,
+				18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */,
+				18F035A51C1C72EC00792FC9 /* ResultViewController.m in Sources */,
 				18522B291B934BA200705469 /* Producer.m in Sources */,
 				18522B331B94D21D00705469 /* Functions.m in Sources */,
+				18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */,
 				18799C071B91DE2700FB85C1 /* main.m in Sources */,
+				18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */,
 				18799C821B9207CC00FB85C1 /* Predefines.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,20 +514,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		18799C131B91DE2700FB85C1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18799C141B91DE2700FB85C1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18799C181B91DE2700FB85C1 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				18799C191B91DE2700FB85C1 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		18F697561C1E178E006F254D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F697571C1E178E006F254D /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

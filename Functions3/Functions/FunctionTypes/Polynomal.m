@@ -29,7 +29,8 @@
 - (CGFloat) getPolynomalValue:(CGFloat) value
 {
     CGFloat returnVal = 0;
-    NSArray *parsedString = [self.polyString componentsSeparatedByString:@"+"];
+    NSString *trimmedString = [self.polyString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSArray *parsedString = [trimmedString componentsSeparatedByString:@"+"];
     
     for (int i=0;i<parsedString.count;++i)
     {
@@ -46,6 +47,10 @@
             CGFloat pwr = [strarr[strarr.count - 1] floatValue]; // power
             returnVal += cross * pow(value,pwr); // b*x^a
         }
+        else if ([str containsString:@"-x"])
+        {
+            returnVal += value * -1;
+        }
         else if ([str containsString:@"x"])
         {
             float cross = 1;
@@ -61,6 +66,11 @@
         }
     }
     return returnVal;
+}
+
+- (CGFloat)resultValue:(CGFloat)numberValue
+{
+    return [self getPolynomalValue:numberValue];
 }
 
 // override getValue
