@@ -43,6 +43,9 @@
 		18F035A51C1C72EC00792FC9 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A31C1C72EC00792FC9 /* ResultViewController.m */; };
 		18F035A91C1D8AFA00792FC9 /* AbsoluteValueFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */; };
 		18F697581C1E178E006F254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F697561C1E178E006F254D /* Main.storyboard */; };
+		18F6975C1C1F6047006F254D /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697591C1F6047006F254D /* circle.png */; };
+		18F6975D1C1F6047006F254D /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F6975A1C1F6047006F254D /* square.png */; };
+		18F6975E1C1F6047006F254D /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F6975B1C1F6047006F254D /* triangle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,9 @@
 		18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbsoluteValueFunction.h; sourceTree = "<group>"; };
 		18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbsoluteValueFunction.m; sourceTree = "<group>"; };
 		18F697571C1E178E006F254D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18F697591C1F6047006F254D /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		18F6975A1C1F6047006F254D /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		18F6975B1C1F6047006F254D /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,9 @@
 		18522B361B94DA8600705469 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				18F697591C1F6047006F254D /* circle.png */,
+				18F6975A1C1F6047006F254D /* square.png */,
+				18F6975B1C1F6047006F254D /* triangle.png */,
 				18522B371B94DA8600705469 /* gear.png */,
 				18522B381B94DA8600705469 /* scull_g.png */,
 				18522B391B94DA8600705469 /* scull_m.png */,
@@ -444,14 +453,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				18799C1A1B91DE2700FB85C1 /* LaunchScreen.xib in Resources */,
+				18F6975E1C1F6047006F254D /* triangle.png in Resources */,
 				18522B3D1B94DA8600705469 /* scull_g.png in Resources */,
 				18522B3F1B94DA8600705469 /* scull_r.png in Resources */,
 				18522B3C1B94DA8600705469 /* gear.png in Resources */,
 				18522B401B94DA8600705469 /* scull_y.png in Resources */,
 				18799C171B91DE2700FB85C1 /* Images.xcassets in Resources */,
 				18F697581C1E178E006F254D /* Main.storyboard in Resources */,
+				18F6975C1C1F6047006F254D /* circle.png in Resources */,
 				18799C0F1B91DE2700FB85C1 /* GameScene.sks in Resources */,
 				18522B3E1B94DA8600705469 /* scull_m.png in Resources */,
+				18F6975D1C1F6047006F254D /* square.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

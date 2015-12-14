@@ -52,4 +52,20 @@
     return @"Copperplate";
 }
 
++ (UIColor*)fTriangleColor
+{
+    return _RGBA(252,4,40,1);
+}
+
++ (UIColor*)fSquareColor
+{
+    return _RGBA(4,10,252,1);
+}
+
++ (UIColor*)fCircleColor
+{
+    return _RGBA(162,252,4,1);
+}
+
+
 @end

@@ -17,7 +17,9 @@
 + (UIColor*)getRandomColor;
 + (UIColor*)fMainColor;
 + (UIColor*)fBoardColor;
-
++ (UIColor*)fTriangleColor;
++ (UIColor*)fSquareColor;
++ (UIColor*)fCircleColor;
 
 + (NSString*)fMainFont;
 @end

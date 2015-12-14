@@ -12,6 +12,11 @@
 #import <SpriteKit/SpriteKit.h>
 #import "Polynomal.h"
 
+typedef NS_ENUM(NSUInteger, FunctionShapeType) {
+    FunctionShapeTypeSquare ,
+    FunctionShapeTypeTriangle,
+    FunctionShapeTypeCircle
+};
 
 @class FunctionTab;
 
@@ -24,8 +29,9 @@
 @property (assign, nonatomic) BOOL selected;
 
 
-- (id) initWithFunction: (AbstractFunction *) func withColor:(UIColor*) funcColor;
-- (CGFloat)calculateFunction:(CGFloat)val;
+- (id) initWithShapeType:(FunctionShapeType)shapeType;
+- (CGFloat)calculate:(CGFloat)val;
+- (CGFloat)currentValue;
 @end
 
 @protocol FunctionSquareDelegate <NSObject>

@@ -180,7 +180,7 @@
         }
     }
     
-    CGFloat result = [self.fbHolder.currentFunction resultValue:fNumber.number];
+    CGFloat result = self.fbHolder.currentValue * fNumber.number;
     [self.delegate fBoardNumberTapped:fNumber.number withResult:result];
     
     [fNumber removeFromParent];

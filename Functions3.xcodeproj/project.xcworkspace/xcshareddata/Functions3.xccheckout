@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3F7AC3F4-84CD-4360-8F16-B789B52E7C20</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Functions3</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B310CC9865934E62E6E3BDD5C9D9C63F0CC2789B</key>
 		<string>https://github.com/erdikanik/Functions3.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Functions3.xcodeproj/project.xcworkspace</string>
+	<string>Functions3.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B310CC9865934E62E6E3BDD5C9D9C63F0CC2789B</key>

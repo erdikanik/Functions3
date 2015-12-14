@@ -12,7 +12,7 @@
 
 @interface FunctionBoxHolder : FSpriteNodeBase
 
-@property (nonatomic, strong) AbstractFunction *currentFunction;
+@property (nonatomic, assign) CGFloat currentValue;
 @property (nonatomic, assign) CGFloat functionSquareMargin;
 
 - (instancetype)initWithFunctionSquareArray:(NSArray*)functionSquares withMargin:(CGFloat)functionSquareMargin;

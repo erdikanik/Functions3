@@ -11,7 +11,7 @@
 #import "Producer.h"
 
 static const CGFloat kFNumberSize = 30;
-static const CGFloat kFNumberFontSizeFactor = 0.4;
+static const CGFloat kFNumberFontSizeFactor = 0.5;
 static const CGFloat kFNumberWaitForDuration = 1;
 
 @interface FNumber()
@@ -31,8 +31,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
     if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
     {
         self.number = number;
-        [self updateInnerLabelProperties];
-        [self addChild:self.innerLabel];
         self.fType = FNumberTypeNormal;
     }
     return self;
@@ -45,8 +43,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
         self.counter = 0;
         self.numberArray = arr;
         self.number = [[arr objectAtIndex:0] floatValue];
-        [self updateInnerLabelProperties];
-        [self addChild:self.innerLabel];
         self.fType = FNumberTypeChageAble;
         
         // call function timer sequences
@@ -64,8 +60,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
     if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
     {
         self.number = number;
-        [self updateInnerLabelProperties];
-        [self addChild:self.innerLabel];
         self.fType = FNumberTypeInvisible;
         
         // call function timer sequences
@@ -115,19 +109,20 @@ static const CGFloat kFNumberWaitForDuration = 1;
 - (void)updateInnerLabelProperties
 {
     self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
+    [self.innerLabel.scene setAnchorPoint:CGPointMake(0,0)];
     self.innerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-    
+    self.innerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
     self.innerLabel.fontSize = self.size.height * kFNumberFontSizeFactor;
     self.innerLabel.fontColor = [FStyle fNumberTextColor];
     self.innerLabel.text = _FF(self.number);
     [self.innerLabel setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeCenter];
-    self.innerLabel.position = CGPointMake(self.size.width / 2 - self.innerLabel.frame.size.width / 2, self.size.height / 2 - self.innerLabel.frame.size.height / 2);
+    self.innerLabel.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    [self addChild:self.innerLabel];
 }
 
 - (void)setSize:(CGSize)size
 {
     [super setSize:size];
-    [self updateInnerLabelProperties];
 }
 
 + (FNumber*)numberGivenFunction:(NSString*)func
@@ -153,6 +148,7 @@ static const CGFloat kFNumberWaitForDuration = 1;
 - (void)setEdge:(CGFloat)edge
 {
     [self setSize:CGSizeMake(edge, edge)];
+    [self updateInnerLabelProperties];
 }
 
 @end

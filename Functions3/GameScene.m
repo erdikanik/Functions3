@@ -134,14 +134,11 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 - (FunctionBoxHolder*)setupFunctionBoxHolder
 {
     CGFloat rightBoardWidth = self.size.width * kGameSceneRightBoardWidthFactor;
+
     
-    Polynomal *poly1 = [[Polynomal alloc] initWithPolynomalString:kGameSceneInitialFunction1];
-    Polynomal *poly2 = [[Polynomal alloc] initWithPolynomalString:kGameSceneInitialFunction2];
-    AbsoluteValueFunction *abs = [AbsoluteValueFunction new];
-    
-    FunctionSquare *fsquare1 = [[FunctionSquare alloc] initWithFunction:poly1 withColor:[FStyle fBoardColor]];
-    FunctionSquare *fsquare2 = [[FunctionSquare alloc] initWithFunction:abs withColor:[FStyle fBoardColor]];
-    FunctionSquare *fsquare3 = [[FunctionSquare alloc] initWithFunction:poly2 withColor:[FStyle fBoardColor]];
+    FunctionSquare *fsquare1 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeCircle];
+    FunctionSquare *fsquare2 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeTriangle];
+    FunctionSquare *fsquare3 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeSquare];
 
     CGFloat fSquareRightBoardMargin = rightBoardWidth * 0.05;
     
@@ -153,7 +150,6 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
     NSArray *fsqArray = [NSArray arrayWithObjects:fsquare1,fsquare2,fsquare3, nil];
     
     FunctionBoxHolder *fboxHolder = [[FunctionBoxHolder alloc] initWithFunctionSquareArray:fsqArray withMargin:fSquareRightBoardMargin];
-    fboxHolder.currentFunction = fsquare2.function;
     fsquare2.selected = YES;
     
     fboxHolder.position = CGPointMake(self.size.width - rightBoardWidth + fSquareRightBoardMargin , self.size.height / 4);

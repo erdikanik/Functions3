@@ -65,7 +65,7 @@
             fsq.selected = NO;
         }
     }
-    self.currentFunction = fSquare.function;
+    self.currentValue = fSquare.currentValue;
 }
 
 @end

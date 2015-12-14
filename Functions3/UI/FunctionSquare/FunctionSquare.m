@@ -17,21 +17,24 @@
 @property (nonatomic,copy) NSString *text;
 @property (nonatomic,strong) SKLabelNode *innerLabel;
 @property (nonatomic, strong) UIColor *currentColor;
+@property (nonatomic, strong) FSpriteNodeBase *shape;
+@property (nonatomic, assign) FunctionShapeType shapeType;
 @end
 
 @implementation FunctionSquare
 
 
-- (id) initWithFunction: (AbstractFunction *) func withColor:(UIColor*) funcColor {
-    self.text = [func description];
-    if (self = [super initWithColor:funcColor size:CGSizeMake(0,0)]) {
-        self.currentColor = funcColor;
+- (id) initWithShapeType:(FunctionShapeType)shapeType {
+    if (self = [super initWithColor:[FStyle fBoardColor] size:CGSizeMake(0,0)]) {
+        _shapeType = shapeType;
+        _currentColor = [FStyle fBoardColor];
         self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
         [self.innerLabel setFontSize:14];
         [self.innerLabel setColor:[UIColor blackColor]];
         [self.innerLabel setText:self.text];
         [self addChild:self.innerLabel];
-        _function = func;
+        _shape = [self addShape];
+        self.innerLabel.text = [self getFunctionNameForShape];
     }
     return self;
 }
@@ -40,15 +43,30 @@
 {
     [super setSize:size];
     [self.innerLabel setPosition:CGPointMake(self.size.width / 2, self.size.height/2)];
+    self.shape.position = CGPointMake(self.size.width * 0.25, self.size.height * 0.25);
 }
 
-- (CGFloat)calculateFunction:(CGFloat)val {
-    CGFloat returnVal = 0;
-    if (self.function.ftype == FunctionTypePolynomal) {
-        Polynomal *poly = (Polynomal*) self;
-        returnVal = [poly getPolynomalValue:val];
+- (CGFloat)calculate:(CGFloat)val {
+    switch (self.shapeType) {
+        case FunctionShapeTypeSquare:
+            return val;
+        case FunctionShapeTypeTriangle:
+            return 0;
+        case FunctionShapeTypeCircle:
+            return -1 * val;
     }
-    return returnVal;
+}
+
+- (CGFloat)currentValue
+{
+    switch (self.shapeType) {
+        case FunctionShapeTypeSquare:
+            return 1;
+        case FunctionShapeTypeTriangle:
+            return 0;
+        case FunctionShapeTypeCircle:
+            return -1;
+    }
 }
 
 - (void)setSelected:(BOOL)selected
@@ -62,6 +80,40 @@
     else
     {
         [self reset];
+    }
+}
+
+- (FSpriteNodeBase*)addShape
+{
+    FSpriteNodeBase *labelNode = [[FSpriteNodeBase alloc] initWithImageNamed:[self getImageNameForShape]];
+    [labelNode setScale:0.8];
+    labelNode.position = CGPointMake(self.size.width * 0.25, self.size.height * 0.25);
+    labelNode.userInteractionEnabled = NO;
+    [self addChild:labelNode];
+    return labelNode;
+}
+
+- (NSString*)getImageNameForShape
+{
+    switch (self.shapeType) {
+        case FunctionShapeTypeSquare:
+            return @"square";
+        case FunctionShapeTypeTriangle:
+            return @"triangle";
+        case FunctionShapeTypeCircle:
+            return @"circle";
+    }
+}
+
+- (NSString*)getFunctionNameForShape
+{
+    switch (self.shapeType) {
+        case FunctionShapeTypeSquare:
+            return @"x";
+        case FunctionShapeTypeTriangle:
+            return @"";
+        case FunctionShapeTypeCircle:
+            return @"-x";
     }
 }
 
