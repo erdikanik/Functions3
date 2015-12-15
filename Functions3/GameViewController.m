@@ -36,8 +36,6 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     
@@ -77,9 +75,14 @@
 
 - (void)gameSceneOvered:(NSNumber *)totalPoint
 {
-    ResultViewController *resultViewController = [ResultViewController new];
-    resultViewController.totalPoint = totalPoint;
-    [self.navigationController presentViewController:resultViewController animated:YES completion:nil];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];  //load NSUserDefaults
+    NSNumber *point = [prefs objectForKey:@"totalPoint"];
+    if (!point ||  (point && point.floatValue < totalPoint.floatValue))
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:totalPoint forKey:@"totalPoint"];
+    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

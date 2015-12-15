@@ -32,6 +32,7 @@ typedef NS_ENUM(NSUInteger, FunctionShapeType) {
 - (id) initWithShapeType:(FunctionShapeType)shapeType;
 - (CGFloat)calculate:(CGFloat)val;
 - (CGFloat)currentValue;
+- (void)updateShapeAndLabel;
 @end
 
 @protocol FunctionSquareDelegate <NSObject>

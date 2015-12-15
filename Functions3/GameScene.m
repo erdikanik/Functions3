@@ -72,7 +72,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 {
     CGFloat rightBoardWidth = self.size.width * kGameSceneRightBoardWidthFactor;
     
-    SKLabelNode *labelNodePointTitle = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont]];
+    SKLabelNode *labelNodePointTitle = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
     [labelNodePointTitle setText:@"Point:"];
     
     labelNodePointTitle.fontSize = 20;
@@ -82,25 +82,24 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
     [labelNodePointTitle setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
     [self addChild:labelNodePointTitle];
     
-    _labelNodePoint = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont]];
+    _labelNodePoint = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
     [self.labelNodePoint setText:@(self.totalPoint).stringValue];
     
-    self.labelNodePoint.fontSize = 20;
+    self.labelNodePoint.fontSize = 17;
     self.labelNodePoint.fontColor = [FStyle fNumberTextColor];
     
-    self.labelNodePoint.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.85);
+    self.labelNodePoint.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.86);
     [self.labelNodePoint setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
     [self addChild:self.labelNodePoint];
 
     
-    _labelNodeFunction = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont]];
+    _labelNodeFunction = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
     [self.labelNodeFunction setText:@"f(x) = x"];
-    
+    [self.labelNodeFunction setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
     self.labelNodeFunction.fontSize = 15;
-    self.labelNodeFunction.fontColor = [UIColor blackColor];
+    self.labelNodeFunction.fontColor = [FStyle fNumberTextColor];
     
-    self.labelNodeFunction.position = CGPointMake(self.size.width - rightBoardWidth * 0.5, self.size.height * 0.1);
-    [self.labelNodeFunction setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeCenter];
+    self.labelNodeFunction.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.05);
     [self addChild:self.labelNodeFunction];
     
     [self setupFunctionBoxHolder];
@@ -146,6 +145,10 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
     [fsquare1 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
     [fsquare2 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
     [fsquare3 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
+    
+    [fsquare1 updateShapeAndLabel];
+    [fsquare2 updateShapeAndLabel];
+    [fsquare3 updateShapeAndLabel];
     
     NSArray *fsqArray = [NSArray arrayWithObjects:fsquare1,fsquare2,fsquare3, nil];
     

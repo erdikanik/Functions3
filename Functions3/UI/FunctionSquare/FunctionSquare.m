@@ -28,13 +28,6 @@
     if (self = [super initWithColor:[FStyle fBoardColor] size:CGSizeMake(0,0)]) {
         _shapeType = shapeType;
         _currentColor = [FStyle fBoardColor];
-        self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-        [self.innerLabel setFontSize:14];
-        [self.innerLabel setColor:[UIColor blackColor]];
-        [self.innerLabel setText:self.text];
-        [self addChild:self.innerLabel];
-        _shape = [self addShape];
-        self.innerLabel.text = [self getFunctionNameForShape];
     }
     return self;
 }
@@ -42,8 +35,22 @@
 - (void)setSize:(CGSize)size
 {
     [super setSize:size];
-    [self.innerLabel setPosition:CGPointMake(self.size.width / 2, self.size.height/2)];
-    self.shape.position = CGPointMake(self.size.width * 0.25, self.size.height * 0.25);
+}
+
+- (void)updateShapeAndLabel
+{
+    self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
+    [self.innerLabel setFontSize:40];
+    [self.innerLabel setColor:[UIColor blackColor]];
+    [self.innerLabel setText:self.text];
+    self.innerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.innerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    [self addChild:self.innerLabel];
+    _shape = [self addShape];
+    self.innerLabel.text = [self getFunctionNameForShape];
+    
+    [self.innerLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.5)];
+    self.shape.position = CGPointMake(self.size.width * 0.5 - self.shape.size.width / 2, self.size.height * 0.5 - self.shape.size.height / 2);
 }
 
 - (CGFloat)calculate:(CGFloat)val {
@@ -87,7 +94,6 @@
 {
     FSpriteNodeBase *labelNode = [[FSpriteNodeBase alloc] initWithImageNamed:[self getImageNameForShape]];
     [labelNode setScale:0.8];
-    labelNode.position = CGPointMake(self.size.width * 0.25, self.size.height * 0.25);
     labelNode.userInteractionEnabled = NO;
     [self addChild:labelNode];
     return labelNode;
@@ -109,11 +115,11 @@
 {
     switch (self.shapeType) {
         case FunctionShapeTypeSquare:
-            return @"x";
+            return @"+";
         case FunctionShapeTypeTriangle:
             return @"";
         case FunctionShapeTypeCircle:
-            return @"-x";
+            return @"-";
     }
 }
 

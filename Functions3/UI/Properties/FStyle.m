@@ -52,6 +52,11 @@
     return @"Copperplate";
 }
 
++ (NSString*)fMainFont2
+{
+    return @"Helti SC";
+}
+
 + (UIColor*)fTriangleColor
 {
     return _RGBA(252,4,40,1);

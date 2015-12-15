@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hwy-6m-O4k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -20,10 +21,10 @@
             </objects>
             <point key="canvasLocation" x="-1219" y="350"/>
         </scene>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="Dui-e9-3Wz">
             <objects>
-                <viewController id="9ER-TO-51f" sceneMemberID="viewController">
+                <viewController id="9ER-TO-51f" customClass="StartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Eo-zZ-195"/>
                         <viewControllerLayoutGuide type="bottom" id="p9P-9A-8hH"/>
@@ -32,20 +33,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-DZ-rey">
-                                <rect key="frame" x="158" y="408" width="64" height="30"/>
-                                <state key="normal" title="Start">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yic-gm-cTk">
+                                <rect key="frame" x="16" y="100" width="568" height="49"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="Start Game" image="triangle.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="show" id="uyO-7Z-vee"/>
+                                    <segue destination="LVB-YS-i5n" kind="show" id="35I-ZF-zIK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX POINT : 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDH-Mq-eAA">
+                                <rect key="frame" x="190" y="313" width="221" height="39"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" red="0.76078432799999995" green="0.7019608021" blue="0.64705884459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91372549530000002" green="0.86666667460000002" blue="0.81960785390000002" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yic-gm-cTk" secondAttribute="trailing" id="4ej-Ad-lLj"/>
+                            <constraint firstAttribute="centerY" secondItem="HDH-Mq-eAA" secondAttribute="centerY" constant="-32" id="8go-pI-qkQ"/>
+                            <constraint firstItem="yic-gm-cTk" firstAttribute="top" secondItem="9Eo-zZ-195" secondAttribute="bottom" constant="80" id="BdX-gX-uWl"/>
+                            <constraint firstItem="yic-gm-cTk" firstAttribute="leading" secondItem="49B-pY-5wx" secondAttribute="leadingMargin" id="Re6-rY-tvY"/>
+                            <constraint firstAttribute="centerX" secondItem="HDH-Mq-eAA" secondAttribute="centerX" constant="-0.5" id="uOi-T5-511"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cvY-fV-JGV"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="maxPointLabel" destination="HDH-Mq-eAA" id="GxM-4S-cWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ob6-gk-jgC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,4 +107,7 @@
             <point key="canvasLocation" x="1172" y="393"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="triangle.png" width="66" height="49"/>
+    </resources>
 </document>

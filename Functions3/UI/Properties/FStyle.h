@@ -20,6 +20,7 @@
 + (UIColor*)fTriangleColor;
 + (UIColor*)fSquareColor;
 + (UIColor*)fCircleColor;
-
 + (NSString*)fMainFont;
++ (NSString*)fMainFont2;
+
 @end

@@ -72,7 +72,7 @@
 
 - (void)runProduceRandomNumberWithWaitingTime
 {
-    CGFloat waitTime = 5 - self.level * 0.4;
+    CGFloat waitTime = 4 - self.level * 0.05 ;
     waitTime = waitTime < 0.2 ? 0.2 : waitTime;
     SKAction *wait = [SKAction waitForDuration:waitTime];
     SKAction *performSelector = [SKAction performSelector:@selector(produceRandomNumber) onTarget:self];
