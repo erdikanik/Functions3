@@ -18,7 +18,6 @@ static const CGFloat kFNumberWaitForDuration = 1;
 
 @property (strong, nonatomic) SKLabelNode* innerLabel;
 @property (strong, nonatomic) NSArray *numberArray;
-@property (assign, nonatomic) FNumberType fType;
 @property (assign, nonatomic) NSInteger counter;
 @property (assign, nonatomic,getter=isInvisible) BOOL invisible;
 @end
@@ -43,7 +42,7 @@ static const CGFloat kFNumberWaitForDuration = 1;
         self.counter = 0;
         self.numberArray = arr;
         self.number = [[arr objectAtIndex:0] floatValue];
-        self.fType = FNumberTypeChageAble;
+        self.fType = FNumberTypeChangable;
         
         // call function timer sequences
         SKAction *wait = [SKAction waitForDuration:kFNumberWaitForDuration];
@@ -72,37 +71,58 @@ static const CGFloat kFNumberWaitForDuration = 1;
     return self;
 }
 
+- (instancetype)initBombTypeWithNumber:(CGFloat)number
+{
+    if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
+    {
+        self.number = number;
+        self.fType = FNumberTypeBomb;
+        
+        // call function timer sequences
+        SKAction *wait = [SKAction waitForDuration:kFNumberWaitForDuration];
+        SKAction *performSelector = [SKAction performSelector:@selector(fNumberEvents) onTarget:self];
+        SKAction *sequence = [SKAction sequence:@[performSelector, wait]];
+        SKAction *repeat   = [SKAction repeatActionForever:sequence];
+        [self runAction:repeat];
+    }
+    return self;
+}
+
 #pragma mark - Properties
 
 - (void)fNumberEvents
 {
-    if (self.fType == FNumberTypeChageAble)
-    {
-        if (self.counter == self.numberArray.count - 1)
+    
+    switch (self.fType) {
+        case FNumberTypeChangable:
         {
-            self.counter = 0;
+            if (self.counter == self.numberArray.count - 1)
+            {
+                self.counter = 0;
+            }
+            else
+            {
+                ++self.counter;
+            }
+            
+            self.number = [self.numberArray[self.counter] floatValue];
+            [self setColor:[[FStyle fNumberColorArray] objectAtIndex:self.counter ]];
+            self.innerLabel.text = _FF(self.number);
         }
-        else
+            break;
+        case FNumberTypeInvisible:
         {
-            ++self.counter;
+            self.color = self.isInvisible ? [FStyle fNumberColor] : [FStyle fNumberTextColor];
+            self.invisible = !self.isInvisible;
         }
-        
-        self.number = [self.numberArray[self.counter] floatValue];
-        [self setColor:[[FStyle fNumberColorArray] objectAtIndex:self.counter ]];
-        self.innerLabel.text = _FF(self.number);
-    }
-    else
-    {
-        if (self.isInvisible)
+            break;
+        case FNumberTypeBomb:
         {
-            self.invisible = NO;
-            self.color = [FStyle fNumberColor];
+            self.color = self.isInvisible ? [FStyle fNumberColor] : [UIColor blackColor];
+            self.invisible = !self.isInvisible;
         }
-        else
-        {
-            self.invisible = YES;
-            self.color = [FStyle fNumberTextColor];
-        }
+        default:
+            break;
     }
 }
 

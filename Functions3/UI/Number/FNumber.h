@@ -10,8 +10,9 @@
 
 typedef NS_ENUM(NSUInteger, FNumberType) {
     FNumberTypeNormal,
-    FNumberTypeChageAble,
-    FNumberTypeInvisible
+    FNumberTypeChangable,
+    FNumberTypeInvisible,
+    FNumberTypeBomb
 };
 
 @protocol FNumberDelegate;
@@ -23,6 +24,8 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 @property (assign, nonatomic) CGFloat number;
 @property (assign, nonatomic) CGFloat edge;
 @property (weak, nonatomic) id<FNumberDelegate>delegate;
+@property (assign, nonatomic,getter=isMoving) BOOL moving;
+@property (assign, nonatomic) FNumberType fType;
 
 /**
  Number's destination point.
@@ -32,6 +35,7 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 - (instancetype)initWithNumber:(CGFloat)number;
 - (instancetype)initWithNumberArray:(NSArray*)arr;
 - (instancetype)initInvisibleNumber:(CGFloat)number;
+- (instancetype)initBombTypeWithNumber:(CGFloat)number;
 
 @end
 

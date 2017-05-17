@@ -28,7 +28,6 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 
 @interface GameScene() <FBoardDelegate>
 
-@property (strong, nonatomic) NSArray *bBoxDirections;
 @property (assign, nonatomic) NSInteger b1CurrentPath;
 @property (assign, nonatomic) NSInteger b2CurrentPath;
 @property (strong, nonatomic) NSMutableArray *currentNumbers;
@@ -39,9 +38,6 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOverDetail;
 @property (assign, nonatomic) CGFloat totalPoint;
 @property (strong, nonatomic) FBoard *board;
-
-@property (weak, nonatomic) SKSpriteNode *bbox1;
-@property (weak, nonatomic) SKSpriteNode *bbox2;
 
 @property (weak, nonatomic) FunctionSquare* fsquareNew;
 
@@ -192,7 +188,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
         [self gameOvered];
     }
     
-    self.board.level = 1 + (NSInteger)self.totalPoint / 40;
+    self.board.level = 10 + (NSInteger)self.totalPoint / 40;
 }
 
 - (void)fBoardGameBorderExceeded
@@ -205,6 +201,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 
 
 #pragma mark - Navigation
+
 - (void)gameOvered
 {
     [self performSelector:@selector(navigateToResultViewController) withObject:nil afterDelay:5];
@@ -214,156 +211,5 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
 {
     [self.sdelegate gameSceneOvered:@(self.totalPoint)];
 }
-
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-    
-//    for (FNumber *fnumber in self.currentNumbers)
-//    {
-//        if ([self.bbox1 containsPoint:fnumber.position])
-//        {
-//            if (!fnumber.f1)
-//            {
-//                fnumber.f1 = YES;
-//                fnumber.number = -9;
-//                [self changeColorBox:[UIColor redColor] withBBox:self.bbox1];
-//            }
-//        }
-//        
-//        if ([self.bbox2 containsPoint:fnumber.position])
-//        {
-//            if (!fnumber.f2)
-//            {
-//                fnumber.f2 = YES;
-//                fnumber.number = -10;
-//                [self changeColorBox:[UIColor redColor] withBBox:self.bbox2];
-//            }
-//        }
-//    
-//    }
-}
-
-
-//-(void)newFunction
-//{
-//    /* Called before each frame is rendered */
-//    // call function timer sequences
-//    SKAction *wait = [SKAction waitForDuration:20];
-//    SKAction *performSelector = [SKAction performSelector:@selector(createNewFunction) onTarget:self];
-//    SKAction *sequence   = [SKAction sequence:@[performSelector, wait]];
-//    SKAction *repeat   = [SKAction repeatAction:sequence count:1];
-//    [self runAction:repeat completion:^{
-//        [self newFunction];
-//    }];
-//}
-
-//-(void)update
-//{
-//    /* Called before each frame is rendered */
-//    // call function timer sequences
-//    SKAction *wait = [SKAction waitForDuration:5.5];
-//    SKAction *performSelector = [SKAction performSelector:@selector(produceRandomNumber) onTarget:self];
-//    SKAction *sequence = [SKAction sequence:@[performSelector, wait]];
-//    SKAction *repeat   = [SKAction repeatAction:sequence count:10];
-//    [self runAction:repeat completion:^{
-//        [self update];
-//    }];
-//}
-
-
-#pragma mark - UISetups
-
-//- (void)staticGameScreenSetups
-//{
-//    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"gear"];
-//    sprite.xScale = kGameSceneBigGearScaleFactor;
-//    sprite.yScale = kGameSceneBigGearScaleFactor;
-//    sprite.position = CGPointMake(kGameSceneBigGearPointX, kGameSceneBigGearPointY);
-//    SKAction *action = [SKAction rotateByAngle:M_PI duration:kGameSceneGearDuration];
-//    [sprite runAction:[SKAction repeatActionForever:action]];
-//    [self addChild:sprite];
-//    
-//    SKSpriteNode *sprite2 = [SKSpriteNode spriteNodeWithImageNamed:@"gear"];
-//    sprite2.xScale = kGameSceneSmallGearScaleFactor;
-//    sprite2.yScale = kGameSceneSmallGearScaleFactor;
-//    sprite2.position = CGPointMake(kGameSceneSmallGearPointX, kGameSceneSmallGearPointY);
-//    SKAction *action2 = [SKAction rotateByAngle:-M_PI duration:kGameSceneGearDuration];
-//    [sprite2 runAction:[SKAction repeatActionForever:action2]];
-//    [self addChild:sprite2];
-//
-//    SKSpriteNode *scullSprite = [SKSpriteNode spriteNodeWithImageNamed:@"scull_g"];
-//    [scullSprite setName:@"scull"];
-//    scullSprite.xScale = 0.6;
-//    scullSprite.yScale = 0.6;
-//   [self addChild:scullSprite];
-//    scullSprite.position = CGPointMake(348, 597);
-//    SKAction *changeAction = [SKAction animateWithTextures:[NSArray arrayWithObjects:
-//                                                            [SKTexture textureWithImageNamed:@"scull_g.png"],
-//                                                            [SKTexture textureWithImageNamed:@"scull_m.png"],
-//                                                            [SKTexture textureWithImageNamed:@"scull_r.png"],
-//                                                            [SKTexture textureWithImageNamed:@"scull_y.png"], nil] timePerFrame:0.5 resize:YES restore:YES];
-//    [scullSprite runAction:[SKAction repeatActionForever:changeAction]];
-//    
-//}
-
-//- (void)produceRandomNumber
-//{
-//    /* Called when a touch begins */
-//    FNumber *fNumber = [GameLogic getNumberFromLogic];
-//    
-//    fNumber.position = CGPointMake(66,710);
-//    
-//    [self addChild:fNumber];
-//    
-//    SKAction *liftoff = [SKAction moveByX:0 y:-2 * CGRectGetMidY(self.frame) duration: 5];
-//    SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
-//    [self.currentNumbers addObject:fNumber];
-//    [fNumber runAction:rep completion:^{
-//        
-//    }];
-//    
-//}
-
-//- (void)createNewFunction
-//{
-//    FunctionSquare *fsquare1 = [[FunctionSquare alloc] initWithFunction:[Functions getRandomFunction]  withColor:[FStyle getRandomColor]];
-//    fsquare1.position = CGPointMake(kGameSceneNewFunctionX, kGameSceneNewFunctionY);
-//    [self addChild:fsquare1];
-//    self.fsquareNew = fsquare1;
-//    SKAction *changeColor = [SKAction colorizeWithColor:fsquare1.color colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor2 = [SKAction colorizeWithColor:[UIColor clearColor] colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor3 = [SKAction colorizeWithColor:fsquare1.color colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor4 = [SKAction colorizeWithColor:[UIColor clearColor] colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor5 = [SKAction colorizeWithColor:fsquare1.color colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor6 = [SKAction colorizeWithColor:[UIColor clearColor] colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor7 = [SKAction colorizeWithColor:fsquare1.color colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor8 = [SKAction colorizeWithColor:[UIColor clearColor] colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor9 = [SKAction colorizeWithColor:fsquare1.color colorBlendFactor:0 duration:0.2];
-//    SKAction *changeColor10 = [SKAction colorizeWithColor:[UIColor clearColor] colorBlendFactor:0 duration:0.2];
-//    
-//    SKAction *rep = [SKAction sequence:@[changeColor,changeColor2,changeColor3,changeColor4,changeColor5,changeColor6
-//                                         ,changeColor7,changeColor8,changeColor9,changeColor10]];
-//    SKAction* remove = [SKAction removeFromParent];
-//    
-//    SKAction* sequence = [SKAction sequence:@[rep,remove]];
-//    [fsquare1 runAction:sequence];
-//}
-//
-//- (void)changeColorBox:(UIColor *)curColor withBBox:(SKSpriteNode*)bbox
-//{
-//    SKAction *changeColor = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor2 = [SKAction colorizeWithColor:curColor colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor3 = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor4 = [SKAction colorizeWithColor:curColor colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor5 = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor6 = [SKAction colorizeWithColor:curColor colorBlendFactor:0 duration:0.1];
-//    SKAction *changeColor7 = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0 duration:0.1];
-//    
-//    SKAction *rep = [SKAction sequence:@[changeColor,changeColor2,changeColor3,changeColor4,changeColor5,changeColor6,changeColor7]];
-//    
-//    [bbox runAction:rep];
-//}
-
-
 
 @end

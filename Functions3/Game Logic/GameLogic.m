@@ -37,6 +37,11 @@
         FNumber *number = [[FNumber alloc] initWithNumberArray:numberArray];
         return number;
     }
+    else if (num < 990)
+    {
+        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
+        return number;
+    }
     else
     {
         FNumber *number = [[FNumber alloc] initInvisibleNumber:[self getRandomNumber]];

@@ -87,6 +87,7 @@
 {
     /* Called when a touch begins */
     FNumber *fNumber = [GameLogic getNumberFromLogic];
+    fNumber.moving = YES;
     fNumber.delegate = self;
     fNumber.edge = [self.boardLogic numberEdgeSizes];
     fNumber.position = [self.boardLogic fNumberStartPoint];
@@ -100,7 +101,9 @@
     CGFloat distance = fabs(fNumber.moveToPoint.y - fNumber.position.y);
     SKAction *liftoff = [SKAction moveTo:fNumber.moveToPoint duration:[self calculateTimeWithDestionationWithDistance:distance]];
     SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
-    [fNumber runAction:rep completion:nil];
+    [fNumber runAction:rep completion:^{
+        fNumber.moving = NO;
+    }];
 }
 
 - (void)calculateDestinationPointForNumber:(NSUInteger)columnNumber withNumber:(FNumber*)fNumber
@@ -140,23 +143,71 @@
     for (NSInteger i=index + 1;i<array.count;++i)
     {
         FNumber *fNumber = [array objectAtIndex:i];
+        fNumber.moving = YES;
         fNumber.moveToPoint = CGPointMake(fNumber.moveToPoint.x, fNumber.moveToPoint.y - [self.boardLogic numberEdgeSizes]);
         CGFloat distance = fabs(fNumber.moveToPoint.y - fNumber.position.y);
         SKAction *liftoff = [SKAction moveTo:fNumber.moveToPoint duration:[self calculateTimeWithDestionationWithDistance:distance]];
         SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
-        [fNumber runAction:rep completion:nil];
+        [fNumber runAction:rep completion:^{
+            fNumber.moving = NO;
+        }];
     }
 }
 
-#pragma mark - Helpers
-- (CGFloat)bottomLiftOffY
+- (void)explodeSurroundingsNumbers:(NSMutableArray*)array withNumberIndex:(NSInteger)index
 {
-    return -self.size.height + [self.boardLogic numberEdgeSizes] / 2;
+    NSUInteger columnIndex = [self.numberColumns indexOfObject:array];
+
+    if (columnIndex > 0)
+    {
+        [self removeNumbersAtColumn:[self.numberColumns objectAtIndex:columnIndex - 1]
+                    bombNumberIndex:index];
+    }
+    
+    if (columnIndex < kFBoardTotalWidthSquareNumber - 1)
+    {
+        [self removeNumbersAtColumn:[self.numberColumns objectAtIndex:columnIndex + 1]
+                    bombNumberIndex:index];
+    }
+    
+    [self removeNumbersAtColumn:[self.numberColumns objectAtIndex:columnIndex]
+                bombNumberIndex:index];
 }
 
-- (CGFloat)liftForever
+#pragma mark - Helpers
+
+- (void)removeNumbersAtColumn:(NSMutableArray<FNumber *> *)numbers bombNumberIndex:(NSInteger)index
 {
-    return [self bottomLiftOffY] - 100;
+    [self removeFromColumnIfItIsNotMoving:numbers index:index + 1];
+    [self removeFromColumnIfItIsNotMoving:numbers index:index];
+    if (index > 0)
+    {
+        [self removeFromColumnIfItIsNotMoving:numbers index:index - 1];
+    }
+}
+
+- (void)removeFromColumnIfItIsNotMoving:(NSMutableArray<FNumber *> *)numbers index:(NSInteger)index
+{
+    if (numbers.count <= index)
+    {
+        return;
+    }
+    
+    FNumber *previousNumber = [numbers objectAtIndex:index];
+    
+    if (!previousNumber)
+    {
+        return;
+    }
+    
+    if (!previousNumber.isMoving)
+    {
+        
+        [self reassignDestinationPointsAndMoveTo:numbers
+                                 withNumberIndex:[numbers indexOfObject:previousNumber]];
+        [numbers removeObject:previousNumber];
+        [previousNumber removeFromParent];
+    }
 }
 
 - (NSTimeInterval)calculateTimeWithDestionationWithDistance:(CGFloat)distance
@@ -171,9 +222,15 @@
 {
     for (NSUInteger i = 0;i < kFBoardTotalWidthSquareNumber; ++i)
     {
-        NSMutableArray*numberRows = [self.numberColumns objectAtIndex:i];
+        NSMutableArray* numberRows = [self.numberColumns objectAtIndex:i];
         if ([numberRows indexOfObject:fNumber] != NSNotFound)
         {
+            if (fNumber.fType == FNumberTypeBomb && !fNumber.isMoving)
+            {
+                [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
+                break;
+            }
+            
             [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
             [numberRows removeObject:fNumber];
             break;
