@@ -203,10 +203,12 @@
     if (!previousNumber.isMoving)
     {
         
-        [self reassignDestinationPointsAndMoveTo:numbers
-                                 withNumberIndex:[numbers indexOfObject:previousNumber]];
-        [numbers removeObject:previousNumber];
-        [previousNumber removeFromParent];
+        [previousNumber explodeNumberWithCompletion:^{
+            [self reassignDestinationPointsAndMoveTo:numbers
+                                     withNumberIndex:[numbers indexOfObject:previousNumber]];
+            [numbers removeObject:previousNumber];
+            [previousNumber removeFromParent];
+        }];
     }
 }
 
@@ -228,6 +230,13 @@
             if (fNumber.fType == FNumberTypeBomb && !fNumber.isMoving)
             {
                 [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
+                
+                [fNumber explodeNumberWithCompletion:^{
+                    [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
+                    [numberRows removeObject:fNumber];
+                }];
+                
+                return;
                 break;
             }
             

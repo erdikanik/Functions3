@@ -22,7 +22,7 @@
 static NSString* const kGameSceneInitialFunction1 = @"x + 9";
 static NSString* const kGameSceneInitialFunction2 = @"-x + 9";
 
-static const CGFloat kGameSceneRightBoardWidthFactor = 0.3;
+static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
 
 
 

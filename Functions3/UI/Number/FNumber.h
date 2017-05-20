@@ -19,8 +19,6 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 
 @interface FNumber : FSpriteNodeBase
 
-@property (assign, nonatomic,getter=isf1) BOOL f1;
-@property (assign, nonatomic,getter=isf2) BOOL f2;
 @property (assign, nonatomic) CGFloat number;
 @property (assign, nonatomic) CGFloat edge;
 @property (weak, nonatomic) id<FNumberDelegate>delegate;
@@ -36,6 +34,8 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 - (instancetype)initWithNumberArray:(NSArray*)arr;
 - (instancetype)initInvisibleNumber:(CGFloat)number;
 - (instancetype)initBombTypeWithNumber:(CGFloat)number;
+
+- (void)explodeNumberWithCompletion:(void (^)())block;
 
 @end
 

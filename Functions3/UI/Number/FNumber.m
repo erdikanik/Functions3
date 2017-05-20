@@ -17,9 +17,12 @@ static const CGFloat kFNumberWaitForDuration = 1;
 @interface FNumber()
 
 @property (strong, nonatomic) SKLabelNode* innerLabel;
+@property (strong, nonatomic) SKShapeNode *tile;
 @property (strong, nonatomic) NSArray *numberArray;
 @property (assign, nonatomic) NSInteger counter;
 @property (assign, nonatomic,getter=isInvisible) BOOL invisible;
+@property (strong, nonatomic) SKAction *changeAction;
+
 @end
 
 @implementation FNumber
@@ -48,8 +51,9 @@ static const CGFloat kFNumberWaitForDuration = 1;
         SKAction *wait = [SKAction waitForDuration:kFNumberWaitForDuration];
         SKAction *performSelector = [SKAction performSelector:@selector(fNumberEvents) onTarget:self];
         SKAction *sequence = [SKAction sequence:@[performSelector, wait]];
-        SKAction *repeat   = [SKAction repeatActionForever:sequence];
-        [self runAction:repeat];
+        self.changeAction = [SKAction repeatActionForever:sequence];
+        
+        [self runAction:self.changeAction];
     }
     return self;
 }
@@ -88,11 +92,28 @@ static const CGFloat kFNumberWaitForDuration = 1;
     return self;
 }
 
+#pragma mark - Public
+
+- (void)explodeNumberWithCompletion:(void (^)())block
+{
+    self.fType = FNumberTypeBomb;
+    
+    SKAction *wait = [SKAction waitForDuration:0.05];
+    SKAction *performSelector = [SKAction performSelector:@selector(fNumberEvents) onTarget:self];
+    SKAction *sequence = [SKAction sequence:@[performSelector, wait]];
+    SKAction *repeat   = [SKAction repeatAction:sequence count:5];
+    [self runAction:repeat completion:^{
+        if (block)
+        {
+            block();
+        }
+    }];
+}
+
 #pragma mark - Properties
 
 - (void)fNumberEvents
 {
-    
     switch (self.fType) {
         case FNumberTypeChangable:
         {
@@ -106,19 +127,19 @@ static const CGFloat kFNumberWaitForDuration = 1;
             }
             
             self.number = [self.numberArray[self.counter] floatValue];
-            [self setColor:[[FStyle fNumberColorArray] objectAtIndex:self.counter ]];
+            self.tile.fillColor = [[FStyle fNumberColorArray] objectAtIndex:self.counter ];
             self.innerLabel.text = _FF(self.number);
         }
             break;
         case FNumberTypeInvisible:
         {
-            self.color = self.isInvisible ? [FStyle fNumberColor] : [FStyle fNumberTextColor];
+            self.tile.fillColor = self.isInvisible ? [FStyle fNumberColor] : [FStyle fNumberTextColor];
             self.invisible = !self.isInvisible;
         }
             break;
         case FNumberTypeBomb:
         {
-            self.color = self.isInvisible ? [FStyle fNumberColor] : [UIColor blackColor];
+            self.tile.fillColor = self.isInvisible ? [FStyle fNumberColor] : [UIColor blackColor];
             self.invisible = !self.isInvisible;
         }
         default:
@@ -128,6 +149,14 @@ static const CGFloat kFNumberWaitForDuration = 1;
 
 - (void)updateInnerLabelProperties
 {
+    self.tile = [SKShapeNode node];
+    [self.tile setPath:CGPathCreateWithRoundedRect(CGRectMake(0, 0, self.size.width, self.size.height), 5, 5, nil)];
+    self.tile.strokeColor = self.tile.fillColor = self.color;
+    self.tile.strokeColor = [FStyle fNumberTextColor];
+    self.color = UIColor.clearColor;
+    
+    [self addChild:self.tile];
+    
     self.innerLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     [self.innerLabel.scene setAnchorPoint:CGPointMake(0,0)];
     self.innerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -137,7 +166,22 @@ static const CGFloat kFNumberWaitForDuration = 1;
     self.innerLabel.text = _FF(self.number);
     [self.innerLabel setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeCenter];
     self.innerLabel.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    
     [self addChild:self.innerLabel];
+}
+
+- (void)addTexture
+{
+    UIGraphicsBeginImageContext(self.size);
+    [self.color setFill];
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5];
+    [path fill];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    SKTexture *texture = [SKTexture textureWithImage:image];
+    
+    [self setTexture:texture];
 }
 
 - (void)setSize:(CGSize)size

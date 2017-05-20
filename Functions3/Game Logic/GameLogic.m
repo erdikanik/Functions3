@@ -20,12 +20,9 @@
         FNumber *number = [[FNumber alloc] initWithNumber:[self getRandomNumber]];
         return number;
     }
-    else if (num < 950)
+    else if (num < 990)
     {
-        CGFloat num1 = [GameLogic getRandomNumber];
-        CGFloat num2 = [GameLogic getRandomNumber];
-        NSArray *numberArray = [NSArray arrayWithObjects:_N(num1),_N(num2),nil];
-        FNumber *number = [[FNumber alloc] initWithNumberArray:numberArray];
+        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
         return number;
     }
     else if (num < 980)
