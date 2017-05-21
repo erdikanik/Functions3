@@ -43,6 +43,7 @@
 		18F697631C20AD3A006F254D /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697601C20AD3A006F254D /* square.png */; };
 		18F697641C20AD3A006F254D /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697611C20AD3A006F254D /* triangle.png */; };
 		877050DA1ED0523B00CC75ED /* FShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877050D91ED0523B00CC75ED /* FShape.swift */; };
+		92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FAC78A1ED1B047004D15AB /* FunctionNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		18F697611C20AD3A006F254D /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		877050D81ED0523B00CC75ED /* Functions3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functions3-Bridging-Header.h"; path = "Functions3/UI/FShape/Functions3-Bridging-Header.h"; sourceTree = "<group>"; };
 		877050D91ED0523B00CC75ED /* FShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FShape.swift; sourceTree = "<group>"; };
+		92FAC7891ED1B047004D15AB /* FunctionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionNumber.h; sourceTree = "<group>"; };
+		92FAC78A1ED1B047004D15AB /* FunctionNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionNumber.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,8 @@
 			children = (
 				18799C701B92000E00FB85C1 /* FNumber.h */,
 				18799C711B92000E00FB85C1 /* FNumber.m */,
+				92FAC7891ED1B047004D15AB /* FunctionNumber.h */,
+				92FAC78A1ED1B047004D15AB /* FunctionNumber.m */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				18799C071B91DE2700FB85C1 /* main.m in Sources */,
 				18D8E0331C20BB9300123A2C /* StartViewController.m in Sources */,
 				18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */,
+				92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */,
 				18799C821B9207CC00FB85C1 /* Predefines.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

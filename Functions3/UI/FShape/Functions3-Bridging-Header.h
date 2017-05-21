@@ -3,3 +3,5 @@
 //
 
 #import "FSpriteNodeBase.h"
+#import "FNumber.h"
+#import "Polynomal.h"

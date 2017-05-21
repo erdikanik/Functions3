@@ -10,14 +10,12 @@
 #import "FStyle.h"
 #import "Producer.h"
 
-static const CGFloat kFNumberSize = 30;
-static const CGFloat kFNumberFontSizeFactor = 0.5;
-static const CGFloat kFNumberWaitForDuration = 1;
+const CGFloat kFNumberSize = 30;
+const CGFloat kFNumberFontSizeFactor = 0.5;
+const CGFloat kFNumberWaitForDuration = 1;
 
 @interface FNumber()
 
-@property (strong, nonatomic) SKLabelNode* innerLabel;
-@property (strong, nonatomic) SKShapeNode *tile;
 @property (strong, nonatomic) NSArray *numberArray;
 @property (assign, nonatomic) NSInteger counter;
 @property (assign, nonatomic,getter=isInvisible) BOOL invisible;
@@ -27,6 +25,15 @@ static const CGFloat kFNumberWaitForDuration = 1;
 
 @implementation FNumber
 
+
+- (instancetype)init
+{
+    if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
+    {
+        self.fType = FNumberTypeNormal;
+    }
+    return self;
+}
 
 - (instancetype)initWithNumber:(CGFloat)number
 {
@@ -108,6 +115,11 @@ static const CGFloat kFNumberWaitForDuration = 1;
             block();
         }
     }];
+}
+
+- (void)initialize
+{
+
 }
 
 #pragma mark - Properties

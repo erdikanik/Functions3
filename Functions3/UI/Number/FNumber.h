@@ -8,11 +8,16 @@
 
 #import "FSpriteNodeBase.h"
 
+extern const CGFloat kFNumberSize;
+extern const CGFloat kFNumberFontSizeFactor;
+extern const CGFloat kFNumberWaitForDuration;
+
 typedef NS_ENUM(NSUInteger, FNumberType) {
     FNumberTypeNormal,
     FNumberTypeChangable,
     FNumberTypeInvisible,
-    FNumberTypeBomb
+    FNumberTypeBomb,
+    FNumberTypeFunctions
 };
 
 @protocol FNumberDelegate;
@@ -24,6 +29,8 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 @property (weak, nonatomic) id<FNumberDelegate>delegate;
 @property (assign, nonatomic,getter=isMoving) BOOL moving;
 @property (assign, nonatomic) FNumberType fType;
+@property (strong, nonatomic) SKLabelNode* innerLabel;
+@property (strong, nonatomic) SKShapeNode *tile;
 
 /**
  Number's destination point.
@@ -36,6 +43,7 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 - (instancetype)initBombTypeWithNumber:(CGFloat)number;
 
 - (void)explodeNumberWithCompletion:(void (^)())block;
+- (void)initialize;
 
 @end
 

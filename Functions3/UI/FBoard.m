@@ -92,7 +92,8 @@
     fNumber.edge = [self.boardLogic numberEdgeSizes];
     fNumber.position = [self.boardLogic fNumberStartPoint];
     NSUInteger lastNumber = self.boardLogic.lastColumnNumber;
-    
+    [fNumber initialize];
+
     [self resetRowArrayWithLastNumber:lastNumber];
     
     [self addChild:fNumber];

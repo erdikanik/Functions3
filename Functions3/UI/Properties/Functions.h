@@ -10,6 +10,6 @@
 #import "Polynomal.h"
 
 @interface Functions : NSObject
-+ (NSArray*)getFunctions;
++ (NSArray<NSString *> *)getFunctions;
 + (Polynomal*)getRandomFunction;
 @end

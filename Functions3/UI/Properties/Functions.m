@@ -12,20 +12,22 @@
 
 @implementation Functions
 
-+ (NSArray*)getFunctions
++ (NSArray<NSString *> *)getFunctions
 {
     NSArray *functionsArray = [[NSArray alloc] initWithObjects:
     @"x",
     @"-x",
     @"x-2",
     @"x+1",
-    @"x^2-x-21",
-    @"x^2-5x+2",
-    @"x^2-51",
-    @"-x^2+x+20",
-    @"x^3-400",
-    @"x^3-500",
-    @"x^3-600",nil];
+    @"x^3",
+    @"-x^2",
+    @"-x^3",
+    @"-2x",
+    @"2x",
+    @"x-5",
+    @"x+2",
+    @"-x+5",
+    nil];
 
     return functionsArray;
 }

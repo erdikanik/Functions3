@@ -8,6 +8,7 @@
 
 #import "GameLogic.h"
 #import "FMath.h"
+#import "FunctionNumber.h"
 
 @implementation GameLogic
 
@@ -19,6 +20,12 @@
     {
         FNumber *number = [[FNumber alloc] initWithNumber:[self getRandomNumber]];
         return number;
+    }
+    else if (num < 989)
+    {
+        FunctionNumber *fNumber = [FunctionNumber new];
+
+        return fNumber;
     }
     else if (num < 990)
     {
