@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18079A731BF77F4900EB8662 /* FSpriteNodeBase.m */; };
 		18169EBF1BEF7AE800B65F83 /* FunctionBoxHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18169EBE1BEF7AE800B65F83 /* FunctionBoxHolder.m */; };
-		18281C371B9C491300A8A52F /* BlackBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18281C361B9C491300A8A52F /* BlackBox.m */; };
 		18522B161B9341E500705469 /* FMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B151B9341E500705469 /* FMath.m */; };
 		18522B1D1B93420C00705469 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B1A1B93420C00705469 /* Fraction.m */; };
 		18522B1E1B93420C00705469 /* Irrational.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B1C1B93420C00705469 /* Irrational.m */; };
@@ -43,6 +42,7 @@
 		18F697631C20AD3A006F254D /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697601C20AD3A006F254D /* square.png */; };
 		18F697641C20AD3A006F254D /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697611C20AD3A006F254D /* triangle.png */; };
 		877050DA1ED0523B00CC75ED /* FShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877050D91ED0523B00CC75ED /* FShape.swift */; };
+		8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */; };
 		92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FAC78A1ED1B047004D15AB /* FunctionNumber.m */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +61,6 @@
 		18079A731BF77F4900EB8662 /* FSpriteNodeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSpriteNodeBase.m; sourceTree = "<group>"; };
 		18169EBD1BEF7AE800B65F83 /* FunctionBoxHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoxHolder.h; sourceTree = "<group>"; };
 		18169EBE1BEF7AE800B65F83 /* FunctionBoxHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoxHolder.m; sourceTree = "<group>"; };
-		18281C351B9C491300A8A52F /* BlackBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackBox.h; sourceTree = "<group>"; };
-		18281C361B9C491300A8A52F /* BlackBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackBox.m; sourceTree = "<group>"; };
 		18522B141B9341E500705469 /* FMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMath.h; sourceTree = "<group>"; };
 		18522B151B9341E500705469 /* FMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMath.m; sourceTree = "<group>"; };
 		18522B191B93420C00705469 /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
@@ -122,6 +120,8 @@
 		18F697611C20AD3A006F254D /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		877050D81ED0523B00CC75ED /* Functions3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functions3-Bridging-Header.h"; path = "Functions3/UI/FShape/Functions3-Bridging-Header.h"; sourceTree = "<group>"; };
 		877050D91ED0523B00CC75ED /* FShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FShape.swift; sourceTree = "<group>"; };
+		8798DD1E1F028DA500E97C88 /* FunctionTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionTopBar.h; sourceTree = "<group>"; };
+		8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionTopBar.m; sourceTree = "<group>"; };
 		92FAC7891ED1B047004D15AB /* FunctionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionNumber.h; sourceTree = "<group>"; };
 		92FAC78A1ED1B047004D15AB /* FunctionNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionNumber.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,15 +147,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18281C341B9C491300A8A52F /* BlackBox */ = {
-			isa = PBXGroup;
-			children = (
-				18281C351B9C491300A8A52F /* BlackBox.h */,
-				18281C361B9C491300A8A52F /* BlackBox.m */,
-			);
-			path = BlackBox;
-			sourceTree = "<group>";
-		};
 		18522B131B9341E500705469 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,9 +279,9 @@
 		18799C6E1B92000E00FB85C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8798DD1D1F028D8500E97C88 /* TopBar */,
 				877050D71ED0522000CC75ED /* FShape */,
 				18A76FC91BF772A100F5A101 /* FBoard */,
-				18281C341B9C491300A8A52F /* BlackBox */,
 				189BBFD71B9B42010021D880 /* FunctionSquare */,
 				18799C731B92002000FB85C1 /* Properties */,
 				18799C6F1B92000E00FB85C1 /* Number */,
@@ -370,6 +361,15 @@
 				877050D91ED0523B00CC75ED /* FShape.swift */,
 			);
 			path = FShape;
+			sourceTree = "<group>";
+		};
+		8798DD1D1F028D8500E97C88 /* TopBar */ = {
+			isa = PBXGroup;
+			children = (
+				8798DD1E1F028DA500E97C88 /* FunctionTopBar.h */,
+				8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */,
+			);
+			path = TopBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,7 +485,6 @@
 				18799C721B92000E00FB85C1 /* FNumber.m in Sources */,
 				189BBFDA1B9B42010021D880 /* FunctionSquare.m in Sources */,
 				18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */,
-				18281C371B9C491300A8A52F /* BlackBox.m in Sources */,
 				18522B1D1B93420C00705469 /* Fraction.m in Sources */,
 				18522B161B9341E500705469 /* FMath.m in Sources */,
 				877050DA1ED0523B00CC75ED /* FShape.swift in Sources */,
@@ -504,6 +503,7 @@
 				18799C071B91DE2700FB85C1 /* main.m in Sources */,
 				18D8E0331C20BB9300123A2C /* StartViewController.m in Sources */,
 				18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */,
+				8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */,
 				92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */,
 				18799C821B9207CC00FB85C1 /* Predefines.h in Sources */,
 			);

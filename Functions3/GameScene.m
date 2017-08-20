@@ -13,16 +13,16 @@
 #import "Functions.h"
 #import "Polynomal.h"
 #import "FStyle.h"
-#import "BlackBox.h"
 #import "FunctionBoxHolder.h"
 #import "FBoard.h"
 #import "AbsoluteValueFunction.h"
 #import "ResultViewController.h"
+#import "FunctionTopBar.h"
 
 static NSString* const kGameSceneInitialFunction1 = @"x + 9";
 static NSString* const kGameSceneInitialFunction2 = @"-x + 9";
 
-static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
+static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 
 
@@ -54,7 +54,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
     [self setupUI];
     
     [self setBackgroundColor:[FStyle fMainColor]];
-    CGSize boardSize = CGSizeMake(self.size.width - self.size.width * kGameSceneRightBoardWidthFactor, self.size.height);
+    CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
     _board = [[FBoard alloc] initWithSize:boardSize functionBoxHolder:[self setupFunctionBoxHolder]];
     self.board.position = CGPointMake(0,0);
     self.board.delegate = self;
@@ -66,7 +66,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
 #pragma mark - UI
 - (void)setupUI
 {
-    CGFloat rightBoardWidth = self.size.width * kGameSceneRightBoardWidthFactor;
+    CGFloat topBoardHeight = self.size.height * kGameSceneTopBoardWidthFactor;
     
     SKLabelNode *labelNodePointTitle = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
     [labelNodePointTitle setText:@"Point:"];
@@ -74,7 +74,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
     labelNodePointTitle.fontSize = 20;
     labelNodePointTitle.fontColor = [FStyle fNumberTextColor];
     
-    labelNodePointTitle.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.9);
+    labelNodePointTitle.position = CGPointMake(self.size.width , topBoardHeight);
     [labelNodePointTitle setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
     [self addChild:labelNodePointTitle];
     
@@ -84,7 +84,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
     self.labelNodePoint.fontSize = 17;
     self.labelNodePoint.fontColor = [FStyle fNumberTextColor];
     
-    self.labelNodePoint.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.86);
+    self.labelNodePoint.position = CGPointMake(self.size.width, self.size.height * 0.86);
     [self.labelNodePoint setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
     [self addChild:self.labelNodePoint];
 
@@ -95,10 +95,15 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
     self.labelNodeFunction.fontSize = 15;
     self.labelNodeFunction.fontColor = [FStyle fNumberTextColor];
     
-    self.labelNodeFunction.position = CGPointMake(self.size.width - rightBoardWidth * 0.9, self.size.height * 0.05);
+    self.labelNodeFunction.position = CGPointMake(self.size.width, self.size.height * 0.05);
     [self addChild:self.labelNodeFunction];
     
     [self setupFunctionBoxHolder];
+    
+    
+    
+    FunctionTopBar *topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(200, 500)];
+    [self addChild:topBar];
 }
 
 - (void)setupGameOverLabel
@@ -128,7 +133,7 @@ static const CGFloat kGameSceneRightBoardWidthFactor = 0.01;
 
 - (FunctionBoxHolder*)setupFunctionBoxHolder
 {
-    CGFloat rightBoardWidth = self.size.width * kGameSceneRightBoardWidthFactor;
+    CGFloat rightBoardWidth = self.size.width * 0;
 
     
     FunctionSquare *fsquare1 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeCircle];
