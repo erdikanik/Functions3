@@ -61,6 +61,11 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self addChild:self.board];
     [self.board initialize];
     [self setupGameOverLabel];
+    
+    FunctionTopBar *topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(self.size.width, kGameSceneTopBoardWidthFactor * self.size.height)];
+    topBar.position = CGPointMake(0,self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
+    [self addChild:topBar];
+    [topBar initialize];
 }
 
 #pragma mark - UI

@@ -43,6 +43,7 @@
 		18F697641C20AD3A006F254D /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F697611C20AD3A006F254D /* triangle.png */; };
 		877050DA1ED0523B00CC75ED /* FShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877050D91ED0523B00CC75ED /* FShape.swift */; };
 		8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */; };
+		87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CB0F261F5D884E000001DB /* FunctionBoard.m */; };
 		92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FAC78A1ED1B047004D15AB /* FunctionNumber.m */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,8 @@
 		877050D91ED0523B00CC75ED /* FShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FShape.swift; sourceTree = "<group>"; };
 		8798DD1E1F028DA500E97C88 /* FunctionTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionTopBar.h; sourceTree = "<group>"; };
 		8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionTopBar.m; sourceTree = "<group>"; };
+		87CB0F251F5D884E000001DB /* FunctionBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoard.h; sourceTree = "<group>"; };
+		87CB0F261F5D884E000001DB /* FunctionBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoard.m; sourceTree = "<group>"; };
 		92FAC7891ED1B047004D15AB /* FunctionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionNumber.h; sourceTree = "<group>"; };
 		92FAC78A1ED1B047004D15AB /* FunctionNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionNumber.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,6 +282,7 @@
 		18799C6E1B92000E00FB85C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				87CB0F241F5D8819000001DB /* FunctionBoard */,
 				8798DD1D1F028D8500E97C88 /* TopBar */,
 				877050D71ED0522000CC75ED /* FShape */,
 				18A76FC91BF772A100F5A101 /* FBoard */,
@@ -370,6 +374,15 @@
 				8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */,
 			);
 			path = TopBar;
+			sourceTree = "<group>";
+		};
+		87CB0F241F5D8819000001DB /* FunctionBoard */ = {
+			isa = PBXGroup;
+			children = (
+				87CB0F251F5D884E000001DB /* FunctionBoard.h */,
+				87CB0F261F5D884E000001DB /* FunctionBoard.m */,
+			);
+			path = FunctionBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +499,7 @@
 				189BBFDA1B9B42010021D880 /* FunctionSquare.m in Sources */,
 				18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */,
 				18522B1D1B93420C00705469 /* Fraction.m in Sources */,
+				87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */,
 				18522B161B9341E500705469 /* FMath.m in Sources */,
 				877050DA1ED0523B00CC75ED /* FShape.swift in Sources */,
 				18522B1E1B93420C00705469 /* Irrational.m in Sources */,

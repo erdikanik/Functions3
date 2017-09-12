@@ -182,19 +182,19 @@ const CGFloat kFNumberWaitForDuration = 1;
     [self addChild:self.innerLabel];
 }
 
-- (void)addTexture
-{
-    UIGraphicsBeginImageContext(self.size);
-    [self.color setFill];
-    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5];
-    [path fill];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    SKTexture *texture = [SKTexture textureWithImage:image];
-    
-    [self setTexture:texture];
-}
+//- (void)addTexture
+//{
+//    UIGraphicsBeginImageContext(self.size);
+//    [self.color setFill];
+//    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5];
+//    [path fill];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    SKTexture *texture = [SKTexture textureWithImage:image];
+//    
+//    [self setTexture:texture];
+//}
 
 - (void)setSize:(CGSize)size
 {

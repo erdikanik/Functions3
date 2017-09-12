@@ -11,5 +11,6 @@
 @interface FunctionTopBar : FSpriteNodeBase
 
 - (instancetype)initWithSize:(CGSize)size;
+- (void)initialize;
 
 @end
