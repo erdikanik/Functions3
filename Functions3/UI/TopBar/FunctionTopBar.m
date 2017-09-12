@@ -18,6 +18,8 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 @interface FunctionTopBar()
 
 @property (nonatomic,strong) SKLabelNode *timeLabel;
+@property (nonatomic, strong) SKLabelNode *resultLabel;
+@property (nonatomic, strong) SKLabelNode *numberLabel;
 
 @end
 
@@ -61,11 +63,37 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     [self addChild:rightArrow];
     
     rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.1);
+    
+    self.numberLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
+    [self.numberLabel setFontSize:20];
+    
+    self.numberLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.numberLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    [self addChild:self.numberLabel];
+    self.numberLabel.text = @"120";
+    self.numberLabel.fontColor = [FStyle fNumberTextColor];
+    
+    [self.numberLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.3)];
+    
+    self.resultLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
+    [self.resultLabel setFontSize:20];
+    
+    self.resultLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.resultLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+    [self addChild:self.resultLabel];
+    self.resultLabel.text = @"+120";
+    self.resultLabel.fontColor = [FStyle fNumberTextColor];
+    
+    [self.resultLabel setPosition:CGPointMake(self.size.width * 0.2, self.size.height * 0.3)];
+    
+    FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[UIColor redColor] size:CGSizeMake(self.size.width , 1)];
+    [self addChild:gameOverNode];
+    gameOverNode.position = CGPointZero;
 }
 
 - (void)createTimeLabel {
     self.timeLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
-    [self.timeLabel setFontSize:20];
+    [self.timeLabel setFontSize:15];
     
     self.timeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;

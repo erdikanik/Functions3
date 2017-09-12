@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic,strong) SKLabelNode *leftFunctionLabel;
+@property (nonatomic,strong) SKLabelNode *nameLabel;
 @property (strong, nonatomic) SKShapeNode *tile;
 
 @end
@@ -40,6 +41,18 @@
     
     [self addChild:self.tile];
     
+    self.nameLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
+    [self.nameLabel setFontSize:10];
+    
+    self.nameLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.nameLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    [self addChild:self.nameLabel];
+    self.nameLabel.text = @"Black Box";
+    self.nameLabel.fontColor = [UIColor whiteColor];
+    
+    [self.nameLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.8)];
+
+    
     self.leftFunctionLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
     [self.leftFunctionLabel setFontSize:15];
     
@@ -49,7 +62,7 @@
     self.leftFunctionLabel.text = self.text;
     self.leftFunctionLabel.fontColor = [UIColor whiteColor];
     
-    [self.leftFunctionLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.5)];
+    [self.leftFunctionLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.3)];
 }
 
 @end
