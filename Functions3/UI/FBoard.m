@@ -16,22 +16,11 @@
 
 @property (strong, nonatomic) FBoardLogic *boardLogic;
 @property (strong, nonatomic) NSMutableArray *numberColumns;
-@property (strong, nonatomic) FunctionBoxHolder *fbHolder;
 @property (assign ,nonatomic) BOOL exceed;
 
 @end
 
 @implementation FBoard
-
-- (instancetype)initWithSize:(CGSize)size functionBoxHolder:(FunctionBoxHolder*)fbHolder
-{
-    self = [self initWithSize:size];
-    if (self)
-    {
-        _fbHolder = fbHolder;
-    }
-    return self;
-}
 
 - (instancetype)initWithSize:(CGSize)size
 {
@@ -235,7 +224,7 @@
                 [fNumber explodeNumberWithCompletion:^{
                     [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
                     [numberRows removeObject:fNumber];
-                }];
+}];
                 
                 return;
                 break;
@@ -247,7 +236,7 @@
         }
     }
     
-    CGFloat result = self.fbHolder.currentValue * fNumber.number;
+    CGFloat result = 1 * fNumber.number;
     [self.delegate fBoardNumberTapped:fNumber.number withResult:result];
     
     [fNumber removeFromParent];

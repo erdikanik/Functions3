@@ -15,18 +15,18 @@
 + (NSArray<NSString *> *)getFunctions
 {
     NSArray *functionsArray = [[NSArray alloc] initWithObjects:
-    @"x",
-    @"-x",
-    @"x-2",
-    @"x+1",
-    @"x^3",
-    @"-x^2",
-    @"-x^3",
+    @"1x",
+    @"-1x",
+    @"1x-3",
+    @"1x+3",
+    @"1x^3",
+    @"-1x^2",
+    @"-1x^3",
     @"-2x",
-    @"2x",
-    @"x-5",
-    @"x+2",
-    @"-x+5",
+    @"2x-5",
+    @"1x-5",
+    @"1x^2+5x-75",
+    @"-1x+5",
     nil];
 
     return functionsArray;

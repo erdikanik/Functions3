@@ -13,4 +13,6 @@
 - (instancetype)initWithSize:(CGSize)size functionText:(NSString *)text;
 - (void)initialize;
 
+@property (nonatomic, strong) NSString *text;
+
 @end

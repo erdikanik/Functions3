@@ -8,7 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "FSpriteNodeBase.h"
-#import "FunctionBoxHolder.h"
 
 @protocol FBoardDelegate;
 
@@ -17,13 +16,13 @@
 @property (weak, nonatomic) id <FBoardDelegate>delegate;
 @property (assign, nonatomic) NSUInteger level;
 
-- (instancetype)initWithSize:(CGSize)size functionBoxHolder:(FunctionBoxHolder*)fbHolder;
+- (instancetype)initWithSize:(CGSize)size;
 - (void)initialize;
 
 @end
 
 @protocol FBoardDelegate <NSObject>
 
-- (void)fBoardNumberTapped:(CGFloat)tappedNumber withResult:(CGFloat)resultNumber;
+- (void)fBoardNumberTapped:(double)tappedNumber withResult:(double)resultNumber;
 - (void)fBoardGameBorderExceeded;
 @end

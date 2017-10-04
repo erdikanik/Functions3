@@ -10,6 +10,7 @@
 
 @interface Polynomal()
 @property (nonatomic,copy) NSString *polyString;
+@property (nonatomic, assign) CGFloat number;
 @end
 
 // example x^5+2x^3+7
@@ -70,6 +71,7 @@
 
 - (CGFloat)resultValue:(CGFloat)numberValue
 {
+    _number = numberValue;
     return [self getPolynomalValue:numberValue];
 }
 
@@ -82,6 +84,11 @@
     NSNumber *resultNumber = [NSNumber numberWithFloat:answer];
     NSArray *resultArray = [[NSArray alloc] initWithObjects:resultNumber, nil];
     return resultArray;
+}
+
+- (BOOL)isResultPositive
+{
+    return [self resultValue:_number];
 }
 
 - (NSString*)description

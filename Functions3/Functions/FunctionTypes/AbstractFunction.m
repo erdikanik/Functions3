@@ -26,4 +26,9 @@
     return 0;
 }
 
+- (BOOL)isResultPositive
+{
+    return YES;
+}
+
 @end

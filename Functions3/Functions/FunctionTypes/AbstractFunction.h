@@ -23,5 +23,6 @@ typedef NS_ENUM(NSUInteger, FunctionType)
 @property (assign, nonatomic) FunctionType ftype;
 - (NSArray*) getValue:(NSArray*) valueArray;
 - (CGFloat)resultValue:(CGFloat)numberValue;
+- (BOOL)isResultPositive;
 
 @end

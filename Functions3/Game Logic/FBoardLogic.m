@@ -10,7 +10,7 @@
 #import "FMath.h"
 
 const NSUInteger kFBoardTotalWidthSquareNumber = 7;
-const NSUInteger kFBoardGameOverSquareNumber = 15;
+const NSUInteger kFBoardGameOverSquareNumber = 11;
 
 
 @interface FBoardLogic()

@@ -13,4 +13,10 @@
 - (instancetype)initWithSize:(CGSize)size;
 - (void)initialize;
 
+- (void)updateFunction:(NSString *)functionText;
+- (void)updateTime:(NSString *)time;
+- (void)updateResult: (NSInteger)result;
+- (void)updateNumber: (NSString *)number;
+- (void)updateScore: (NSString *)score;
+
 @end

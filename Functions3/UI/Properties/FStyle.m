@@ -38,7 +38,17 @@
 
 + (NSArray*)fNumberColorArray
 {
-    return [NSArray arrayWithObjects:[UIColor yellowColor],[UIColor redColor],[UIColor greenColor],[UIColor purpleColor],[UIColor whiteColor],[UIColor cyanColor],[UIColor magentaColor],nil];
+    return [NSArray arrayWithObjects:
+            [UIColor orangeColor],
+            [UIColor redColor],
+            [UIColor greenColor],
+            [UIColor purpleColor],
+            [UIColor cyanColor],
+            [UIColor magentaColor],
+            [UIColor purpleColor],
+            [UIColor brownColor],
+            [UIColor lightGrayColor],
+            nil];
 }
 
 + (UIColor*)getRandomColor

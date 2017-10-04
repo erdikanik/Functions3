@@ -9,11 +9,9 @@
 #import "GameScene.h"
 #import "FNumber.h"
 #import "GameLogic.h"
-#import "FunctionSquare.h"
 #import "Functions.h"
 #import "Polynomal.h"
 #import "FStyle.h"
-#import "FunctionBoxHolder.h"
 #import "FBoard.h"
 #import "AbsoluteValueFunction.h"
 #import "ResultViewController.h"
@@ -26,7 +24,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 
 
-@interface GameScene() <FBoardDelegate>
+@interface GameScene() <FBoardDelegate, GameLogicDelegate>
 
 @property (assign, nonatomic) NSInteger b1CurrentPath;
 @property (assign, nonatomic) NSInteger b2CurrentPath;
@@ -38,8 +36,8 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOverDetail;
 @property (assign, nonatomic) CGFloat totalPoint;
 @property (strong, nonatomic) FBoard *board;
-
-@property (weak, nonatomic) FunctionSquare* fsquareNew;
+@property (strong, nonatomic) FunctionTopBar *topBar;
+@property (strong, nonatomic) GameLogic *gameLogic;
 
 @end
 
@@ -47,68 +45,34 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 -(void)didMoveToView:(SKView *)view {
 
+    self.gameLogic = [[GameLogic alloc] initWithGameOverTime:120];
+    self.gameLogic.delegate = self;
+    [self.gameLogic gameStarted];
+
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     [self setSize:CGSizeMake(screenWidth, screenHeight)];
     [self setupUI];
-    
-    [self setBackgroundColor:[FStyle fMainColor]];
-    CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
-    _board = [[FBoard alloc] initWithSize:boardSize functionBoxHolder:[self setupFunctionBoxHolder]];
-    self.board.position = CGPointMake(0,0);
-    self.board.delegate = self;
-    [self addChild:self.board];
-    [self.board initialize];
-    [self setupGameOverLabel];
-    
-    FunctionTopBar *topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(self.size.width, kGameSceneTopBoardWidthFactor * self.size.height)];
-    topBar.position = CGPointMake(0,self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
-    [self addChild:topBar];
-    [topBar initialize];
+
 }
 
 #pragma mark - UI
 - (void)setupUI
 {
-    CGFloat topBoardHeight = self.size.height * kGameSceneTopBoardWidthFactor;
-    
-    SKLabelNode *labelNodePointTitle = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
-    [labelNodePointTitle setText:@"Point:"];
-    
-    labelNodePointTitle.fontSize = 20;
-    labelNodePointTitle.fontColor = [FStyle fNumberTextColor];
-    
-    labelNodePointTitle.position = CGPointMake(self.size.width , topBoardHeight);
-    [labelNodePointTitle setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
-    [self addChild:labelNodePointTitle];
-    
-    _labelNodePoint = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
-    [self.labelNodePoint setText:@(self.totalPoint).stringValue];
-    
-    self.labelNodePoint.fontSize = 17;
-    self.labelNodePoint.fontColor = [FStyle fNumberTextColor];
-    
-    self.labelNodePoint.position = CGPointMake(self.size.width, self.size.height * 0.86);
-    [self.labelNodePoint setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
-    [self addChild:self.labelNodePoint];
+    [self setBackgroundColor:[FStyle fMainColor]];
+    CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
+    _board = [[FBoard alloc] initWithSize:boardSize];
+    self.board.position = CGPointMake(0,0);
+    self.board.delegate = self;
+    [self addChild:self.board];
+    [self.board initialize];
+    [self setupGameOverLabel];
 
-    
-    _labelNodeFunction = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont2]];
-    [self.labelNodeFunction setText:@"f(x) = x"];
-    [self.labelNodeFunction setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
-    self.labelNodeFunction.fontSize = 15;
-    self.labelNodeFunction.fontColor = [FStyle fNumberTextColor];
-    
-    self.labelNodeFunction.position = CGPointMake(self.size.width, self.size.height * 0.05);
-    [self addChild:self.labelNodeFunction];
-    
-    [self setupFunctionBoxHolder];
-    
-    
-    
-    FunctionTopBar *topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(200, 500)];
-    [self addChild:topBar];
+    self.topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(self.size.width, kGameSceneTopBoardWidthFactor * self.size.height)];
+    self.topBar.position = CGPointMake(0,self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
+    [self addChild:self.topBar];
+    [self.topBar initialize];
 }
 
 - (void)setupGameOverLabel
@@ -136,37 +100,6 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 #pragma mark - UIHelpers
 
-- (FunctionBoxHolder*)setupFunctionBoxHolder
-{
-    CGFloat rightBoardWidth = self.size.width * 0;
-
-    
-    FunctionSquare *fsquare1 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeCircle];
-    FunctionSquare *fsquare2 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeTriangle];
-    FunctionSquare *fsquare3 = [[FunctionSquare alloc] initWithShapeType:FunctionShapeTypeSquare];
-
-    CGFloat fSquareRightBoardMargin = rightBoardWidth * 0.05;
-    
-    CGFloat fSquareWidthHeight = rightBoardWidth - 4 * fSquareRightBoardMargin;
-    [fsquare1 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
-    [fsquare2 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
-    [fsquare3 setSize:CGSizeMake(fSquareWidthHeight , fSquareWidthHeight)];
-    
-    [fsquare1 updateShapeAndLabel];
-    [fsquare2 updateShapeAndLabel];
-    [fsquare3 updateShapeAndLabel];
-    
-    NSArray *fsqArray = [NSArray arrayWithObjects:fsquare1,fsquare2,fsquare3, nil];
-    
-    FunctionBoxHolder *fboxHolder = [[FunctionBoxHolder alloc] initWithFunctionSquareArray:fsqArray withMargin:fSquareRightBoardMargin];
-    fsquare2.selected = YES;
-    
-    fboxHolder.position = CGPointMake(self.size.width - rightBoardWidth + fSquareRightBoardMargin , self.size.height / 4);
-    [self addChild:fboxHolder];
-    
-    return fboxHolder;
-}
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     
@@ -185,11 +118,14 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 #pragma mark - FBoardDelegate
 
-- (void)fBoardNumberTapped:(CGFloat)tappedNumber withResult:(CGFloat)resultNumber
+- (void)fBoardNumberTapped:(double)tappedNumber withResult:(double)resultNumber
 {
+    self.gameLogic.number = tappedNumber;
+    [self.topBar updateNumber:[NSString stringWithFormat:@"%ld",(NSInteger)tappedNumber]];
+
     self.totalPoint += resultNumber;
     self.labelNodePoint.text = @(self.totalPoint).stringValue;
-    self.labelNodeFunction.text = [NSString stringWithFormat:@"f(%i)=%i",(NSInteger)tappedNumber,(NSInteger)resultNumber];
+    self.labelNodeFunction.text = [NSString stringWithFormat:@"f(%li)=%li",(NSInteger)tappedNumber,(NSInteger)resultNumber];
     if (self.totalPoint < 0)
     {
         self.labelNodeGameOver.hidden = NO;
@@ -209,11 +145,38 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self gameOvered];
 }
 
+#pragma mark GameLogicDelegate
+
+- (void)timeUpdated:(GameLogic *)logic time:(NSTimeInterval)time gameOvered:(BOOL)gameOver
+{
+    NSTimeInterval remainingTime = time < 0 ? 0 : time;
+    [self.topBar updateTime:[NSString stringWithFormat:@"%.2f", remainingTime]];
+
+    if (gameOver)
+    {
+        [self gameOvered];
+    }
+}
+
+- (void)functionChanged:(GameLogic *)logic function:(Polynomal *)function
+{
+    [self.topBar updateFunction:[function description]];
+}
+
+- (void)functionResulted:(GameLogic *)logic functionResult:(double)result
+{
+    [self.topBar updateResult:(NSInteger)result];
+    [self.topBar updateScore:[NSString stringWithFormat:@"%li", (NSInteger)logic.score]];
+}
 
 #pragma mark - Navigation
 
 - (void)gameOvered
 {
+    self.labelNodeGameOver.hidden = NO;
+    self.labelNodeGameOverDetail.hidden = NO;
+    self.labelNodeGameOverDetail.text = @"Time is Over.";
+
     [self performSelector:@selector(navigateToResultViewController) withObject:nil afterDelay:5];
 }
 

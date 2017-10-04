@@ -11,7 +11,6 @@
 
 @interface FunctionBoard()
 
-@property (nonatomic, strong) NSString *text;
 @property (nonatomic,strong) SKLabelNode *leftFunctionLabel;
 @property (nonatomic,strong) SKLabelNode *nameLabel;
 @property (strong, nonatomic) SKShapeNode *tile;
@@ -63,6 +62,13 @@
     self.leftFunctionLabel.fontColor = [UIColor whiteColor];
     
     [self.leftFunctionLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.3)];
+}
+
+- (void)setText:(NSString *)text
+{
+    _text = text;
+    self.leftFunctionLabel.text = text;
+    self.tile.fillColor = [FStyle getRandomColor] ;
 }
 
 @end
