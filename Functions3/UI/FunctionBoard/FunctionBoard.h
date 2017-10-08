@@ -14,5 +14,6 @@
 - (void)initialize;
 
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *timeText;
 
 @end

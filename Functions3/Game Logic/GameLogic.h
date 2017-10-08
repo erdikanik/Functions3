@@ -29,5 +29,6 @@
 - (void)timeUpdated:(GameLogic *)logic time:(NSTimeInterval)time gameOvered:(BOOL)gameOver;
 - (void)functionResulted:(GameLogic *)logic functionResult:(double)result;
 - (void)functionChanged:(GameLogic *)logic function:(Polynomal *)function;
+- (void)functionTimeUpdated:(GameLogic *)logic time:(NSTimeInterval)time;
 
 @end

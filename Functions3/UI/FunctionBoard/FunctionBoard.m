@@ -12,8 +12,8 @@
 @interface FunctionBoard()
 
 @property (nonatomic,strong) SKLabelNode *leftFunctionLabel;
-@property (nonatomic,strong) SKLabelNode *nameLabel;
 @property (strong, nonatomic) SKShapeNode *tile;
+@property (strong, nonatomic) SKLabelNode *timeLabel;
 
 @end
 
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithSize:(CGSize)size functionText:(NSString *)text {
     
-    self = [super initWithColor:[UIColor blackColor] size:size];
+    self = [super initWithColor:[FStyle fFunctionsHolderColor] size:size];
     
     if (self)
     {
@@ -40,19 +40,7 @@
     
     [self addChild:self.tile];
     
-    self.nameLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
-    [self.nameLabel setFontSize:10];
-    
-    self.nameLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-    self.nameLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-    [self addChild:self.nameLabel];
-    self.nameLabel.text = @"Black Box";
-    self.nameLabel.fontColor = [UIColor whiteColor];
-    
-    [self.nameLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.8)];
-
-    
-    self.leftFunctionLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
+    self.leftFunctionLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     [self.leftFunctionLabel setFontSize:15];
     
     self.leftFunctionLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -62,13 +50,31 @@
     self.leftFunctionLabel.fontColor = [UIColor whiteColor];
     
     [self.leftFunctionLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.3)];
+    
+    self.timeLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
+    
+    [self.timeLabel setFontSize:12];
+    
+    self.timeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    [self addChild:self.timeLabel];
+    self.timeLabel.text = @"changed";
+    self.timeLabel.fontColor = [FStyle fNumberTextColor];
+    
+    [self.timeLabel setPosition:CGPointMake(self.size.width * 0.05 , self.size.height * 0.8)];
+
 }
 
 - (void)setText:(NSString *)text
 {
     _text = text;
     self.leftFunctionLabel.text = text;
-    self.tile.fillColor = [FStyle getRandomColor] ;
+}
+
+- (void)setTimeText:(NSString *)timeText
+{
+    _timeText = timeText;
+    self.timeLabel.text = timeText;
 }
 
 @end

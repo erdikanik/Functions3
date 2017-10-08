@@ -11,7 +11,7 @@
 #import "FunctionBoard.h"
 
 const CGFloat functionBoardWidthFactor = 0.3;
-const CGFloat functionBoardHeightFactor = 0.8;
+const CGFloat functionBoardHeightFactor = 0.7;
 const CGFloat functionBoardPositionXFactor = 0.4;
 const CGFloat functionBoardPositionYFactor = 0.1;
 
@@ -69,7 +69,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     [rightArrow setScale:0.6];
     [self addChild:rightArrow];
     
-    rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.1);
+    rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.2);
     
     self.numberLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     [self.numberLabel setFontSize:25];
@@ -80,7 +80,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     self.numberLabel.text = @"120";
     self.numberLabel.fontColor = [FStyle fNumberTextColor];
     
-    [self.numberLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.3)];
+    [self.numberLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.4)];
     
     self.resultLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     [self.resultLabel setFontSize:25];
@@ -89,7 +89,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     [self addChild:self.resultLabel];
     self.resultLabel.fontColor = [FStyle fNumberTextColor];
     
-    [self.resultLabel setPosition:CGPointMake(self.size.width * 0.04, self.size.height * 0.3)];
+    [self.resultLabel setPosition:CGPointMake(self.size.width * 0.04, self.size.height * 0.4)];
     
     FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[UIColor redColor] size:CGSizeMake(self.size.width , 1)];
     [self addChild:gameOverNode];
@@ -98,15 +98,14 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 
 - (void)createTimeLabel {
     self.timeLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
-    [self.timeLabel setFontSize:20];
+    [self.timeLabel setFontSize:15];
     
-    self.timeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.timeLabel];
     self.timeLabel.text = @"1200 seconds";
     self.timeLabel.fontColor = [FStyle fNumberTextColor];
     
-    [self.timeLabel setPosition:CGPointMake(self.size.width * 0.04 , self.size.height * 0.8)];
+    [self.timeLabel setPosition:CGPointMake(self.size.width * 0.04 , self.size.height * 0.7)];
 }
 
 - (void)updateFunction:(NSString *)functionText

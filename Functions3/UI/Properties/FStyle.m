@@ -28,7 +28,7 @@
 
 + (UIColor*)fFunctionsHolderColor
 {
-    return _RGBA(178, 215, 255, 1.0);
+    return _RGBA(194, 170, 165, 1.0);
 }
 
 + (UIColor*)fMainColor

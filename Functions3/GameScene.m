@@ -166,7 +166,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 - (void)functionResulted:(GameLogic *)logic functionResult:(double)result
 {
     [self.topBar updateResult:(NSInteger)result];
-    [self.topBar updateScore:[NSString stringWithFormat:@"%li", (NSInteger)logic.score]];
+    [self.topBar updateScore:[NSString stringWithFormat:@"%i", (NSInteger)logic.score]];
 }
 
 #pragma mark - Navigation
