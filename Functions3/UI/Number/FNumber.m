@@ -26,7 +26,6 @@ const CGFloat kFNumberWaitForDuration = 1;
 
 @implementation FNumber
 
-
 - (instancetype)init
 {
     if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
@@ -212,13 +211,6 @@ const CGFloat kFNumberWaitForDuration = 1;
 - (void)setSize:(CGSize)size
 {
     [super setSize:size];
-}
-
-+ (FNumber*)numberGivenFunction:(NSString*)func
-{
-    Producer *producer = [[Producer alloc] initWithProduceName:func];
-    CGFloat num = [producer parseFunctionFromName];
-    return [[FNumber alloc] initWithNumber:num];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

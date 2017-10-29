@@ -50,6 +50,7 @@
 		878FCACD1F8EA9EC0059C7D0 /* golden.png in Resources */ = {isa = PBXBuildFile; fileRef = 878FCACA1F8EA9EC0059C7D0 /* golden.png */; };
 		8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */; };
 		87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CB0F261F5D884E000001DB /* FunctionBoard.m */; };
+		92BF0A071FA5EAB600086AF5 /* InvisibleNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */; };
 		92EC7ADF1F8140A7003A0981 /* PolynomalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EC7ADE1F8140A7003A0981 /* PolynomalTests.m */; };
 		92EC7AE01F814183003A0981 /* Polynomal.m in Sources */ = {isa = PBXBuildFile; fileRef = 18522B241B934BA200705469 /* Polynomal.m */; };
 		92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FAC78A1ED1B047004D15AB /* FunctionNumber.m */; };
@@ -140,6 +141,7 @@
 		8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionTopBar.m; sourceTree = "<group>"; };
 		87CB0F251F5D884E000001DB /* FunctionBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoard.h; sourceTree = "<group>"; };
 		87CB0F261F5D884E000001DB /* FunctionBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoard.m; sourceTree = "<group>"; };
+		92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleNumber.swift; sourceTree = "<group>"; };
 		92EC7ADE1F8140A7003A0981 /* PolynomalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolynomalTests.m; sourceTree = "<group>"; };
 		92FAC7891ED1B047004D15AB /* FunctionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionNumber.h; sourceTree = "<group>"; };
 		92FAC78A1ED1B047004D15AB /* FunctionNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionNumber.m; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				8785A6C41FA538850088334E /* Material.swift */,
 				878622AF1FA5CE5000C7573A /* ColorShifterNumber.swift */,
 				878622B11FA5D0B500C7573A /* BombNumber.swift */,
+				92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				18522B161B9341E500705469 /* FMath.m in Sources */,
 				877050DA1ED0523B00CC75ED /* FShape.swift in Sources */,
 				18522B1E1B93420C00705469 /* Irrational.m in Sources */,
+				92BF0A071FA5EAB600086AF5 /* InvisibleNumber.swift in Sources */,
 				18522B281B934BA200705469 /* Polynomal.m in Sources */,
 				18799C771B92049700FB85C1 /* FStyle.m in Sources */,
 				18799C0A1B91DE2700FB85C1 /* AppDelegate.m in Sources */,

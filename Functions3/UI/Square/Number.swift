@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Number: Square {
+final class Number: Square {
     
     convenience init(with number: Int) {
         self.init()

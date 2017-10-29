@@ -12,7 +12,7 @@
 
 + (UIColor*)fNumberColor;
 + (UIColor*)fNumberTextColor;
-+ (NSArray*)fNumberColorArray;
++ (NSArray<UIColor *>*)fNumberColorArray;
 + (UIColor*)getRandomColor;
 + (UIColor*)fMainColor;
 + (UIColor*)fBoardColor;

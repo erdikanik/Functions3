@@ -36,7 +36,7 @@
     return _RGBA(245,221,209,1);
 }
 
-+ (NSArray*)fNumberColorArray
++ (NSArray<UIColor *>*)fNumberColorArray
 {
     return [NSArray arrayWithObjects:
             [UIColor orangeColor],
