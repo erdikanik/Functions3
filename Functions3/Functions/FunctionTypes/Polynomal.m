@@ -104,6 +104,7 @@
     mString = [mString stringByReplacingOccurrencesOfString:@"^7" withString:@"⁷"];
     mString = [mString stringByReplacingOccurrencesOfString:@"^8" withString:@"⁸"];
     mString = [mString stringByReplacingOccurrencesOfString:@"^9" withString:@"⁹"];
+    mString = [mString stringByReplacingOccurrencesOfString:@"1x" withString:@"x"];
     return mString;
 }
 

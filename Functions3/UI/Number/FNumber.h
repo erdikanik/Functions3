@@ -17,6 +17,9 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
     FNumberTypeChangable,
     FNumberTypeInvisible,
     FNumberTypeBomb,
+    FNumberTypeGolden,
+    FNumberTypeDiamond,
+    FNumberTypeEmerald,
     FNumberTypeFunctions
 };
 
@@ -30,6 +33,7 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 @property (assign, nonatomic,getter=isMoving) BOOL moving;
 @property (assign, nonatomic) FNumberType fType;
 @property (strong, nonatomic) SKLabelNode* innerLabel;
+@property (strong, nonatomic) FSpriteNodeBase *innerShape;
 @property (strong, nonatomic) SKShapeNode *tile;
 
 /**
@@ -38,6 +42,7 @@ typedef NS_ENUM(NSUInteger, FNumberType) {
 @property (assign, nonatomic) CGPoint moveToPoint;
 
 - (instancetype)initWithNumber:(CGFloat)number;
+- (instancetype)initWithType:(FNumberType)type;
 - (instancetype)initWithNumberArray:(NSArray*)arr;
 - (instancetype)initInvisibleNumber:(CGFloat)number;
 - (instancetype)initBombTypeWithNumber:(CGFloat)number;

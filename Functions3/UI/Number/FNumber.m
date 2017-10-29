@@ -9,6 +9,7 @@
 #import "FNumber.h"
 #import "FStyle.h"
 #import "Producer.h"
+#import "FSpriteNodeBase.h"
 
 const CGFloat kFNumberSize = 30;
 const CGFloat kFNumberFontSizeFactor = 0.5;
@@ -41,6 +42,15 @@ const CGFloat kFNumberWaitForDuration = 1;
     {
         self.number = number;
         self.fType = FNumberTypeNormal;
+    }
+    return self;
+}
+
+- (instancetype)initWithType:(FNumberType)type
+{
+    if (self = [super initWithColor:[FStyle fNumberColor] size:CGSizeMake(kFNumberSize,kFNumberSize)])
+    {
+        _fType = type;
     }
     return self;
 }
@@ -179,22 +189,25 @@ const CGFloat kFNumberWaitForDuration = 1;
     [self.innerLabel setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeCenter];
     self.innerLabel.position = CGPointMake(self.size.width / 2, self.size.height / 2);
     
+    switch (self.fType) {
+        case FNumberTypeGolden:
+        case FNumberTypeDiamond:
+        case FNumberTypeEmerald:
+        {
+            self.innerShape = [[FSpriteNodeBase alloc] initWithImageNamed:[self shapeForType:self.fType]];
+            self.innerShape.userInteractionEnabled = NO;
+            [self.innerShape setAnchorPoint:CGPointMake(0.5, 0.5)];
+            [self addChild:self.innerShape];
+            [self.innerShape setPosition:CGPointMake(self.size.width * 0.5, self.size.height * 0.5)];
+            self.innerLabel.text = @"";
+            break;
+        }
+        default:
+            break;
+    }
+
     [self addChild:self.innerLabel];
 }
-
-//- (void)addTexture
-//{
-//    UIGraphicsBeginImageContext(self.size);
-//    [self.color setFill];
-//    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5];
-//    [path fill];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    SKTexture *texture = [SKTexture textureWithImage:image];
-//    
-//    [self setTexture:texture];
-//}
 
 - (void)setSize:(CGSize)size
 {
@@ -225,6 +238,23 @@ const CGFloat kFNumberWaitForDuration = 1;
 {
     [self setSize:CGSizeMake(edge, edge)];
     [self updateInnerLabelProperties];
+}
+
+#pragma mark - Helpers
+
+- (NSString *)shapeForType:(FNumberType)numberType
+{
+    switch (numberType) {
+        case FNumberTypeGolden:
+            return @"golden";
+        case FNumberTypeDiamond:
+            return @"diamond";
+        case FNumberTypeEmerald:
+            return @"emerald";
+        default:
+            return @"";
+            break;
+    }
 }
 
 @end

@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 ekanik. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface StartViewController : UIViewController
+#import "BaseViewController.h"
+
+@interface StartViewController : BaseViewController
 
 @end

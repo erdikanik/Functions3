@@ -24,7 +24,7 @@
 
 - (instancetype)initWithSize:(CGSize)size
 {
-    self = [super initWithColor:[FStyle fBoardColor] size:size];
+    self = [super initWithColor:[FStyle fMainDarkColor] size:size];
     if (self)
     {
         self.boardLogic = [FBoardLogic new];
@@ -42,21 +42,7 @@
 
 - (void)initialize
 {
-    CGFloat gameOverLineY = [self.boardLogic numberEdgeSizes] * kFBoardGameOverSquareNumber;
-    FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[UIColor redColor] size:CGSizeMake(self.size.width , 1)];
-    [self addChild:gameOverNode];
-    gameOverNode.position = CGPointMake(0, gameOverLineY);
-    
-    SKLabelNode *gameOverLabelNode = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont]];
-    [gameOverLabelNode setText:@"Game Over Border"];
-    [gameOverLabelNode setFontColor:[UIColor redColor]];
-    [gameOverLabelNode setFontSize:10];
-    [gameOverLabelNode.scene setAnchorPoint:CGPointMake(0,0)];
-    gameOverLabelNode.position = CGPointMake(10 + gameOverLabelNode.frame.size.width / 2, gameOverLineY - 10 );
-    [self addChild:gameOverLabelNode];
-    
     [self runProduceRandomNumberWithWaitingTime];
-    
 }
 
 - (void)runProduceRandomNumberWithWaitingTime

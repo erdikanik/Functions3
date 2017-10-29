@@ -94,6 +94,21 @@ const CGFloat kGameLogicRandomFunctionsDuration = 10;
     }
     else if (num < 850)
     {
+        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeEmerald];
+        return number;
+    }
+    else if (num < 900)
+    {
+        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeDiamond];
+        return number;
+    }
+    else if (num < 950)
+    {
+        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeGolden];
+        return number;
+    }
+    else if (num < 850)
+    {
         FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
         return number;
     }

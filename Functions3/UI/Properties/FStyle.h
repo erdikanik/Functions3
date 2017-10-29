@@ -12,7 +12,6 @@
 
 + (UIColor*)fNumberColor;
 + (UIColor*)fNumberTextColor;
-+ (UIColor*)fFunctionsHolderColor;
 + (NSArray*)fNumberColorArray;
 + (UIColor*)getRandomColor;
 + (UIColor*)fMainColor;
@@ -22,5 +21,6 @@
 + (UIColor*)fCircleColor;
 + (NSString*)fMainFont;
 + (NSString*)fMainFont2;
++ (UIColor*)fMainDarkColor;
 
 @end

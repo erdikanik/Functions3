@@ -104,7 +104,7 @@ static const CGFloat kFunctionNumberEdgeNumber = 4;
 
     self.innerLabel.text = @"";
 
-    self.tile.fillColor = [FStyle fFunctionsHolderColor];
+    self.tile.fillColor = [FStyle fNumberTextColor];
 }
 
 - (void)applyLabelStylesAndProperties:(SKLabelNode *)labelNode

@@ -26,14 +26,14 @@
     return _RGBA(99, 91, 82, 1.0);
 }
 
-+ (UIColor*)fFunctionsHolderColor
-{
-    return _RGBA(194, 170, 165, 1.0);
-}
-
 + (UIColor*)fMainColor
 {
     return _RGBA(233,221,209,1);
+}
+
++ (UIColor*)fMainDarkColor
+{
+    return _RGBA(245,221,209,1);
 }
 
 + (NSArray*)fNumberColorArray

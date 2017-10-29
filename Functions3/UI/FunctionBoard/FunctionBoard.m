@@ -21,7 +21,7 @@
 
 - (instancetype)initWithSize:(CGSize)size functionText:(NSString *)text {
     
-    self = [super initWithColor:[FStyle fFunctionsHolderColor] size:size];
+    self = [super initWithColor:[FStyle fNumberColor] size:size];
     
     if (self)
     {
@@ -47,7 +47,7 @@
     self.leftFunctionLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
     [self addChild:self.leftFunctionLabel];
     self.leftFunctionLabel.text = self.text;
-    self.leftFunctionLabel.fontColor = [UIColor whiteColor];
+    self.leftFunctionLabel.fontColor = [FStyle fNumberTextColor];
     
     [self.leftFunctionLabel setPosition:CGPointMake(self.size.width * 0.5 , self.size.height * 0.3)];
     
