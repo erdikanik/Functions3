@@ -13,7 +13,7 @@ extern const NSUInteger kFBoardGameOverSquareNumber;
 
 @interface FBoardLogic : NSObject
 @property (assign, nonatomic) CGSize boardSize;
-@property (assign, nonatomic) NSUInteger lastColumnNumber;
+@property (assign, nonatomic) NSInteger lastColumnNumber;
 
 - (CGFloat)numberEdgeSizes;
 - (CGPoint)fNumberStartPoint;

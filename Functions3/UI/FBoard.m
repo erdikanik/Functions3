@@ -8,11 +8,11 @@
 
 #import "FBoard.h"
 #import "FStyle.h"
-#import "FNumber.h"
-#import "GameLogic.h"
 #import "FBoardLogic.h"
 
-@interface FBoard()<FNumberDelegate>
+#import "Functions3-Swift.h"
+
+@interface FBoard()<SquareDelegate>
 
 @property (strong, nonatomic) FBoardLogic *boardLogic;
 @property (strong, nonatomic) NSMutableArray *numberColumns;
@@ -61,37 +61,33 @@
 - (void)produceRandomNumber
 {
     /* Called when a touch begins */
-    FNumber *fNumber = [GameLogic getNumberFromLogic];
-    fNumber.moving = YES;
-    fNumber.delegate = self;
-    fNumber.edge = [self.boardLogic numberEdgeSizes];
-    fNumber.position = [self.boardLogic fNumberStartPoint];
+    Square *square = [Square getRandomSquare];
+    square.isMoving = YES;
+    square.delegate = self;
+    square.edge = [self.boardLogic numberEdgeSizes];
+    square.position = [self.boardLogic fNumberStartPoint];
     NSUInteger lastNumber = self.boardLogic.lastColumnNumber;
-    [fNumber initialize];
 
     [self resetRowArrayWithLastNumber:lastNumber];
     
-    [self addChild:fNumber];
+    [self addChild:square];
     
-    [self calculateDestinationPointForNumber:lastNumber withNumber:fNumber];
-    CGFloat distance = fabs(fNumber.moveToPoint.y - fNumber.position.y);
-    SKAction *liftoff = [SKAction moveTo:fNumber.moveToPoint duration:[self calculateTimeWithDestionationWithDistance:distance]];
+    [self calculateDestinationPointForNumber:lastNumber withNumber:square];
+    CGFloat distance = fabs(square.moveToPoint.y - square.position.y);
+    SKAction *liftoff = [SKAction moveTo:square.moveToPoint duration:[self calculateTimeWithDestionationWithDistance:distance]];
     SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
-    [fNumber runAction:rep completion:^{
-        fNumber.moving = NO;
+    [square runAction:rep completion:^{
+        square.isMoving = NO;
     }];
 }
 
-- (void)calculateDestinationPointForNumber:(NSUInteger)columnNumber withNumber:(FNumber*)fNumber
+- (void)calculateDestinationPointForNumber:(NSUInteger)columnNumber withNumber:(Square*)square
 {
-    NSUInteger numberIndex = [self addAndLiftOff:fNumber indexNumber:columnNumber];
-    fNumber.moveToPoint = CGPointMake(fNumber.position.x,[self.boardLogic numberEdgeSizes] * numberIndex);
-}
+    NSMutableArray*numberRows = [self.numberColumns objectAtIndex:columnNumber];
+    [numberRows addObject:square];
+    NSUInteger numberIndex =  numberRows.count - 1;
 
-
-- (CGFloat)addNumberToRow:(FNumber*)number column:(NSUInteger)column
-{
-    return [self addAndLiftOff:number indexNumber:column];
+    square.moveToPoint = CGPointMake(square.position.x,[self.boardLogic numberEdgeSizes] * numberIndex);
 }
 
 - (void)resetRowArrayWithLastNumber:(NSUInteger)lastNumber
@@ -104,13 +100,6 @@
     }
 }
 
-- (NSUInteger)addAndLiftOff:(FNumber*)number indexNumber:(NSUInteger)index
-{
-    NSMutableArray*numberRows = [self.numberColumns objectAtIndex:index];
-    [numberRows addObject:number];
-    return numberRows.count - 1;
-}
-
 - (void)reassignDestinationPointsAndMoveTo:(NSMutableArray*)array withNumberIndex:(NSInteger)index
 {
     if(index + 1 >= array.count)
@@ -118,14 +107,14 @@
     
     for (NSInteger i=index + 1;i<array.count;++i)
     {
-        FNumber *fNumber = [array objectAtIndex:i];
-        fNumber.moving = YES;
+        Square *fNumber = [array objectAtIndex:i];
+        fNumber.isMoving = YES;
         fNumber.moveToPoint = CGPointMake(fNumber.moveToPoint.x, fNumber.moveToPoint.y - [self.boardLogic numberEdgeSizes]);
         CGFloat distance = fabs(fNumber.moveToPoint.y - fNumber.position.y);
         SKAction *liftoff = [SKAction moveTo:fNumber.moveToPoint duration:[self calculateTimeWithDestionationWithDistance:distance]];
         SKAction *rep = [SKAction sequence:@[liftoff]]; //Test Sequence
         [fNumber runAction:rep completion:^{
-            fNumber.moving = NO;
+            fNumber.isMoving = NO;
         }];
     }
 }
@@ -152,7 +141,7 @@
 
 #pragma mark - Helpers
 
-- (void)removeNumbersAtColumn:(NSMutableArray<FNumber *> *)numbers bombNumberIndex:(NSInteger)index
+- (void)removeNumbersAtColumn:(NSMutableArray<Square *> *)numbers bombNumberIndex:(NSInteger)index
 {
     [self removeFromColumnIfItIsNotMoving:numbers index:index + 1];
     [self removeFromColumnIfItIsNotMoving:numbers index:index];
@@ -162,70 +151,70 @@
     }
 }
 
-- (void)removeFromColumnIfItIsNotMoving:(NSMutableArray<FNumber *> *)numbers index:(NSInteger)index
+- (void)removeFromColumnIfItIsNotMoving:(NSMutableArray<Square *> *)numbers index:(NSInteger)index
 {
     if (numbers.count <= index)
     {
         return;
     }
     
-    FNumber *previousNumber = [numbers objectAtIndex:index];
+    Square *previousNumber = [numbers objectAtIndex:index];
     
     if (!previousNumber)
     {
         return;
     }
     
-    if (!previousNumber.isMoving)
-    {
-        
-        [previousNumber explodeNumberWithCompletion:^{
-            [self reassignDestinationPointsAndMoveTo:numbers
-                                     withNumberIndex:[numbers indexOfObject:previousNumber]];
-            [numbers removeObject:previousNumber];
-            [previousNumber removeFromParent];
-        }];
-    }
+//    if (!previousNumber.isMoving)
+//    {
+//
+//
+//        [previousNumber explodeNumberWithCompletion:^{
+//            [self reassignDestinationPointsAndMoveTo:numbers
+//                                     withNumberIndex:[numbers indexOfObject:previousNumber]];
+//            [numbers removeObject:previousNumber];
+//            [previousNumber removeFromParent];
+//        }];
+//    }
 }
 
 - (NSTimeInterval)calculateTimeWithDestionationWithDistance:(CGFloat)distance
 {
-    CGFloat velocity = 40 * (1 + 0.4 * self.level);
-    return distance / velocity;
+    return distance / 60;
 }
 
-#pragma mark - FNumberDelegate
+#pragma mark - SquareDelegate
 
-- (void)fNumberPressed:(FNumber *)fNumber
+- (void)squareTappedWithSquare:(Square *)square
 {
     for (NSUInteger i = 0;i < kFBoardTotalWidthSquareNumber; ++i)
     {
         NSMutableArray* numberRows = [self.numberColumns objectAtIndex:i];
-        if ([numberRows indexOfObject:fNumber] != NSNotFound)
+        if ([numberRows indexOfObject:square] != NSNotFound)
         {
-            if (fNumber.fType == FNumberTypeBomb && !fNumber.isMoving)
-            {
-                [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
-                
-                [fNumber explodeNumberWithCompletion:^{
-                    [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
-                    [numberRows removeObject:fNumber];
-}];
-                
-                return;
-                break;
-            }
-            
-            [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:fNumber]];
-            [numberRows removeObject:fNumber];
+//            if (square.fType == FNumberTypeBomb && !square.isMoving)
+//            {
+//                [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:square]];
+//
+//                [square explodeNumberWithCompletion:^{
+//                    [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:square]];
+//                    [numberRows removeObject:square];
+//}];
+//
+//                return;
+//                break;
+//            }
+
+            [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:square]];
+            [numberRows removeObject:square];
             break;
         }
     }
     
-    CGFloat result = 1 * fNumber.number;
-    [self.delegate fBoardNumberTapped:fNumber.number withResult:result];
+    CGFloat result = 1 * square.number;
+    [self.delegate fBoardNumberTapped:square.number withResult:result];
     
-    [fNumber removeFromParent];
+    [square removeFromParent];
 }
 
 

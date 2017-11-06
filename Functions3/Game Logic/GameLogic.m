@@ -11,6 +11,8 @@
 #import "FunctionNumber.h"
 #import "Functions.h"
 
+#import "Functions3-Swift.h"
+
 const CGFloat kGameLogicWaitForDuration = 0.01;
 const CGFloat kGameLogicRandomFunctionsDuration = 10;
 
@@ -83,56 +85,59 @@ const CGFloat kGameLogicRandomFunctionsDuration = 10;
     [self.delegate functionChanged:self function:self.function];
 }
 
-+ (FNumber*)getNumberFromLogic
-{
-    CGFloat num = [FMath getRandomGeneratorGivenRange:0 withSecond:1000];
-    
-    if (num < 800)
-    {
-        FNumber *number = [[FNumber alloc] initWithNumber:[self getRandomNumber]];
-        return number;
-    }
-    else if (num < 850)
-    {
-        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeEmerald];
-        return number;
-    }
-    else if (num < 900)
-    {
-        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeDiamond];
-        return number;
-    }
-    else if (num < 950)
-    {
-        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeGolden];
-        return number;
-    }
-    else if (num < 850)
-    {
-        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
-        return number;
-    }
-    else if (num < 900)
-    {
-        CGFloat num1 = [GameLogic getRandomNumber];
-        CGFloat num2 = [GameLogic getRandomNumber];
-        CGFloat num3 = [GameLogic getRandomNumber];
-        NSArray *numberArray = [NSArray arrayWithObjects:_N(num1),_N(num2),_N(num3),nil];
-        FNumber *number = [[FNumber alloc] initWithNumberArray:numberArray];
-        return number;
-    }
-    else if (num < 940)
-    {
-        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
-        return number;
-    }
-    else
-    {
-        FNumber *number = [[FNumber alloc] initInvisibleNumber:[self getRandomNumber]];
-        return number;
-    }
-    
-}
+//+ (Square*)getNumberFromLogic
+//{
+////    CGFloat num = [FMath getRandomGeneratorGivenRange:0 withSecond:1000];
+////
+////    return [[Number alloc] initWith:[self getRandomNumber]];
+//
+////    if (num < 800)
+////    {
+////        Number *number = [Square alloc]
+////        FNumber *number = [[FNumber alloc] initWithNumber:[self getRandomNumber]];
+////        return number;
+////    }
+////    else if (num < 850)
+////    {
+////        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeEmerald];
+////        return number;
+////    }
+////    else if (num < 900)
+////    {
+////        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeDiamond];
+////        return number;
+////    }
+////    else if (num < 950)
+////    {
+////        FNumber *number = [[FNumber alloc] initWithType:FNumberTypeGolden];
+////        return number;
+////    }
+////    else if (num < 850)
+////    {
+////        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
+////        return number;
+////    }
+////    else if (num < 900)
+////    {
+////        CGFloat num1 = [GameLogic getRandomNumber];
+////        CGFloat num2 = [GameLogic getRandomNumber];
+////        CGFloat num3 = [GameLogic getRandomNumber];
+////        NSArray *numberArray = [NSArray arrayWithObjects:_N(num1),_N(num2),_N(num3),nil];
+////        FNumber *number = [[FNumber alloc] initWithNumberArray:numberArray];
+////        return number;
+////    }
+////    else if (num < 940)
+////    {
+////        FNumber *number = [[FNumber alloc] initBombTypeWithNumber:[self getRandomNumber]];
+////        return number;
+////    }
+////    else
+////    {
+////        FNumber *number = [[FNumber alloc] initInvisibleNumber:[self getRandomNumber]];
+////        return number;
+////    }
+//
+//}
 
 + (CGFloat)getRandomNumber
 {

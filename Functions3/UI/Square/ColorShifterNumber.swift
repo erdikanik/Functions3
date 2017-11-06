@@ -10,12 +10,16 @@ final class ColorShifter: Square {
     var counter = 0
     var numbersArray: [Int] = []
 
-    convenience init(withNumbersArray numbersArray: [Int]) {
-        self.init()
+    init(withNumbersArray numbersArray: [Int]) {
+        super.init()
         squareType = .changableNumber
         self.numbersArray = numbersArray
 
         setUpEvent()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func fireEvent() {

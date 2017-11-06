@@ -10,11 +10,15 @@ class InvisibleNumber: Square {
 
     var isInvisible = false
 
-    convenience init(with InvisibleNumber: Int) {
-        self.init()
+    init(with InvisibleNumber: Int) {
+        super.init()
 
         squareType = .invisibleNumber
         setUpEvent()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func fireEvent() {

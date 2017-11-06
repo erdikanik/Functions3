@@ -9,8 +9,8 @@
 import Foundation
 import SpriteKit
 
-protocol SquareDelegate: class {
-    func squareTapped(number: Square)
+@objc protocol SquareDelegate: class {
+    func squareTapped(square: Square)
 }
 
 enum SquareType: Int {
@@ -35,31 +35,31 @@ enum SquareConstants {
 
 class Square: FSpriteNodeBase {
     
-    var number: Int? {
+    @objc var number: Int = 0 {
         didSet {
             innerLabel?.text = String(describing: number)
         }
     }
+
     var squareType: SquareType?
     var materialType: MaterialType?
-    var moving = false
+    var isMoving = false
     var innerLabel: SKLabelNode?
     var innerShape: FSpriteNodeBase?
     var tile: SKShapeNode?
+    @objc var moveToPoint: CGPoint = CGPoint()
 
-    var edge: CGFloat? {
+    @objc var edge: CGFloat = 0 {
         didSet {
-            if let edge = edge {
-                size = CGSize(width: edge, height: edge)
-                updateInnerLabelProperties()
-            }
+            size = CGSize(width: edge, height: edge)
+            updateInnerLabelProperties()
         }
     }
 
-    weak var delegate: SquareDelegate?
+    @objc weak var delegate: SquareDelegate?
     
     init() {
-        super.init(texture: nil, color: FStyle.fNumberColor(),
+        super.init(color:  FStyle.fNumberColor(),
                    size: CGSize.init(width: SquareConstants.numberSize, height: SquareConstants.numberSize))
     }
     
@@ -68,11 +68,8 @@ class Square: FSpriteNodeBase {
     }
     
     func setUpEvent() {
-        let wait = SKAction.wait(forDuration: SquareConstants.numberWaitForDuration)
-        let performSelector = SKAction.perform(#selector(fireEvent), onTarget: self)
-        let sequence = SKAction .sequence([wait, performSelector])
-        let repeatAction = SKAction.repeatForever(sequence)
-        run(repeatAction)
+        repeatActionForever(with: SquareConstants.numberWaitForDuration,
+                            selector: #selector(fireEvent))
     }
 
     func fireEvent() {
@@ -109,9 +106,13 @@ class Square: FSpriteNodeBase {
         // override
     }
 
+    @objc func explodeNumber(with completion:()->()) {
+        // override
+    }
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
-        delegate?.squareTapped(number: self)
+        delegate?.squareTapped(square: self)
     }
 }

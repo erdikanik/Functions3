@@ -12,7 +12,8 @@
 
 - (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
 {
-    self = [super initWithColor:color size:size];
+    self = [super initWithTexture:nil color:color size:size];
+
     if (self)
     {
         [self setAnchorPoint:CGPointMake(0,0)];

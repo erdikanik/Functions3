@@ -8,3 +8,6 @@
 #import "FNumber.h"
 #import "Polynomal.h"
 #import "Fstyle.h"
+#import "FMath.h"
+#import "FBoardLogic.h"
+#import "GameLogic.h"

@@ -10,4 +10,6 @@
 
 @interface FSpriteNodeBase : SKSpriteNode
 
+- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size;
+
 @end

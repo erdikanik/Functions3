@@ -7,10 +7,14 @@
 //
 
 final class Material: Square {
-    convenience init(with materialType: MaterialType) {
-        self.init()
+    init(with materialType: MaterialType) {
+        super.init()
         self.squareType = .material
         self.materialType = materialType
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func setInnerShapeProperties() {

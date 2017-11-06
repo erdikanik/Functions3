@@ -10,6 +10,8 @@
 #import "FNumber.h"
 #import "Polynomal.h"
 
+@class Square;
+
 @protocol GameLogicDelegate;
 
 @interface GameLogic : NSObject
@@ -20,7 +22,6 @@
 
 - (instancetype)initWithGameOverTime:(NSTimeInterval)initialTime;
 - (void)gameStarted;
-+ (FNumber*)getNumberFromLogic;
 
 @end
 

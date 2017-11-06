@@ -10,13 +10,17 @@ final class BombNumber: Square {
 
     var isInvisible = false
 
-    convenience init(with number: Int)
+    init(with number: Int)
     {
-        self.init()
+        super.init()
         self.number = number
         squareType = .bomb
 
         setUpEvent()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func fireEvent() {
