@@ -30,7 +30,6 @@
 		18799C801B92073E00FB85C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7F1B92073E00FB85C1 /* Foundation.framework */; };
 		18799C821B9207CC00FB85C1 /* Predefines.h in Sources */ = {isa = PBXBuildFile; fileRef = 18799C811B9207CC00FB85C1 /* Predefines.h */; };
 		18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FC71BF7729A00F5A101 /* FBoard.m */; };
-		18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FCC1BF7778400F5A101 /* GameLogic.m */; };
 		18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FCF1BF778A200F5A101 /* FBoardLogic.m */; };
 		18F035A91C1D8AFA00792FC9 /* AbsoluteValueFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */; };
 		18F697581C1E178E006F254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F697561C1E178E006F254D /* Main.storyboard */; };
@@ -50,6 +49,7 @@
 		878FCACD1F8EA9EC0059C7D0 /* golden.png in Resources */ = {isa = PBXBuildFile; fileRef = 878FCACA1F8EA9EC0059C7D0 /* golden.png */; };
 		8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */; };
 		87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CB0F261F5D884E000001DB /* FunctionBoard.m */; };
+		9253F62F1FB746B10051CF43 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253F62E1FB746B10051CF43 /* GameLogic.swift */; };
 		92BF0A071FA5EAB600086AF5 /* InvisibleNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */; };
 		92BF0A091FA608FD00086AF5 /* Square+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A081FA608FD00086AF5 /* Square+Factory.swift */; };
 		92BF0A0B1FA60F4B00086AF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A0A1FA60F4B00086AF5 /* Board.swift */; };
@@ -113,8 +113,6 @@
 		18799C811B9207CC00FB85C1 /* Predefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predefines.h; sourceTree = "<group>"; };
 		18A76FC61BF7729A00F5A101 /* FBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoard.h; sourceTree = "<group>"; };
 		18A76FC71BF7729A00F5A101 /* FBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoard.m; sourceTree = "<group>"; };
-		18A76FCB1BF7778400F5A101 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
-		18A76FCC1BF7778400F5A101 /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
 		18A76FCE1BF778A200F5A101 /* FBoardLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoardLogic.h; sourceTree = "<group>"; };
 		18A76FCF1BF778A200F5A101 /* FBoardLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoardLogic.m; sourceTree = "<group>"; };
 		18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbsoluteValueFunction.h; sourceTree = "<group>"; };
@@ -144,6 +142,7 @@
 		8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionTopBar.m; sourceTree = "<group>"; };
 		87CB0F251F5D884E000001DB /* FunctionBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoard.h; sourceTree = "<group>"; };
 		87CB0F261F5D884E000001DB /* FunctionBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoard.m; sourceTree = "<group>"; };
+		9253F62E1FB746B10051CF43 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleNumber.swift; sourceTree = "<group>"; };
 		92BF0A081FA608FD00086AF5 /* Square+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Square+Factory.swift"; sourceTree = "<group>"; };
 		92BF0A0A1FA60F4B00086AF5 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -362,10 +361,9 @@
 		18A76FCA1BF7778400F5A101 /* Game Logic */ = {
 			isa = PBXGroup;
 			children = (
-				18A76FCB1BF7778400F5A101 /* GameLogic.h */,
-				18A76FCC1BF7778400F5A101 /* GameLogic.m */,
 				18A76FCE1BF778A200F5A101 /* FBoardLogic.h */,
 				18A76FCF1BF778A200F5A101 /* FBoardLogic.m */,
+				9253F62E1FB746B10051CF43 /* GameLogic.swift */,
 			);
 			path = "Game Logic";
 			sourceTree = "<group>";
@@ -585,6 +583,7 @@
 				18799C0D1B91DE2700FB85C1 /* GameScene.m in Sources */,
 				18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */,
 				18522B291B934BA200705469 /* Producer.m in Sources */,
+				9253F62F1FB746B10051CF43 /* GameLogic.swift in Sources */,
 				18522B331B94D21D00705469 /* Functions.m in Sources */,
 				8785A6C31FA537160088334E /* Number.swift in Sources */,
 				8789C10E1F9540BF00B0766B /* BaseViewController.m in Sources */,
@@ -592,7 +591,6 @@
 				8789C1111F9541DE00B0766B /* ShopViewController.m in Sources */,
 				18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */,
 				18799C071B91DE2700FB85C1 /* main.m in Sources */,
-				18A76FCD1BF7778400F5A101 /* GameLogic.m in Sources */,
 				8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */,
 				92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */,
 				8785A6C51FA538850088334E /* Material.swift in Sources */,
@@ -743,6 +741,7 @@
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Functions3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -762,6 +761,7 @@
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Functions3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -865,6 +865,7 @@
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Functions3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

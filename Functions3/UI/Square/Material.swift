@@ -33,10 +33,6 @@ final class Material: Square {
 
     func shapeInnerImage() -> String {
 
-        guard let materialType = materialType else {
-            return ""
-        }
-
         switch materialType {
         case .golden:
             return "golden"

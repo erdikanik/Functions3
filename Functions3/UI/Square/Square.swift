@@ -13,7 +13,7 @@ import SpriteKit
     func squareTapped(square: Square)
 }
 
-enum SquareType: Int {
+@objc enum SquareType: Int {
     case number
     case changableNumber
     case invisibleNumber
@@ -21,7 +21,7 @@ enum SquareType: Int {
     case material
 }
 
-enum MaterialType: Int {
+@objc enum MaterialType: Int {
     case golden
     case diamond
     case emerald
@@ -31,6 +31,8 @@ enum SquareConstants {
     static let numberSize: CGFloat = 30
     static let numberFontSizeFactor: CGFloat = 0.5
     static let numberWaitForDuration: TimeInterval = 1
+    static let explodeTime: TimeInterval = 0.05
+    static let explodeCount = 5
 }
 
 class Square: FSpriteNodeBase {
@@ -41,13 +43,15 @@ class Square: FSpriteNodeBase {
         }
     }
 
-    var squareType: SquareType?
-    var materialType: MaterialType?
+    @objc var squareType = SquareType.number
+    @objc var materialType = MaterialType.diamond
     var isMoving = false
     var innerLabel: SKLabelNode?
     var innerShape: FSpriteNodeBase?
     var tile: SKShapeNode?
     @objc var moveToPoint: CGPoint = CGPoint()
+    var isInvisible = false
+    var columnIndex = -1
 
     @objc var edge: CGFloat = 0 {
         didSet {
@@ -106,13 +110,23 @@ class Square: FSpriteNodeBase {
         // override
     }
 
-    @objc func explodeNumber(with completion:()->()) {
-        // override
+    @objc func explodeNumber(with completion:@escaping ()->()) {
+        repeatAction(with: SquareConstants.explodeTime, selector: #selector(fireBombEvent), count: SquareConstants.explodeCount) {
+            completion()
+        }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
         delegate?.squareTapped(square: self)
+    }
+}
+
+extension Square {
+
+    func fireBombEvent() {
+        tile?.fillColor = isInvisible ? FStyle.fNumberColor() : UIColor.black
+        isInvisible = !isInvisible
     }
 }

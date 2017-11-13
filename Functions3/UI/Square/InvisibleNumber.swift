@@ -8,8 +8,6 @@
 
 class InvisibleNumber: Square {
 
-    var isInvisible = false
-
     init(with InvisibleNumber: Int) {
         super.init()
 

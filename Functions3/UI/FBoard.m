@@ -165,17 +165,15 @@
         return;
     }
     
-//    if (!previousNumber.isMoving)
-//    {
-//
-//
-//        [previousNumber explodeNumberWithCompletion:^{
-//            [self reassignDestinationPointsAndMoveTo:numbers
-//                                     withNumberIndex:[numbers indexOfObject:previousNumber]];
-//            [numbers removeObject:previousNumber];
-//            [previousNumber removeFromParent];
-//        }];
-//    }
+    if (!previousNumber.isMoving)
+    {
+        [previousNumber explodeNumberWith:^{
+            [self reassignDestinationPointsAndMoveTo:numbers
+                                     withNumberIndex:[numbers indexOfObject:previousNumber]];
+            [numbers removeObject:previousNumber];
+            [previousNumber removeFromParent];
+        }];
+    }
 }
 
 - (NSTimeInterval)calculateTimeWithDestionationWithDistance:(CGFloat)distance
@@ -192,18 +190,18 @@
         NSMutableArray* numberRows = [self.numberColumns objectAtIndex:i];
         if ([numberRows indexOfObject:square] != NSNotFound)
         {
-//            if (square.fType == FNumberTypeBomb && !square.isMoving)
-//            {
-//                [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:square]];
-//
-//                [square explodeNumberWithCompletion:^{
-//                    [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:square]];
-//                    [numberRows removeObject:square];
-//}];
-//
-//                return;
-//                break;
-//            }
+            if (square.squareType == SquareTypeBomb && !square.isMoving)
+            {
+                [self explodeSurroundingsNumbers:numberRows withNumberIndex:[numberRows indexOfObject:square]];
+
+                [square explodeNumberWith:^{
+                    [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:square]];
+                    [numberRows removeObject:square];
+                }];
+
+                return;
+                break;
+            }
 
             [self reassignDestinationPointsAndMoveTo:numberRows withNumberIndex:[numberRows indexOfObject:square]];
             [numberRows removeObject:square];

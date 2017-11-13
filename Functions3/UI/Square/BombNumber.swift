@@ -8,8 +8,6 @@
 
 final class BombNumber: Square {
 
-    var isInvisible = false
-
     init(with number: Int)
     {
         super.init()
@@ -23,7 +21,7 @@ final class BombNumber: Square {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func fireEvent() {
+    @objc override func fireEvent() {
         super.fireEvent()
 
         tile?.fillColor = isInvisible ? FStyle.fNumberColor() : UIColor.black

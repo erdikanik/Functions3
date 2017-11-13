@@ -11,9 +11,14 @@ extension Square {
     static func getRandomSquare() -> Square? {
 
         let num = Int(FMath.getRandomGenerator(givenRange: 0, withSecond: 1000))
+
         var square: Square?
 
-        square = Number(with: getRandomNumber())
+        if num < 900 {
+                square = Number(with: getRandomNumber())
+        } else {
+            square = BombNumber(with: getRandomNumber())
+        }
 
         return square
     }

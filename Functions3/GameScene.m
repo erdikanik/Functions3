@@ -8,14 +8,14 @@
 
 #import "GameScene.h"
 #import "FNumber.h"
-#import "GameLogic.h"
 #import "Functions.h"
 #import "Polynomal.h"
 #import "FStyle.h"
-#import "FBoard.h"
 #import "AbsoluteValueFunction.h"
 #import "ResultViewController.h"
 #import "FunctionTopBar.h"
+
+#import "Functions3-Swift.h"
 
 static NSString* const kGameSceneInitialFunction1 = @"x + 9";
 static NSString* const kGameSceneInitialFunction2 = @"-x + 9";
@@ -24,7 +24,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 
 
-@interface GameScene() <FBoardDelegate, GameLogicDelegate>
+@interface GameScene() < GameLogicDelegate, BoardDelegate>
 
 @property (assign, nonatomic) NSInteger b1CurrentPath;
 @property (assign, nonatomic) NSInteger b2CurrentPath;
@@ -35,7 +35,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOver;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOverDetail;
 @property (assign, nonatomic) CGFloat totalPoint;
-@property (strong, nonatomic) FBoard *board;
+@property (strong, nonatomic) Board *board;
 @property (strong, nonatomic) FunctionTopBar *topBar;
 @property (strong, nonatomic) GameLogic *gameLogic;
 
@@ -45,7 +45,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 -(void)didMoveToView:(SKView *)view {
 
-    self.gameLogic = [[GameLogic alloc] initWithGameOverTime:120];
+    self.gameLogic = [[GameLogic alloc] initWith:120];
     self.gameLogic.delegate = self;
     [self.gameLogic gameStarted];
 
@@ -62,7 +62,8 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 {
     [self setBackgroundColor:[FStyle fMainColor]];
     CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
-    _board = [[FBoard alloc] initWithSize:boardSize];
+
+    _board = [[Board alloc] initWith:boardSize];
     self.board.position = CGPointMake(0,0);
     self.board.delegate = self;
     [self addChild:self.board];
@@ -116,27 +117,6 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     }
 }
 
-#pragma mark - FBoardDelegate
-
-- (void)fBoardNumberTapped:(double)tappedNumber withResult:(double)resultNumber
-{
-    self.gameLogic.number = tappedNumber;
-    [self.topBar updateNumber:[NSString stringWithFormat:@"%ld",(NSInteger)tappedNumber]];
-
-    self.totalPoint += resultNumber;
-    self.labelNodePoint.text = @(self.totalPoint).stringValue;
-    self.labelNodeFunction.text = [NSString stringWithFormat:@"f(%li)=%li",(NSInteger)tappedNumber,(NSInteger)resultNumber];
-    if (self.totalPoint < 0)
-    {
-        self.labelNodeGameOver.hidden = NO;
-        self.labelNodeGameOverDetail.hidden = NO;
-        self.labelNodeGameOverDetail.text = @"Total Point is Negative.";
-        [self gameOvered];
-    }
-    
-    self.board.level = 10 + (NSInteger)self.totalPoint / 40;
-}
-
 - (void)fBoardGameBorderExceeded
 {
     self.labelNodeGameOver.hidden = NO;
@@ -147,26 +127,26 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 #pragma mark GameLogicDelegate
 
-- (void)timeUpdated:(GameLogic *)logic time:(NSTimeInterval)time gameOvered:(BOOL)gameOver
+- (void)gameLogic:(GameLogic *)gameLogic time:(NSTimeInterval)time gameOvered:(BOOL)gameOvered
 {
     NSTimeInterval remainingTime = time < 0 ? 0 : time;
     [self.topBar updateTime:[NSString stringWithFormat:@"%.2f", remainingTime]];
 
-    if (gameOver)
+    if (gameOvered)
     {
         [self gameOvered];
     }
 }
 
-- (void)functionChanged:(GameLogic *)logic function:(Polynomal *)function
+- (void)gameLogic:(GameLogic *)gameLogic functionChanged:(Polynomal *)function
 {
     [self.topBar updateFunction:[function description]];
 }
 
-- (void)functionResulted:(GameLogic *)logic functionResult:(double)result
+- (void)gameLogic:(GameLogic *)gameLogic functionResulted:(NSInteger)result
 {
     [self.topBar updateResult:(NSInteger)result];
-    [self.topBar updateScore:[NSString stringWithFormat:@"%i", (NSInteger)logic.score]];
+    [self.topBar updateScore:[NSString stringWithFormat:@"%li", (long)gameLogic.score]];
 }
 
 #pragma mark - Navigation
@@ -183,6 +163,25 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 - (void)navigateToResultViewController
 {
     [self.sdelegate gameSceneOvered:@(self.totalPoint)];
+}
+
+#pragma mark - BoardDelegate
+
+- (void)boardWithBoard:(Board *)board didTappedSquare:(Square * _Nonnull)didTappedSquare
+{
+    NSInteger tappedNumber = didTappedSquare.number;
+    self.gameLogic.number = tappedNumber;
+    [self.topBar updateNumber:[NSString stringWithFormat:@"%ld",tappedNumber]];
+
+    self.labelNodePoint.text = @(self.totalPoint).stringValue;
+    self.labelNodeFunction.text = [NSString stringWithFormat:@"f(%li)=%li",(NSInteger)tappedNumber,(NSInteger)0];
+    if (self.totalPoint < 0)
+    {
+        self.labelNodeGameOver.hidden = NO;
+        self.labelNodeGameOverDetail.hidden = NO;
+        self.labelNodeGameOverDetail.text = @"Total Point is Negative.";
+        [self gameOvered];
+    }
 }
 
 @end

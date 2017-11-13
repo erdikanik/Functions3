@@ -10,4 +10,5 @@
 #import "Fstyle.h"
 #import "FMath.h"
 #import "FBoardLogic.h"
-#import "GameLogic.h"
+#import "Functions.h"
+#import "Polynomal.h"
