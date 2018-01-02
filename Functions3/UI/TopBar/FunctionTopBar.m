@@ -98,8 +98,9 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[FStyle fNumberTextColor] size:CGSizeMake(self.size.width , 1)];
     [self addChild:gameOverNode];
     gameOverNode.position = CGPointZero;
-    
-    [self addJevels];
+
+    // TODO: Add next stage
+    //[self addJevels];
 }
 
 - (void)addJevels

@@ -64,7 +64,9 @@ class Board: FSpriteNodeBase {
     }
 
     func resetRowArray(with lastNumber: Int) {
-        // exceed control
+        if squares[lastNumber].count > kFBoardGameOverSquareNumber && !exceed {
+            exceed = true
+        }
     }
 
    // func reassignDestinationPointsMoveTo:()
