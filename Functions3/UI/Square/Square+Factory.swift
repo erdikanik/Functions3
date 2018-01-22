@@ -14,8 +14,12 @@ extension Square {
 
         var square: Square?
 
-        if num < 900 {
-                square = Number(with: getRandomNumber())
+        if num < 700 {
+            square = Number(with: getRandomNumber())
+        } else if num < 820 {
+            square = InvisibleNumber(with: getRandomNumber())
+        } else if num < 950 {
+             square = ColorShifterNumber(withNumbersArray: [getRandomNumber(), getRandomNumber(), getRandomNumber()])
         } else {
             square = BombNumber(with: getRandomNumber())
         }

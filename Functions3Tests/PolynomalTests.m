@@ -59,6 +59,18 @@
     XCTAssertEqual(result2, 729);
     XCTAssertEqual(result3, -64);
     XCTAssertEqual(result4, -343);
+
+    Polynomal *polynomal4 = [[Polynomal alloc] initWithPolynomalString:@"1x+-3"];
+
+    result = [polynomal4 getPolynomalValue:-5];
+    result2 = [polynomal4 getPolynomalValue:-9];
+    result3 = [polynomal4 getPolynomalValue:4];
+    result4 = [polynomal4 getPolynomalValue:7];
+
+    XCTAssertEqual(result, -8);
+    XCTAssertEqual(result2, -12);
+    XCTAssertEqual(result3, 1);
+    XCTAssertEqual(result4, 4);
 }
 
 @end

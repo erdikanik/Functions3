@@ -105,6 +105,7 @@
     mString = [mString stringByReplacingOccurrencesOfString:@"^8" withString:@"⁸"];
     mString = [mString stringByReplacingOccurrencesOfString:@"^9" withString:@"⁹"];
     mString = [mString stringByReplacingOccurrencesOfString:@"1x" withString:@"x"];
+    mString = [mString stringByReplacingOccurrencesOfString:@"+-" withString:@"-"];
     return mString;
 }
 

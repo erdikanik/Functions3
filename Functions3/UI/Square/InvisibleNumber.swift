@@ -8,9 +8,9 @@
 
 class InvisibleNumber: Square {
 
-    init(with InvisibleNumber: Int) {
+    init(with invisibleNumber: Int) {
         super.init()
-
+        self.number = invisibleNumber
         squareType = .invisibleNumber
         setUpEvent()
     }

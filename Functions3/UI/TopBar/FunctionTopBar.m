@@ -39,7 +39,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     
     if (self)
     {
-        
+        self.zPosition = 1;
     }
     
     return self;
@@ -207,6 +207,11 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 - (void)updateScore: (NSString *)score
 {
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %@",score ];
+}
+
+- (void)updateFunctionTimeText:(NSString *)timeText
+{
+    self.board.timeText = timeText;
 }
 
 #pragma mark - Helpers

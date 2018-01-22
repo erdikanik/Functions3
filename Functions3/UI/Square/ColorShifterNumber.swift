@@ -6,7 +6,7 @@
 //  Copyright © 2017 ekanik. All rights reserved.
 //
 
-final class ColorShifter: Square {
+final class ColorShifterNumber: Square {
     var counter = 0
     var numbersArray: [Int] = []
 

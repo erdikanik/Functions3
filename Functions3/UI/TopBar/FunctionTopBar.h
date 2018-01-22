@@ -14,6 +14,7 @@
 - (void)initialize;
 
 - (void)updateFunction:(NSString *)functionText;
+- (void)updateFunctionTimeText:(NSString *)timeText;
 - (void)updateTime:(NSString *)time;
 - (void)updateResult: (NSInteger)result;
 - (void)updateNumber: (NSString *)number;

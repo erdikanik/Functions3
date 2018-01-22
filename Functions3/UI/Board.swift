@@ -8,12 +8,14 @@
 
 @objc protocol BoardDelegate: class {
     func board(board: Board, didTappedSquare square: Square)
+    func didExceedBorder(board: Board)
 }
 
 class Board: FSpriteNodeBase {
     let boardLogic = FBoardLogic()
     var squares :[[Square]] = [[Square]]()
     var exceed = false
+    @objc var timeThreshold: CGFloat = 250
     weak var delegate: BoardDelegate?
 
     init(with size: CGSize) {
@@ -35,7 +37,7 @@ class Board: FSpriteNodeBase {
     }
 
     private func produceRandomSquare() {
-        repeatAction(with: 3, selector: #selector(produceSquare), count: 1) {
+        repeatAction(with: (TimeInterval(2 - (timeThreshold / 200))), selector: #selector(produceSquare), count: 1) {
             self.produceRandomSquare()
         }
     }
@@ -66,6 +68,7 @@ class Board: FSpriteNodeBase {
     func resetRowArray(with lastNumber: Int) {
         if squares[lastNumber].count > kFBoardGameOverSquareNumber && !exceed {
             exceed = true
+            self.delegate?.didExceedBorder(board: self)
         }
     }
 
@@ -82,7 +85,7 @@ extension Board {
     }
 
     func calculateTime(with distance: CGFloat) -> TimeInterval {
-        return TimeInterval(distance / 60)
+        return TimeInterval(distance / timeThreshold)
     }
 
     func reassignDestinationPointsAndMoveTo(index: Int, arrayIndex: Int) {

@@ -45,15 +45,15 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 -(void)didMoveToView:(SKView *)view {
 
-    self.gameLogic = [[GameLogic alloc] initWith:120];
-    self.gameLogic.delegate = self;
-    [self.gameLogic gameStarted];
-
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     [self setSize:CGSizeMake(screenWidth, screenHeight)];
     [self setupUI];
+
+    self.gameLogic = [[GameLogic alloc] initWith:30];
+    self.gameLogic.delegate = self;
+    [self.gameLogic gameStarted];
 
 }
 
@@ -80,7 +80,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 {
     _labelNodeGameOver = [[SKLabelNode alloc] initWithFontNamed:[FStyle fMainFont]];
     [self.labelNodeGameOver setText:@"Game Over"];
-    self.labelNodeGameOver.fontSize = 50;
+    self.labelNodeGameOver.fontSize = 70;
     self.labelNodeGameOver.fontColor = [UIColor redColor];
     self.labelNodeGameOver.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
     [self.labelNodeGameOver setHorizontalAlignmentMode:SKLabelHorizontalAlignmentModeLeft];
@@ -149,6 +149,16 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self.topBar updateScore:[NSString stringWithFormat:@"%li", (long)gameLogic.score]];
 }
 
+- (void)gameLogic:(GameLogic *)gameLogic functionTimeDidChanged:(float)time
+{
+    [self.topBar updateFunctionTimeText:[NSString stringWithFormat:@"%.2f", time]];
+}
+
+- (void)gameLogic:(GameLogic *)gameLogic levelChanged:(NSInteger)level
+{
+    self.board.timeThreshold += (level * 0.1);
+}
+
 #pragma mark - Navigation
 
 - (void)gameOvered
@@ -182,6 +192,11 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
         self.labelNodeGameOverDetail.text = @"Total Point is Negative.";
         [self gameOvered];
     }
+}
+
+- (void)didExceedBorderWithBoard:(Board *)board
+{
+    [self gameOvered];
 }
 
 @end
