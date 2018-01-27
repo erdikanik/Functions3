@@ -8,7 +8,8 @@
 
 #import "FunctionTopBar.h"
 #import "FStyle.h"
-#import "FunctionBoard.h"
+
+#import "Functions3-Swift.h"
 
 const CGFloat functionBoardWidthFactor = 0.3;
 const CGFloat functionBoardHeightFactor = 0.7;
@@ -51,22 +52,22 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 }
 
 - (void)createFunctionLabel {
-    self.board = [[FunctionBoard alloc] initWithSize:
-                            CGSizeMake(self.size.width * functionBoardWidthFactor, self.size.height * functionBoardHeightFactor) functionText:@"x^2 + 5c + 67"];
+    self.board = [[FunctionBoard alloc] initWith:
+                            CGSizeMake(self.size.width * functionBoardWidthFactor, self.size.height * functionBoardHeightFactor)];
     
     [self.board initialize];
     [self addChild:self.board];
     self.board.position = CGPointMake(self.size.width * functionBoardPositionXFactor, self.size.height * functionBoardPositionYFactor);
 
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
-    [self.scoreLabel setFontSize:10];
+    [self.scoreLabel setFontSize:14];
 
     self.scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.scoreLabel];
-    self.scoreLabel.text = @"Score: 1200";
+    self.scoreLabel.text = @"Score: 0";
     self.scoreLabel.fontColor = [FStyle fNumberTextColor];
-    self.scoreLabel.position = CGPointMake(self.size.width * 0.75, self.size.height * 0.85);
+    self.scoreLabel.position = CGPointMake(self.size.width * 0.75, self.size.height * 0.80);
 
     FSpriteNodeBase *rightArrow = [[FSpriteNodeBase alloc] initWithImageNamed:@"arrow"];
     rightArrow.userInteractionEnabled = NO;
@@ -81,7 +82,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     self.numberLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.numberLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.numberLabel];
-    self.numberLabel.text = @"120";
+    self.numberLabel.text = @"0";
     self.numberLabel.fontColor = [FStyle fNumberTextColor];
     
     [self.numberLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.4)];
@@ -155,11 +156,11 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 
 - (void)createTimeLabel {
     self.timeLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
-    [self.timeLabel setFontSize:12];
+    [self.timeLabel setFontSize:14];
     
     self.timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.timeLabel];
-    self.timeLabel.text = @"1200 seconds";
+    self.timeLabel.text = @"999999999";
     self.timeLabel.fontColor = [FStyle fNumberTextColor];
     
     [self.timeLabel setPosition:CGPointMake(self.size.width * 0.04 , self.size.height * 0.7)];
@@ -172,7 +173,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 
 - (void)updateTime:(NSString *)time
 {
-    self.timeLabel.text = time;
+    self.timeLabel.text = [NSString stringWithFormat:@"Time: %@", time];
 }
 
 - (void)updateResult: (NSInteger)result
@@ -212,6 +213,11 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 - (void)updateFunctionTimeText:(NSString *)timeText
 {
     self.board.timeText = timeText;
+}
+
+- (void)updateFunctionPromotionNumber:(NSInteger)promotionNumber
+{
+    self.board.promotionNumber = promotionNumber;
 }
 
 #pragma mark - Helpers

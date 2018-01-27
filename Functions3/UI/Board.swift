@@ -175,8 +175,6 @@ extension Board {
         }
 
         let previousNumber = squares[columnIndex][squareIndex]
-
-
         
         if !previousNumber.isMoving {
             previousNumber.explodeNumber(with: { [unowned self] in

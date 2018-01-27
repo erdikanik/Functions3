@@ -42,7 +42,7 @@
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.sdelegate = self;
+    scene.gameSceneDelegate = self;
     // Present the scene.
     [skView presentScene:scene];
 }
@@ -73,14 +73,15 @@
 
 #pragma mark - GameSceneDelegate
 
-- (void)gameSceneOvered:(NSNumber *)totalPoint
+- (void)gameSceneGameDidOvered:(NSInteger)totalPoint
 {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];  //load NSUserDefaults
-    NSNumber *point = [prefs objectForKey:@"totalPoint"];
-    if (!point ||  (point && point.floatValue < totalPoint.floatValue))
+    NSInteger score =  [prefs integerForKey:@"totalPoint"];
+   
+    if (score < totalPoint)
     {
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        [prefs setObject:totalPoint forKey:@"totalPoint"];
+        [prefs setInteger:totalPoint forKey:@"totalPoint"];
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

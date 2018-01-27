@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hwy-6m-O4k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hwy-6m-O4k">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
         <!--Start View Controller-->
         <scene sceneID="Dui-e9-3Wz">
             <objects>
-                <viewController id="9ER-TO-51f" customClass="StartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="9ER-TO-51f" customClass="StartViewController" customModule="Functions3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Eo-zZ-195"/>
                         <viewControllerLayoutGuide type="bottom" id="p9P-9A-8hH"/>
@@ -49,8 +49,8 @@
                                     <segue destination="LVB-YS-i5n" kind="show" id="35I-ZF-zIK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX POINT : 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDH-Mq-eAA">
-                                <rect key="frame" x="77.5" y="346" width="221" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDH-Mq-eAA">
+                                <rect key="frame" x="188" y="365.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" red="0.70822465419769287" green="0.64293158054351807" blue="0.58131057024002075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -62,24 +62,35 @@
                                     <segue destination="pGl-vt-JJ7" kind="show" id="FPv-cC-gg8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boh-23-ljw" customClass="FInitialButton">
+                                <rect key="frame" x="15" y="145" width="345" height="30"/>
+                                <state key="normal" title="Leaderboard"/>
+                                <connections>
+                                    <action selector="leaderboardButtonTapped:" destination="9ER-TO-51f" eventType="touchUpInside" id="JBh-xE-R28"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89118808507919312" green="0.83582115173339844" blue="0.77906572818756104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="yic-gm-cTk" secondAttribute="trailing" id="4ej-Ad-lLj"/>
+                            <constraint firstItem="boh-23-ljw" firstAttribute="leading" secondItem="49B-pY-5wx" secondAttribute="leading" constant="15" id="5Kr-SK-hYE"/>
                             <constraint firstAttribute="centerY" secondItem="HDH-Mq-eAA" secondAttribute="centerY" constant="-32" id="8go-pI-qkQ"/>
                             <constraint firstItem="Opb-Jl-sGB" firstAttribute="top" secondItem="yic-gm-cTk" secondAttribute="bottom" constant="15" id="BaO-Ap-MRn"/>
                             <constraint firstItem="yic-gm-cTk" firstAttribute="top" secondItem="9Eo-zZ-195" secondAttribute="bottom" constant="80" id="BdX-gX-uWl"/>
                             <constraint firstItem="Opb-Jl-sGB" firstAttribute="trailing" secondItem="yic-gm-cTk" secondAttribute="trailing" id="Ojm-T2-smg"/>
                             <constraint firstItem="yic-gm-cTk" firstAttribute="leading" secondItem="49B-pY-5wx" secondAttribute="leadingMargin" id="Re6-rY-tvY"/>
                             <constraint firstItem="Opb-Jl-sGB" firstAttribute="height" secondItem="yic-gm-cTk" secondAttribute="height" id="Ss8-uY-KfQ"/>
+                            <constraint firstItem="boh-23-ljw" firstAttribute="height" secondItem="yic-gm-cTk" secondAttribute="height" id="gn4-Xa-vSp"/>
+                            <constraint firstAttribute="trailing" secondItem="boh-23-ljw" secondAttribute="trailing" constant="15" id="m2w-eu-7mc"/>
                             <constraint firstItem="Opb-Jl-sGB" firstAttribute="leading" secondItem="yic-gm-cTk" secondAttribute="leading" id="nJR-oR-fcT"/>
+                            <constraint firstItem="boh-23-ljw" firstAttribute="top" secondItem="yic-gm-cTk" secondAttribute="bottom" constant="15" id="s5g-Di-z2i"/>
                             <constraint firstAttribute="centerX" secondItem="HDH-Mq-eAA" secondAttribute="centerX" constant="-0.5" id="uOi-T5-511"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cvY-fV-JGV"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="maxPointLabel" destination="HDH-Mq-eAA" id="GxM-4S-cWh"/>
+                        <outlet property="maximumScoreLabel" destination="HDH-Mq-eAA" id="Beg-hc-U1I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ob6-gk-jgC" userLabel="First Responder" sceneMemberID="firstResponder"/>

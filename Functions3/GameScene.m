@@ -30,11 +30,9 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 @property (assign, nonatomic) NSInteger b2CurrentPath;
 @property (strong, nonatomic) NSMutableArray *currentNumbers;
 @property (strong, nonatomic) NSMutableArray *currentFunctions;
-@property (strong, nonatomic) SKLabelNode *labelNodePoint;
-@property (strong, nonatomic) SKLabelNode *labelNodeFunction;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOver;
 @property (strong, nonatomic) SKLabelNode *labelNodeGameOverDetail;
-@property (assign, nonatomic) CGFloat totalPoint;
+@property (assign, nonatomic) NSInteger totalPoint;
 @property (strong, nonatomic) Board *board;
 @property (strong, nonatomic) FunctionTopBar *topBar;
 @property (strong, nonatomic) GameLogic *gameLogic;
@@ -117,14 +115,6 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     }
 }
 
-- (void)fBoardGameBorderExceeded
-{
-    self.labelNodeGameOver.hidden = NO;
-    self.labelNodeGameOverDetail.hidden = NO;
-    self.labelNodeGameOverDetail.text = @"Border Exceed.";
-    [self gameOvered];
-}
-
 #pragma mark GameLogicDelegate
 
 - (void)gameLogic:(GameLogic *)gameLogic time:(NSTimeInterval)time gameOvered:(BOOL)gameOvered
@@ -134,7 +124,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
     if (gameOvered)
     {
-        [self gameOvered];
+        [self gameOvered:YES withTotalScore:self.gameLogic.score];
     }
 }
 
@@ -149,6 +139,11 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self.topBar updateScore:[NSString stringWithFormat:@"%li", (long)gameLogic.score]];
 }
 
+- (void)gameLogic:(GameLogic *)gameLogic promotionChanged:(NSInteger)promotionNumber
+{
+    [self.topBar updateFunctionPromotionNumber:promotionNumber];
+}
+
 - (void)gameLogic:(GameLogic *)gameLogic functionTimeDidChanged:(float)time
 {
     [self.topBar updateFunctionTimeText:[NSString stringWithFormat:@"%.2f", time]];
@@ -161,18 +156,24 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 
 #pragma mark - Navigation
 
-- (void)gameOvered
+- (void)gameOvered:(BOOL)isTimeOvered withTotalScore:(NSInteger)totalScore
 {
+    
+    NSString *detailText = nil;
+    
+    detailText = isTimeOvered ? @"Time Passed!" : @"Into The Breach";
+    
     self.labelNodeGameOver.hidden = NO;
     self.labelNodeGameOverDetail.hidden = NO;
-    self.labelNodeGameOverDetail.text = @"Time is Over.";
+    self.labelNodeGameOverDetail.text = detailText;
 
+    self.totalPoint = totalScore;
     [self performSelector:@selector(navigateToResultViewController) withObject:nil afterDelay:5];
 }
 
 - (void)navigateToResultViewController
 {
-    [self.sdelegate gameSceneOvered:@(self.totalPoint)];
+    [self.gameSceneDelegate gameSceneGameDidOvered:self.totalPoint];
 }
 
 #pragma mark - BoardDelegate
@@ -182,21 +183,11 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     NSInteger tappedNumber = didTappedSquare.number;
     self.gameLogic.number = tappedNumber;
     [self.topBar updateNumber:[NSString stringWithFormat:@"%ld",tappedNumber]];
-
-    self.labelNodePoint.text = @(self.totalPoint).stringValue;
-    self.labelNodeFunction.text = [NSString stringWithFormat:@"f(%li)=%li",(NSInteger)tappedNumber,(NSInteger)0];
-    if (self.totalPoint < 0)
-    {
-        self.labelNodeGameOver.hidden = NO;
-        self.labelNodeGameOverDetail.hidden = NO;
-        self.labelNodeGameOverDetail.text = @"Total Point is Negative.";
-        [self gameOvered];
-    }
 }
 
 - (void)didExceedBorderWithBoard:(Board *)board
 {
-    [self gameOvered];
+    [self gameOvered:NO withTotalScore:self.gameLogic.score];
 }
 
 @end

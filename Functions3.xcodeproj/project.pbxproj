@@ -29,10 +29,13 @@
 		18799C7E1B92072D00FB85C1 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7D1B92072D00FB85C1 /* SpriteKit.framework */; };
 		18799C801B92073E00FB85C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18799C7F1B92073E00FB85C1 /* Foundation.framework */; };
 		18799C821B9207CC00FB85C1 /* Predefines.h in Sources */ = {isa = PBXBuildFile; fileRef = 18799C811B9207CC00FB85C1 /* Predefines.h */; };
-		18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FC71BF7729A00F5A101 /* FBoard.m */; };
 		18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A76FCF1BF778A200F5A101 /* FBoardLogic.m */; };
 		18F035A91C1D8AFA00792FC9 /* AbsoluteValueFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */; };
 		18F697581C1E178E006F254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F697561C1E178E006F254D /* Main.storyboard */; };
+		873CCC9D201B410E00CB6628 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873CCC9C201B410E00CB6628 /* GameKit.framework */; };
+		873CCCA0201B48D400CB6628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CCC9F201B48D400CB6628 /* Utils.swift */; };
+		873CCCA2201B4A2500CB6628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CCCA1201B4A2500CB6628 /* StartViewController.swift */; };
+		873CCCA6201B6F5B00CB6628 /* FunctionBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CCCA5201B6F5B00CB6628 /* FunctionBoard.swift */; };
 		877050DA1ED0523B00CC75ED /* FShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877050D91ED0523B00CC75ED /* FShape.swift */; };
 		8785A6C01FA528AC0088334E /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8785A6BF1FA528AC0088334E /* Square.swift */; };
 		8785A6C31FA537160088334E /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8785A6C21FA537160088334E /* Number.swift */; };
@@ -41,14 +44,12 @@
 		878622B21FA5D0B500C7573A /* BombNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878622B11FA5D0B500C7573A /* BombNumber.swift */; };
 		8789C1041F953BE000B0766B /* FInitialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8789C1031F953BE000B0766B /* FInitialButton.m */; };
 		8789C10A1F95409F00B0766B /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8789C1071F95409F00B0766B /* ResultViewController.m */; };
-		8789C10B1F95409F00B0766B /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8789C1091F95409F00B0766B /* StartViewController.m */; };
 		8789C10E1F9540BF00B0766B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8789C10D1F9540BF00B0766B /* BaseViewController.m */; };
 		8789C1111F9541DE00B0766B /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8789C1101F9541DE00B0766B /* ShopViewController.m */; };
 		878FCACB1F8EA9EC0059C7D0 /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 878FCAC81F8EA9EC0059C7D0 /* diamond.png */; };
 		878FCACC1F8EA9EC0059C7D0 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = 878FCAC91F8EA9EC0059C7D0 /* emerald.png */; };
 		878FCACD1F8EA9EC0059C7D0 /* golden.png in Resources */ = {isa = PBXBuildFile; fileRef = 878FCACA1F8EA9EC0059C7D0 /* golden.png */; };
 		8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */; };
-		87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CB0F261F5D884E000001DB /* FunctionBoard.m */; };
 		9253F62F1FB746B10051CF43 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253F62E1FB746B10051CF43 /* GameLogic.swift */; };
 		92BF0A071FA5EAB600086AF5 /* InvisibleNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */; };
 		92BF0A091FA608FD00086AF5 /* Square+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF0A081FA608FD00086AF5 /* Square+Factory.swift */; };
@@ -111,13 +112,15 @@
 		18799C7D1B92072D00FB85C1 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		18799C7F1B92073E00FB85C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18799C811B9207CC00FB85C1 /* Predefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predefines.h; sourceTree = "<group>"; };
-		18A76FC61BF7729A00F5A101 /* FBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoard.h; sourceTree = "<group>"; };
-		18A76FC71BF7729A00F5A101 /* FBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoard.m; sourceTree = "<group>"; };
 		18A76FCE1BF778A200F5A101 /* FBoardLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBoardLogic.h; sourceTree = "<group>"; };
 		18A76FCF1BF778A200F5A101 /* FBoardLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBoardLogic.m; sourceTree = "<group>"; };
 		18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbsoluteValueFunction.h; sourceTree = "<group>"; };
 		18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbsoluteValueFunction.m; sourceTree = "<group>"; };
 		18F697571C1E178E006F254D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		873CCC9C201B410E00CB6628 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		873CCC9F201B48D400CB6628 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		873CCCA1201B4A2500CB6628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		873CCCA5201B6F5B00CB6628 /* FunctionBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoard.swift; sourceTree = "<group>"; };
 		877050D81ED0523B00CC75ED /* Functions3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functions3-Bridging-Header.h"; path = "Functions3/UI/FShape/Functions3-Bridging-Header.h"; sourceTree = "<group>"; };
 		877050D91ED0523B00CC75ED /* FShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FShape.swift; sourceTree = "<group>"; };
 		8785A6BF1FA528AC0088334E /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
@@ -129,8 +132,6 @@
 		8789C1031F953BE000B0766B /* FInitialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInitialButton.m; sourceTree = "<group>"; };
 		8789C1061F95409F00B0766B /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		8789C1071F95409F00B0766B /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
-		8789C1081F95409F00B0766B /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		8789C1091F95409F00B0766B /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		8789C10C1F9540BF00B0766B /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8789C10D1F9540BF00B0766B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8789C10F1F9541DE00B0766B /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
@@ -140,8 +141,6 @@
 		878FCACA1F8EA9EC0059C7D0 /* golden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = golden.png; sourceTree = "<group>"; };
 		8798DD1E1F028DA500E97C88 /* FunctionTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionTopBar.h; sourceTree = "<group>"; };
 		8798DD1F1F028DA500E97C88 /* FunctionTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionTopBar.m; sourceTree = "<group>"; };
-		87CB0F251F5D884E000001DB /* FunctionBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBoard.h; sourceTree = "<group>"; };
-		87CB0F261F5D884E000001DB /* FunctionBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBoard.m; sourceTree = "<group>"; };
 		9253F62E1FB746B10051CF43 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		92BF0A061FA5EAB600086AF5 /* InvisibleNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleNumber.swift; sourceTree = "<group>"; };
 		92BF0A081FA608FD00086AF5 /* Square+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Square+Factory.swift"; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 				18799C801B92073E00FB85C1 /* Foundation.framework in Frameworks */,
 				18799C7E1B92072D00FB85C1 /* SpriteKit.framework in Frameworks */,
 				18799C7C1B92071D00FB85C1 /* UIKit.framework in Frameworks */,
+				873CCC9D201B410E00CB6628 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +254,7 @@
 			children = (
 				92BF0A0C1FA6157500086AF5 /* Extensions */,
 				8789C1011F953BA900B0766B /* UIKit */,
+				873CCC9E201B46D000CB6628 /* Util */,
 				18522B171B9341ED00705469 /* NS */,
 				18799C6E1B92000E00FB85C1 /* UI */,
 				18799C081B91DE2700FB85C1 /* AppDelegate.h */,
@@ -340,6 +341,7 @@
 		18799C7A1B92070900FB85C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				873CCC9C201B410E00CB6628 /* GameKit.framework */,
 				18522B2A1B93577000705469 /* CoreData.framework */,
 				18799C7F1B92073E00FB85C1 /* Foundation.framework */,
 				18799C7D1B92072D00FB85C1 /* SpriteKit.framework */,
@@ -351,8 +353,6 @@
 		18A76FC91BF772A100F5A101 /* FBoard */ = {
 			isa = PBXGroup;
 			children = (
-				18A76FC61BF7729A00F5A101 /* FBoard.h */,
-				18A76FC71BF7729A00F5A101 /* FBoard.m */,
 				92BF0A0A1FA60F4B00086AF5 /* Board.swift */,
 			);
 			name = FBoard;
@@ -366,6 +366,14 @@
 				9253F62E1FB746B10051CF43 /* GameLogic.swift */,
 			);
 			path = "Game Logic";
+			sourceTree = "<group>";
+		};
+		873CCC9E201B46D000CB6628 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				873CCC9F201B48D400CB6628 /* Utils.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		877050D71ED0522000CC75ED /* FShape */ = {
@@ -405,12 +413,11 @@
 			children = (
 				8789C1061F95409F00B0766B /* ResultViewController.h */,
 				8789C1071F95409F00B0766B /* ResultViewController.m */,
-				8789C1081F95409F00B0766B /* StartViewController.h */,
-				8789C1091F95409F00B0766B /* StartViewController.m */,
 				8789C10C1F9540BF00B0766B /* BaseViewController.h */,
 				8789C10D1F9540BF00B0766B /* BaseViewController.m */,
 				8789C10F1F9541DE00B0766B /* ShopViewController.h */,
 				8789C1101F9541DE00B0766B /* ShopViewController.m */,
+				873CCCA1201B4A2500CB6628 /* StartViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -437,8 +444,7 @@
 		87CB0F241F5D8819000001DB /* FunctionBoard */ = {
 			isa = PBXGroup;
 			children = (
-				87CB0F251F5D884E000001DB /* FunctionBoard.h */,
-				87CB0F261F5D884E000001DB /* FunctionBoard.m */,
+				873CCCA5201B6F5B00CB6628 /* FunctionBoard.swift */,
 			);
 			path = FunctionBoard;
 			sourceTree = "<group>";
@@ -503,6 +509,11 @@
 						DevelopmentTeam = PD29HUEAAC;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					18799C1E1B91DE2700FB85C1 = {
 						CreatedOnToolsVersion = 6.4;
@@ -567,21 +578,20 @@
 				92BF0A091FA608FD00086AF5 /* Square+Factory.swift in Sources */,
 				18079A741BF77F4900EB8662 /* FSpriteNodeBase.m in Sources */,
 				878622B21FA5D0B500C7573A /* BombNumber.swift in Sources */,
+				873CCCA2201B4A2500CB6628 /* StartViewController.swift in Sources */,
 				18522B1D1B93420C00705469 /* Fraction.m in Sources */,
 				92BF0A0E1FA6158800086AF5 /* SKAction+Additions.swift in Sources */,
-				87CB0F271F5D884E000001DB /* FunctionBoard.m in Sources */,
 				18522B161B9341E500705469 /* FMath.m in Sources */,
 				877050DA1ED0523B00CC75ED /* FShape.swift in Sources */,
 				18522B1E1B93420C00705469 /* Irrational.m in Sources */,
 				92BF0A071FA5EAB600086AF5 /* InvisibleNumber.swift in Sources */,
 				18522B281B934BA200705469 /* Polynomal.m in Sources */,
 				18799C771B92049700FB85C1 /* FStyle.m in Sources */,
+				873CCCA0201B48D400CB6628 /* Utils.swift in Sources */,
 				18799C0A1B91DE2700FB85C1 /* AppDelegate.m in Sources */,
-				8789C10B1F95409F00B0766B /* StartViewController.m in Sources */,
 				18522B271B934BA200705469 /* AbstractFunction.m in Sources */,
 				878622B01FA5CE5000C7573A /* ColorShifterNumber.swift in Sources */,
 				18799C0D1B91DE2700FB85C1 /* GameScene.m in Sources */,
-				18A76FC81BF7729A00F5A101 /* FBoard.m in Sources */,
 				18522B291B934BA200705469 /* Producer.m in Sources */,
 				9253F62F1FB746B10051CF43 /* GameLogic.swift in Sources */,
 				18522B331B94D21D00705469 /* Functions.m in Sources */,
@@ -591,6 +601,7 @@
 				8789C1111F9541DE00B0766B /* ShopViewController.m in Sources */,
 				18A76FD01BF778A200F5A101 /* FBoardLogic.m in Sources */,
 				18799C071B91DE2700FB85C1 /* main.m in Sources */,
+				873CCCA6201B6F5B00CB6628 /* FunctionBoard.swift in Sources */,
 				8798DD201F028DA500E97C88 /* FunctionTopBar.m in Sources */,
 				92FAC78B1ED1B047004D15AB /* FunctionNumber.m in Sources */,
 				8785A6C51FA538850088334E /* Material.swift in Sources */,

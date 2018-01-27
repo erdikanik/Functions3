@@ -4,7 +4,7 @@
 //
 //  Created by Erdi Kanık on 29.10.2017.
 //  Copyright © 2017 ekanik. All rights reserved.
-//
+//d
 
 final class BombNumber: Square {
 

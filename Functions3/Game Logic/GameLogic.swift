@@ -18,6 +18,7 @@ fileprivate enum Constants {
     func gameLogic(_ gameLogic: GameLogic, functionResulted result: Int)
     func gameLogic(_ gameLogic: GameLogic, functionChanged function: Polynomal)
     func gameLogic(_ gameLogic: GameLogic, functionTimeDidChanged time: Float)
+    func gameLogic(_ gameLogic: GameLogic, promotionChanged promotionNumber: Int)
     func gameLogic(_ gameLogic: GameLogic, levelChanged level: Int)
 }
 
@@ -26,24 +27,25 @@ fileprivate enum Constants {
     @objc var number: Int = 0 {
         didSet {
             if let num = polynomal?.getValue(CGFloat(number)) {
-                let totalNumber = Double(num)
-                score += totalNumber * 0.1
-                scoreTime += totalNumber * 0.5
-                delegate?.gameLogic(self, functionResulted: Int(totalNumber))
+                let result = promotionCheck(with: Double(num))
+                score += result > 0 ? result * 0.1 : 0
+                scoreTime += result > 0 ? result * 0.2 : result
+                delegate?.gameLogic(self, functionResulted: Int(result))
             }
         }
     }
+
     var score: Double = 0
 
     private var scoreTime: TimeInterval = 1
     private var timer: Timer?
     private var functionTimer: Timer?
-    private var totalNumber = 0
     private var polynomal: Polynomal?
     private var functionChangingTime: Float = 0
     private var level: Int = 1
     private var initialTime: Int = 100
-
+    private var latestResult = 0
+    private var promotionNumber = 1
 
     required init(with gameOverTime: TimeInterval) {
         super.init()
@@ -94,5 +96,18 @@ fileprivate enum Constants {
             level += 1
             delegate?.gameLogic(self, levelChanged: level)
         }
+    }
+    
+    private func promotionCheck(with result: Double) -> Double {
+        if result >= 0 {
+            if promotionNumber < 5 {
+               promotionNumber += 1
+            }
+        } else {
+            promotionNumber = 1
+        }
+        
+       delegate?.gameLogic(self, promotionChanged: promotionNumber)
+        return result * Double(promotionNumber)
     }
 }

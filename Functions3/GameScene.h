@@ -12,13 +12,13 @@
 
 @interface GameScene : SKScene <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) id <GameSceneDelegate> sdelegate;
+@property (weak, nonatomic) id <GameSceneDelegate> gameSceneDelegate;
 
 @end
 
 
 @protocol GameSceneDelegate <NSObject>
 
-- (void)gameSceneOvered:(NSNumber*)totalPoint;
+- (void)gameSceneGameDidOvered:(NSInteger)totalPoint;
 
 @end
