@@ -13,6 +13,9 @@ class FunctionBoard: FSpriteNodeBase {
     var text: String? {
         didSet {
             functionLabel?.text = text
+            repeatAction(with: 0.1, selector: #selector(functionColorChanged), count: 10) {
+                self.tile?.fillColor = FStyle.fNumberColor()
+            }
         }
     }
     
@@ -80,5 +83,9 @@ class FunctionBoard: FSpriteNodeBase {
         promotionLabel.position = CGPoint(x: size.width * 0.95, y: size.height * 0.8)
         
         self.promotionLabel = promotionLabel
+    }
+    
+    @objc private func functionColorChanged() {
+        self.tile?.fillColor = FStyle.getRandomColor()
     }
 }

@@ -9,6 +9,8 @@
 #import "GameViewController.h"
 #import "ResultViewController.h"
 
+#import <StoreKit/StoreKit.h>
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -67,10 +69,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 #pragma mark - GameSceneDelegate
 
 - (void)gameSceneGameDidOvered:(NSInteger)totalPoint
@@ -84,6 +82,11 @@
         [prefs setInteger:totalPoint forKey:@"totalPoint"];
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    if ([SKStoreReviewController respondsToSelector:@selector(requestReview)])
+    {
+        [SKStoreReviewController requestReview];
+    }
 }
 
 @end

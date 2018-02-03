@@ -119,6 +119,7 @@ extension Board: SquareDelegate {
         
         if square.squareType == .bomb && !square.isMoving {
             explodeSurroundingsNumbers(square: square)
+            delegate?.board(board: self, didTappedSquare: square)
             return
         }
 

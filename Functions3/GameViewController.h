@@ -10,6 +10,6 @@
 #import <SpriteKit/SpriteKit.h>
 #import "GameScene.h"
 
-@interface GameViewController : UIViewController <GameSceneDelegate>
+@interface GameViewController : UIViewController
 
 @end

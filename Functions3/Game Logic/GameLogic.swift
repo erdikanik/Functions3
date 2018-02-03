@@ -28,8 +28,8 @@ fileprivate enum Constants {
         didSet {
             if let num = polynomal?.getValue(CGFloat(number)) {
                 let result = promotionCheck(with: Double(num))
-                score += result > 0 ? result * 0.1 : 0
-                scoreTime += result > 0 ? result * 0.2 : result
+                score += result > 0 ? result * 0.05 : 0
+                scoreTime += result > 0 ? result * 0.2 : result + (Double(self.level) * 0.01)
                 delegate?.gameLogic(self, functionResulted: Int(result))
             }
         }

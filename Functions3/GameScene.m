@@ -21,7 +21,7 @@ static NSString* const kGameSceneInitialFunction1 = @"x + 9";
 static NSString* const kGameSceneInitialFunction2 = @"-x + 9";
 
 static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
-
+static const CGFloat kGameSceneStatusBarHeight = 25;
 
 
 @interface GameScene() < GameLogicDelegate, BoardDelegate>
@@ -36,6 +36,12 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 @property (strong, nonatomic) Board *board;
 @property (strong, nonatomic) FunctionTopBar *topBar;
 @property (strong, nonatomic) GameLogic *gameLogic;
+
+@property (strong, nonatomic) SKAudioNode *bombSound;
+@property (strong, nonatomic) SKAudioNode *functionChangingSound;
+@property (strong, nonatomic) SKAudioNode *gameOveredSound;
+@property (strong, nonatomic) SKAudioNode *tappingSound;
+@property (strong, nonatomic) SKAudioNode *themeSound;
 
 @end
 
@@ -52,6 +58,8 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     self.gameLogic = [[GameLogic alloc] initWith:30];
     self.gameLogic.delegate = self;
     [self.gameLogic gameStarted];
+    
+    [self installSounds];
 
 }
 
@@ -59,7 +67,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 - (void)setupUI
 {
     [self setBackgroundColor:[FStyle fMainColor]];
-    CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
+    CGSize boardSize = CGSizeMake(self.size.width, self.size.height - kGameSceneTopBoardWidthFactor * self.size.height - kGameSceneStatusBarHeight);
 
     _board = [[Board alloc] initWith:boardSize];
     self.board.position = CGPointMake(0,0);
@@ -68,8 +76,8 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self.board initialize];
     [self setupGameOverLabel];
 
-    self.topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(self.size.width, kGameSceneTopBoardWidthFactor * self.size.height)];
-    self.topBar.position = CGPointMake(0,self.size.height - kGameSceneTopBoardWidthFactor * self.size.height);
+    self.topBar = [[FunctionTopBar alloc] initWithSize:CGSizeMake(self.size.width, kGameSceneTopBoardWidthFactor * self.size.height + kGameSceneStatusBarHeight)];
+    self.topBar.position = CGPointMake(0,self.size.height - kGameSceneTopBoardWidthFactor * self.size.height - kGameSceneStatusBarHeight);
     [self addChild:self.topBar];
     [self.topBar initialize];
 }
@@ -97,24 +105,6 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     [self.labelNodeGameOverDetail setHidden:YES];
 }
 
-#pragma mark - UIHelpers
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    
-    //SKSpriteNode* node = (SKSpriteNode *)[self childNodeWithName:kGameSceneblackBoxName];
-    //[node setColor:[UIColor redColor]];
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
-    SKNode *node = [self nodeAtPoint:location];
-    
-    //if fire button touched, bring the rain
-    if ([node.name isEqualToString:@"scull"]) {
-        
-    }
-}
-
 #pragma mark GameLogicDelegate
 
 - (void)gameLogic:(GameLogic *)gameLogic time:(NSTimeInterval)time gameOvered:(BOOL)gameOvered
@@ -131,6 +121,7 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
 - (void)gameLogic:(GameLogic *)gameLogic functionChanged:(Polynomal *)function
 {
     [self.topBar updateFunction:[function description]];
+    [self.functionChangingSound runAction:[SKAction play]];
 }
 
 - (void)gameLogic:(GameLogic *)gameLogic functionResulted:(NSInteger)result
@@ -168,6 +159,8 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     self.labelNodeGameOverDetail.text = detailText;
 
     self.totalPoint = totalScore;
+    [self.themeSound runAction:[SKAction stop]];
+    [self.gameOveredSound runAction:[SKAction play]];
     [self performSelector:@selector(navigateToResultViewController) withObject:nil afterDelay:5];
 }
 
@@ -183,11 +176,47 @@ static const CGFloat kGameSceneTopBoardWidthFactor = 0.1;
     NSInteger tappedNumber = didTappedSquare.number;
     self.gameLogic.number = tappedNumber;
     [self.topBar updateNumber:[NSString stringWithFormat:@"%ld",tappedNumber]];
+    
+    [self.tappingSound runAction:[SKAction stop]];
+    [self.tappingSound runAction:[SKAction play]];
+    
+    if (didTappedSquare.squareType == SquareTypeBomb)
+    {
+        [self.bombSound runAction:[SKAction stop]];
+        [self.bombSound runAction:[SKAction play]];
+    }
 }
 
 - (void)didExceedBorderWithBoard:(Board *)board
 {
     [self gameOvered:NO withTotalScore:self.gameLogic.score];
+}
+
+#pragma mark - Sounds
+
+- (void)installSounds
+{
+    self.bombSound = [[SKAudioNode alloc] initWithFileNamed:@"bomb.mp3"];
+    self.functionChangingSound = [[SKAudioNode alloc] initWithFileNamed:@"functionChanged.mp3"];
+    self.gameOveredSound = [[SKAudioNode alloc] initWithFileNamed:@"gameOvered.mp3"];
+    self.tappingSound = [[SKAudioNode alloc] initWithFileNamed:@"tapped.mp3"];
+    self.themeSound = [[SKAudioNode alloc] initWithFileNamed:@"theme.mp3"];
+    
+    self.themeSound.positional = NO;
+    [self addChild:self.themeSound];
+    
+    self.tappingSound.autoplayLooped = NO;
+    self.tappingSound.positional = NO;
+    [self addChild:self.tappingSound];
+    
+    self.gameOveredSound.autoplayLooped = NO;
+    [self addChild:self.gameOveredSound];
+    
+    self.bombSound.autoplayLooped = NO;
+    [self addChild:self.bombSound];
+    
+    self.functionChangingSound.autoplayLooped = NO;
+    [self addChild:self.functionChangingSound];
 }
 
 @end

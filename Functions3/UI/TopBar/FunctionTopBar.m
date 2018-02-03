@@ -12,7 +12,8 @@
 #import "Functions3-Swift.h"
 
 const CGFloat functionBoardWidthFactor = 0.3;
-const CGFloat functionBoardHeightFactor = 0.7;
+const CGFloat functionBoardHeightFactor = 0.6;
+static
 const CGFloat functionBoardPositionXFactor = 0.4;
 const CGFloat functionBoardPositionYFactor = 0.1;
 
@@ -67,14 +68,14 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     [self addChild:self.scoreLabel];
     self.scoreLabel.text = @"Score: 0";
     self.scoreLabel.fontColor = [FStyle fNumberTextColor];
-    self.scoreLabel.position = CGPointMake(self.size.width * 0.75, self.size.height * 0.80);
+    self.scoreLabel.position = CGPointMake(self.size.width * 0.75, self.size.height * 0.70);
 
     FSpriteNodeBase *rightArrow = [[FSpriteNodeBase alloc] initWithImageNamed:@"arrow"];
     rightArrow.userInteractionEnabled = NO;
     [rightArrow setScale:0.6];
     [self addChild:rightArrow];
     
-    rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.2);
+    rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.3);
     
     self.numberLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
     [self.numberLabel setFontSize:25];
@@ -99,65 +100,13 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[FStyle fNumberTextColor] size:CGSizeMake(self.size.width , 1)];
     [self addChild:gameOverNode];
     gameOverNode.position = CGPointZero;
-
-    // TODO: Add next stage
-    //[self addJevels];
-}
-
-- (void)addJevels
-{
-    FSpriteNodeBase *goldenLabelNode = [[FSpriteNodeBase alloc] initWithImageNamed:@"golden"];
-    [goldenLabelNode setScale:0.3];
-    goldenLabelNode.userInteractionEnabled = NO;
-    [self addChild:goldenLabelNode];
-    [goldenLabelNode setPosition:CGPointMake(self.size.width * 0.35, self.size.height * 0.1)];
-    
-    FSpriteNodeBase *diamonLabelNode = [[FSpriteNodeBase alloc] initWithImageNamed:@"diamond"];
-    [diamonLabelNode setScale:0.3];
-    diamonLabelNode.userInteractionEnabled = NO;
-    [self addChild:diamonLabelNode];
-    [diamonLabelNode setPosition:CGPointMake(self.size.width * 0.35, self.size.height * 0.35)];
-    
-    FSpriteNodeBase *emeraldLabelNode = [[FSpriteNodeBase alloc] initWithImageNamed:@"emerald"];
-    [emeraldLabelNode setScale:0.3];
-    emeraldLabelNode.userInteractionEnabled = NO;
-    [self addChild:emeraldLabelNode];
-    [emeraldLabelNode setPosition:CGPointMake(self.size.width * 0.35, self.size.height * 0.6)];
-    
-    
-    self.goldenCounterLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-    [self.goldenCounterLabel setFontSize:10];
-    self.goldenCounterLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeBottom;
-    self.goldenCounterLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
-    [self addChild:self.goldenCounterLabel];
-    self.goldenCounterLabel.text = @"55555 x";
-    self.goldenCounterLabel.fontColor = [FStyle fNumberTextColor];
-    [self.goldenCounterLabel setPosition:CGPointMake(self.size.width * 0.33, self.size.height * 0.1)];
-    
-    
-    self.diamondCounterLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-    [self.diamondCounterLabel setFontSize:10];
-    self.diamondCounterLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeBottom;
-    self.diamondCounterLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
-    [self addChild:self.diamondCounterLabel];
-    self.diamondCounterLabel.text = @"55555 x";
-    self.diamondCounterLabel.fontColor = [FStyle fNumberTextColor];
-    [self.diamondCounterLabel setPosition:CGPointMake(self.size.width * 0.33, self.size.height * 0.35)];
-    
-    self.emeraldCounterLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-    [self.emeraldCounterLabel setFontSize:10];
-    self.emeraldCounterLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeBottom;
-    self.emeraldCounterLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
-    [self addChild:self.emeraldCounterLabel];
-    self.emeraldCounterLabel.text = @"55555 x";
-    self.emeraldCounterLabel.fontColor = [FStyle fNumberTextColor];
-    [self.emeraldCounterLabel setPosition:CGPointMake(self.size.width * 0.33, self.size.height * 0.6)];
 }
 
 - (void)createTimeLabel {
     self.timeLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
     [self.timeLabel setFontSize:14];
     
+    self.timeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.timeLabel];
     self.timeLabel.text = @"999999999";
