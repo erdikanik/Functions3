@@ -20,12 +20,12 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 @interface FunctionTopBar()
 
 @property (nonatomic,strong) SKLabelNode *timeLabel;
-@property (nonatomic, strong) SKLabelNode *resultLabel;
 @property (nonatomic, strong) SKLabelNode *numberLabel;
-@property (nonatomic, strong) FunctionBoard *board;
+@property (nonatomic, strong) SKLabelNode *resultLabel;
 @property (nonatomic, assign) NSInteger result;
 @property (nonatomic, assign) SKAction *timeLabelAction;
 @property (nonatomic, strong) SKLabelNode *scoreLabel;
+@property (nonatomic, strong) SKLabelNode *methodName;
 
 @property (nonatomic, strong) SKLabelNode *goldenCounterLabel;
 @property (nonatomic, strong) SKLabelNode *emeraldCounterLabel;
@@ -53,13 +53,16 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 }
 
 - (void)createFunctionLabel {
-    self.board = [[FunctionBoard alloc] initWith:
-                            CGSizeMake(self.size.width * functionBoardWidthFactor, self.size.height * functionBoardHeightFactor)];
-    
-    [self.board initialize];
-    [self addChild:self.board];
-    self.board.position = CGPointMake(self.size.width * functionBoardPositionXFactor, self.size.height * functionBoardPositionYFactor);
 
+    self.methodName = [SKLabelNode labelNodeWithFontNamed:@"AvenirNext-Bold"];
+    [self.methodName setFontSize:18];
+    self.methodName.fontColor = [FStyle fNumberTextColor];
+    [self addChild:self.methodName];
+    [self.methodName setPosition:CGPointMake(self.size.width * 0.5, self.size.height * 0.5)];
+    self.methodName.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.methodName.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    self.methodName.text = @"GREATER THAN 20";
+    
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont2]];
     [self.scoreLabel setFontSize:14];
 
@@ -69,33 +72,26 @@ const CGFloat functionBoardPositionYFactor = 0.1;
     self.scoreLabel.text = @"Score: 0";
     self.scoreLabel.fontColor = [FStyle fNumberTextColor];
     self.scoreLabel.position = CGPointMake(self.size.width * 0.75, self.size.height * 0.70);
-
-    FSpriteNodeBase *rightArrow = [[FSpriteNodeBase alloc] initWithImageNamed:@"arrow"];
-    rightArrow.userInteractionEnabled = NO;
-    [rightArrow setScale:0.6];
-    [self addChild:rightArrow];
     
-    rightArrow.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.3);
+    self.resultLabel = [SKLabelNode labelNodeWithFontNamed:@"AvenirNext-Bold"];
+    [self.resultLabel setFontSize:20];
     
-    self.numberLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-    [self.numberLabel setFontSize:25];
-    
-    self.numberLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-    self.numberLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-    [self addChild:self.numberLabel];
-    self.numberLabel.text = @"0";
-    self.numberLabel.fontColor = [FStyle fNumberTextColor];
-    
-    [self.numberLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.4)];
-    
-    self.resultLabel = [SKLabelNode labelNodeWithFontNamed:[FStyle fMainFont]];
-    [self.resultLabel setFontSize:25];
     self.resultLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     self.resultLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     [self addChild:self.resultLabel];
+    self.resultLabel.text = @"0";
     self.resultLabel.fontColor = [FStyle fNumberTextColor];
     
-    [self.resultLabel setPosition:CGPointMake(self.size.width * 0.04, self.size.height * 0.4)];
+    [self.resultLabel setPosition:CGPointMake(self.size.width * 0.87, self.size.height * 0.4)];
+    
+    self.numberLabel = [SKLabelNode labelNodeWithFontNamed:@"AvenirNext-Bold"];
+    [self.numberLabel setFontSize:20];
+    self.numberLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.numberLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    [self addChild:self.numberLabel];
+    self.numberLabel.fontColor = [FStyle fNumberTextColor];
+    
+    [self.numberLabel setPosition:CGPointMake(self.size.width * 0.04, self.size.height * 0.4)];
     
     FSpriteNodeBase *gameOverNode = [[FSpriteNodeBase alloc] initWithColor:[FStyle fNumberTextColor] size:CGSizeMake(self.size.width , 1)];
     [self addChild:gameOverNode];
@@ -117,7 +113,7 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 
 - (void)updateFunction:(NSString *)functionText
 {
-    self.board.text = functionText;
+    // use it
 }
 
 - (void)updateTime:(NSString *)time
@@ -140,18 +136,18 @@ const CGFloat functionBoardPositionYFactor = 0.1;
             self.timeLabel.fontColor = [FStyle fNumberTextColor];
         }];
     }
-
-    SKAction *fadeIn = [SKAction fadeInWithDuration:0.5];
-    SKAction *wait = [SKAction waitForDuration:0.5];
-    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.5];
-    SKAction *sequence   = [SKAction sequence:@[fadeIn, wait, fadeOut]];
-
-    [self.resultLabel runAction:sequence];
 }
 
 - (void)updateNumber: (NSString *)number
 {
     self.numberLabel.text = number;
+    
+    SKAction *fadeIn = [SKAction fadeInWithDuration:0.5];
+    SKAction *wait = [SKAction waitForDuration:0.5];
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.5];
+    SKAction *sequence   = [SKAction sequence:@[fadeIn, wait, fadeOut]];
+    
+    [self.numberLabel runAction:sequence];
 }
 
 - (void)updateScore: (NSString *)score
@@ -161,12 +157,10 @@ const CGFloat functionBoardPositionYFactor = 0.1;
 
 - (void)updateFunctionTimeText:(NSString *)timeText
 {
-    self.board.timeText = timeText;
 }
 
 - (void)updateFunctionPromotionNumber:(NSInteger)promotionNumber
 {
-    self.board.promotionNumber = promotionNumber;
 }
 
 #pragma mark - Helpers

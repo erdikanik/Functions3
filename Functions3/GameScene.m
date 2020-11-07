@@ -55,7 +55,7 @@ static const CGFloat kGameSceneStatusBarHeight = 25;
     [self setSize:CGSizeMake(screenWidth, screenHeight)];
     [self setupUI];
 
-    self.gameLogic = [[GameLogic alloc] initWith:30];
+    self.gameLogic = [[GameLogic alloc] initWithGameOverTime:30];
     self.gameLogic.delegate = self;
     [self.gameLogic gameStarted];
     

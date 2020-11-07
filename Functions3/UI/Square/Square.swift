@@ -76,7 +76,7 @@ class Square: FSpriteNodeBase {
                             selector: #selector(fireEvent))
     }
 
-    func fireEvent() {
+    @objc func fireEvent() {
         // override
     }
 
@@ -125,7 +125,7 @@ class Square: FSpriteNodeBase {
 
 extension Square {
 
-    func fireBombEvent() {
+    @objc func fireBombEvent() {
         tile?.fillColor = isInvisible ? FStyle.fNumberColor() : UIColor.black
         isInvisible = !isInvisible
     }

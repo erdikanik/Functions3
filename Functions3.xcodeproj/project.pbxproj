@@ -34,6 +34,7 @@
 		18F697581C1E178E006F254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F697561C1E178E006F254D /* Main.storyboard */; };
 		4CF12846A83EA47150385128 /* libPods-Functions3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5989406A54FFB3335FDDC17 /* libPods-Functions3.a */; };
 		7FFCFD25D9FBEC94BCF97F4D /* libPods-Functions3Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA8E8352CDF37C7647CFCEA /* libPods-Functions3Tests.a */; };
+		871C53E021BAA0D7002B9F18 /* ExactMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C53DF21BAA0D7002B9F18 /* ExactMethod.swift */; };
 		873CCC9D201B410E00CB6628 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873CCC9C201B410E00CB6628 /* GameKit.framework */; };
 		873CCCA0201B48D400CB6628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CCC9F201B48D400CB6628 /* Utils.swift */; };
 		873CCCA2201B4A2500CB6628 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CCCA1201B4A2500CB6628 /* StartViewController.swift */; };
@@ -127,6 +128,7 @@
 		48728C31A60DBA0C3DD8D06F /* Pods-Functions3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Functions3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Functions3Tests/Pods-Functions3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		61695C705C88287460518584 /* Pods-Functions3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Functions3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Functions3/Pods-Functions3.debug.xcconfig"; sourceTree = "<group>"; };
 		7741A5F8176E920100043B4C /* Pods-Functions3.debug copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Functions3.debug copy.xcconfig"; path = "Pods/Target Support Files/Pods-Functions3/Pods-Functions3.debug copy.xcconfig"; sourceTree = "<group>"; };
+		871C53DF21BAA0D7002B9F18 /* ExactMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactMethod.swift; sourceTree = "<group>"; };
 		873CCC9C201B410E00CB6628 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		873CCC9F201B48D400CB6628 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		873CCCA1201B4A2500CB6628 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				18522B241B934BA200705469 /* Polynomal.m */,
 				18F035A71C1D8AFA00792FC9 /* AbsoluteValueFunction.h */,
 				18F035A81C1D8AFA00792FC9 /* AbsoluteValueFunction.m */,
+				871C53DF21BAA0D7002B9F18 /* ExactMethod.swift */,
 			);
 			path = FunctionTypes;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -746,6 +750,7 @@
 				9253F62F1FB746B10051CF43 /* GameLogic.swift in Sources */,
 				18522B331B94D21D00705469 /* Functions.m in Sources */,
 				8785A6C31FA537160088334E /* Number.swift in Sources */,
+				871C53E021BAA0D7002B9F18 /* ExactMethod.swift in Sources */,
 				8789C10E1F9540BF00B0766B /* BaseViewController.m in Sources */,
 				92BF0A0B1FA60F4B00086AF5 /* Board.swift in Sources */,
 				8789C1111F9541DE00B0766B /* ShopViewController.m in Sources */,
@@ -913,7 +918,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Functions3/UI/FShape/Functions3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -935,7 +940,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Functions3/UI/FShape/Functions3-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1046,7 +1051,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Functions3/UI/FShape/Functions3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = "Debug copy";
 		};

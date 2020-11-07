@@ -16,9 +16,8 @@ fileprivate enum Constants {
 @objc protocol GameLogicDelegate: class {
     func gameLogic(_ gameLogic: GameLogic, time:TimeInterval, gameOvered: Bool)
     func gameLogic(_ gameLogic: GameLogic, functionResulted result: Int)
-    func gameLogic(_ gameLogic: GameLogic, functionChanged function: Polynomal)
+    func gameLogic(_ gameLogic: GameLogic, functionChanged function: ExactMethod)
     func gameLogic(_ gameLogic: GameLogic, functionTimeDidChanged time: Float)
-    func gameLogic(_ gameLogic: GameLogic, promotionChanged promotionNumber: Int)
     func gameLogic(_ gameLogic: GameLogic, levelChanged level: Int)
 }
 
@@ -27,7 +26,7 @@ fileprivate enum Constants {
     @objc var number: Int = 0 {
         didSet {
             if let num = polynomal?.getValue(CGFloat(number)) {
-                let result = promotionCheck(with: Double(num))
+                let result = Double(num)
                 score += result > 0 ? result * 0.05 : 0
                 scoreTime += result > 0 ? result * 0.2 : result + (Double(self.level) * 0.01)
                 delegate?.gameLogic(self, functionResulted: Int(result))
@@ -41,19 +40,19 @@ fileprivate enum Constants {
     private var timer: Timer?
     private var functionTimer: Timer?
     private var polynomal: Polynomal?
+    private var exactMethod: ExactMethod?
     private var functionChangingTime: Float = 0
     private var level: Int = 1
     private var initialTime: Int = 100
     private var latestResult = 0
-    private var promotionNumber = 1
 
-    required init(with gameOverTime: TimeInterval) {
+    required init(gameOverTime: TimeInterval) {
         super.init()
         self.scoreTime = gameOverTime
     }
 
     func gameStarted() {
-        randomFuntion()
+        randomFunction()
         self.functionChangingTime = Constants.gameLogicRandomFunctionsDuration
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.gameLogicWaitDuration, repeats: true) {
             [weak self] (timer) in
@@ -74,7 +73,7 @@ fileprivate enum Constants {
             strongSelf.functionChangingTime -= 1
 
             if strongSelf.functionChangingTime <= 0 {
-                strongSelf.randomFuntion()
+                strongSelf.randomFunction()
                 strongSelf.functionChangingTime = Constants.gameLogicRandomFunctionsDuration
             }
 
@@ -83,9 +82,9 @@ fileprivate enum Constants {
         }
     }
 
-    private func randomFuntion() {
-        polynomal = Functions.getRandomFunction()
-        delegate?.gameLogic(self, functionChanged: polynomal!)
+    private func randomFunction() {
+        exactMethod = ExactMethod()
+        delegate?.gameLogic(self, functionChanged: exactMethod!)
     }
 
     private func levelDetection() {
@@ -96,18 +95,5 @@ fileprivate enum Constants {
             level += 1
             delegate?.gameLogic(self, levelChanged: level)
         }
-    }
-    
-    private func promotionCheck(with result: Double) -> Double {
-        if result >= 0 {
-            if promotionNumber < 5 {
-               promotionNumber += 1
-            }
-        } else {
-            promotionNumber = 1
-        }
-        
-       delegate?.gameLogic(self, promotionChanged: promotionNumber)
-        return result * Double(promotionNumber)
     }
 }

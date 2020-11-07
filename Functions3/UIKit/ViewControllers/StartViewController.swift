@@ -34,7 +34,7 @@ class StartViewController: BaseViewController {
     }
     
     @IBAction func leaderboardButtonTapped(_ sender: Any) {
-        if GKLocalPlayer.localPlayer().isAuthenticated {
+        if GKLocalPlayer.local.isAuthenticated {
             checkLeaderboard()
         } else {
             authenticatePlayer()
@@ -51,7 +51,7 @@ class StartViewController: BaseViewController {
 extension StartViewController {
     fileprivate func authenticatePlayer() {
         
-        let localPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer = GKLocalPlayer.local
         localPlayer.authenticateHandler = { [weak self] (viewController, error) -> Void in
             if let viewController = viewController {
                 self?.present(viewController, animated: true, completion: nil)
